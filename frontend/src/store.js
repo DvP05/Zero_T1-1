@@ -1,0 +1,327 @@
+import { create } from 'zustand'
+import { api, withFallback, FALLBACK, scenarioWsUrl } from './lib/api'
+
+const highestConfidence = (events) =>
+  [...(events ?? [])].sort((a, b) => b.confidence - a.confidence)[0] ?? null
+
+const STEP_H = 0.25
+
+// module-scoped live stream handles (not part of reactive state)
+let scenarioSocket = null
+let scenarioSocketPromise = null
+let localTimer = null
+
+export const useTidalis = create((set, get) => ({
+  // --- data ---------------------------------------------------------------
+  health: FALLBACK.health,
+  coastalState: FALLBACK.coastalState,
+  sensors: [],
+  readings: [],
+  events: [],
+  assets: [],
+  loading: true,
+  online: true,
+
+  // --- selection ----------------------------------------------------------
+  selectedEventId: null,
+  forecast: null,
+  exposures: [],
+  simulation: null,
+  simulating: false,
+
+  // --- layers -------------------------------------------------------------
+  layers: {
+    sensors: true,
+    events: true,
+    exposure: true,
+    simulation: true,
+    sos: true,
+    zones: true,
+    flood: true,
+    roads: true,
+    buildings: true,
+    facilities: true,
+  },
+
+  // --- new features -------------------------------------------------------
+  telemetry: null,
+  sosTickets: [],
+  mitigationPlan: null,
+
+  // --- scenario timeline --------------------------------------------------
+  scenarioMeta: null,
+  geo: null,
+  snapshot: null,
+  scenarioT: 0,
+  scenarioPlaying: false,
+  scenarioLive: false,
+  scenarioReady: false,
+  selectedZoneId: 'B',
+
+  // initialise: load everything once
+  async init() {
+    const [health, coastalState, sensors, readings, events, assets, telemetry, sosTickets] =
+      await Promise.all([
+        withFallback(api.health(), FALLBACK.health),
+        withFallback(api.coastalState(), FALLBACK.coastalState),
+        withFallback(api.sensors(), FALLBACK.empty),
+        withFallback(api.latestReadings(), FALLBACK.empty),
+        withFallback(api.events(), FALLBACK.empty),
+        withFallback(api.assets(), FALLBACK.empty),
+        withFallback(api.mlTelemetry(), null),
+        withFallback(api.sosList(), FALLBACK.empty),
+      ])
+
+    const top = highestConfidence(events)
+    set({
+      health,
+      coastalState,
+      sensors,
+      readings,
+      events,
+      assets,
+      telemetry,
+      sosTickets,
+      loading: false,
+      online: health.status === 'ok',
+      selectedEventId: top?.event_id ?? null,
+    })
+
+    if (top) await get().loadEventDetails(top.event_id)
+    get().initScenario()
+  },
+
+  // --- scenario timeline --------------------------------------------------
+  async initScenario() {
+    const [scenarioMeta, geo, snapshot] = await Promise.all([
+      withFallback(api.scenario(), null),
+      withFallback(api.geo(), null),
+      withFallback(api.scenarioSnapshot(0), null),
+    ])
+    set({
+      scenarioMeta,
+      geo,
+      snapshot,
+      scenarioT: 0,
+      scenarioReady: Boolean(snapshot),
+    })
+    if (snapshot && !get().selectedZoneId) {
+      set({ selectedZoneId: snapshot.priorities?.top_zone ?? 'B' })
+    }
+  },
+
+  async seekScenario(t) {
+    const value = Math.max(0, Math.min(5, Number(t)))
+    set({ scenarioT: value })
+    const snapshot = await withFallback(api.scenarioSnapshot(value), null)
+    if (snapshot) set({ snapshot, scenarioT: snapshot.t_hours })
+    return snapshot
+  },
+
+  _applyStreamMessage(message) {
+    if (!message || typeof message !== 'object') return
+    if (message.type === 'meta') {
+      set({ scenarioMeta: message.scenario })
+    } else if (message.type === 'snapshot') {
+      set({
+        snapshot: message.snapshot,
+        scenarioT: message.snapshot.t_hours,
+        scenarioReady: true,
+      })
+    } else if (message.type === 'status') {
+      set({ scenarioPlaying: Boolean(message.playing), scenarioT: message.t })
+      if (!message.playing && localTimer) {
+        clearInterval(localTimer)
+        localTimer = null
+      }
+    }
+  },
+
+  _ensureScenarioSocket() {
+    if (scenarioSocket && scenarioSocket.readyState === WebSocket.OPEN) {
+      return Promise.resolve(scenarioSocket)
+    }
+    if (scenarioSocketPromise) return scenarioSocketPromise
+
+    scenarioSocketPromise = new Promise((resolve) => {
+      let socket
+      try {
+        socket = new WebSocket(scenarioWsUrl())
+      } catch (err) {
+        console.warn('[TIDALIS] WebSocket unavailable:', err?.message)
+        scenarioSocketPromise = null
+        resolve(null)
+        return
+      }
+
+      const timeout = setTimeout(() => {
+        scenarioSocketPromise = null
+        resolve(null)
+      }, 4000)
+
+      socket.onopen = () => {
+        clearTimeout(timeout)
+        scenarioSocket = socket
+        set({ scenarioLive: true })
+        scenarioSocketPromise = null
+        resolve(socket)
+      }
+      socket.onmessage = (event) => {
+        try {
+          get()._applyStreamMessage(JSON.parse(event.data))
+        } catch {
+          /* ignore malformed frames */
+        }
+      }
+      socket.onerror = () => {
+        clearTimeout(timeout)
+        set({ scenarioLive: false })
+      }
+      socket.onclose = () => {
+        clearTimeout(timeout)
+        set({ scenarioLive: false, scenarioPlaying: false })
+        if (scenarioSocket === socket) scenarioSocket = null
+        scenarioSocketPromise = null
+      }
+    })
+    return scenarioSocketPromise
+  },
+
+  _sendStream(action, extra = {}) {
+    if (scenarioSocket && scenarioSocket.readyState === WebSocket.OPEN) {
+      scenarioSocket.send(JSON.stringify({ action, ...extra }))
+      return true
+    }
+    return false
+  },
+
+  async playScenario() {
+    const socket = await get()._ensureScenarioSocket()
+    if (socket) {
+      get()._sendStream('play')
+      set({ scenarioPlaying: true, scenarioLive: true })
+      return
+    }
+    // Fallback: step the timeline locally when no socket is available
+    if (localTimer) return
+    set({ scenarioPlaying: true })
+    localTimer = setInterval(async () => {
+      const t = get().scenarioT
+      if (t >= 5) {
+        clearInterval(localTimer)
+        localTimer = null
+        set({ scenarioPlaying: false })
+        return
+      }
+      await get().seekScenario(t + STEP_H)
+    }, 850)
+  },
+
+  pauseScenario() {
+    const sent = get()._sendStream('pause')
+    set({ scenarioPlaying: false })
+    if (!sent && localTimer) {
+      clearInterval(localTimer)
+      localTimer = null
+    }
+  },
+
+  resetScenario() {
+    const sent = get()._sendStream('reset')
+    set({ scenarioPlaying: false, scenarioT: 0 })
+    if (!sent) {
+      if (localTimer) {
+        clearInterval(localTimer)
+        localTimer = null
+      }
+      get().seekScenario(0)
+    }
+  },
+
+  toggleScenarioPlay() {
+    if (get().scenarioPlaying) get().pauseScenario()
+    else get().playScenario()
+  },
+
+  selectZone(zoneId) {
+    set({ selectedZoneId: zoneId })
+  },
+
+  async refreshHealth() {
+    const health = await withFallback(api.health(), FALLBACK.health)
+    set({ health, online: health.status === 'ok' })
+  },
+
+  async loadEventDetails(eventId) {
+    if (!eventId) return
+    set({ selectedEventId: eventId, simulation: null })
+    const [forecast, exposures] = await Promise.all([
+      withFallback(api.forecast(eventId), null),
+      withFallback(api.exposure(eventId), FALLBACK.empty),
+    ])
+    set({ forecast, exposures })
+    get().loadMitigationPlan()
+  },
+
+  selectEvent(eventId) {
+    get().loadEventDetails(eventId)
+  },
+
+  async loadExposures() {
+    const { selectedEventId } = get()
+    if (!selectedEventId) return
+    const exposures = await withFallback(
+      api.exposure(selectedEventId),
+      FALLBACK.empty,
+    )
+    set({ exposures })
+  },
+
+  async runWhatIf(scenario) {
+    const { selectedEventId } = get()
+    if (!selectedEventId) return
+    set({ simulating: true })
+    const simulation = await api.whatIf({ event_id: selectedEventId, ...scenario })
+    set({ simulation, simulating: false })
+    return simulation
+  },
+
+  toggleLayer(name) {
+    set((s) => ({ layers: { ...s.layers, [name]: !s.layers[name] } }))
+  },
+
+  async loadTelemetry() {
+    const telemetry = await withFallback(api.mlTelemetry(), null)
+    set({ telemetry })
+  },
+
+  async loadSosTickets() {
+    const sosTickets = await withFallback(api.sosList(), FALLBACK.empty)
+    set({ sosTickets })
+  },
+
+  async submitSosTicket(payload) {
+    const newTicket = await api.submitSos(payload)
+    const sosTickets = await withFallback(api.sosList(), FALLBACK.empty)
+    set({ sosTickets })
+    return newTicket
+  },
+
+  async updateSosTicketStatus(ticketId, status) {
+    await api.updateSos(ticketId, status)
+    get().loadSosTickets()
+  },
+
+  async loadMitigationPlan() {
+    const { selectedEventId } = get()
+    if (!selectedEventId) {
+      set({ mitigationPlan: null })
+      return
+    }
+    const mitigationPlan = await withFallback(
+      api.mitigation(selectedEventId),
+      null,
+    )
+    set({ mitigationPlan })
+  },
+}))

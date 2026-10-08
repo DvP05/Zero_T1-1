@@ -1,0 +1,415 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              73.93,
+              15.315
+            ],
+            [
+              73.966,
+              15.315
+            ],
+            [
+              73.966,
+              15.345
+            ],
+            [
+              73.93,
+              15.345
+            ],
+            [
+              73.93,
+              15.315
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "A",
+        "name": "Zone A \u00b7 Miramar Coast (Goa)",
+        "elevation_m": 1.4,
+        "drainage_capacity": 0.74,
+        "historical_flood_freq": 0.34,
+        "imperviousness": 0.62,
+        "slope": 1.6,
+        "population": 14200,
+        "vulnerability": 0.42
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              73.93,
+              15.283
+            ],
+            [
+              73.966,
+              15.283
+            ],
+            [
+              73.966,
+              15.315
+            ],
+            [
+              73.93,
+              15.315
+            ],
+            [
+              73.93,
+              15.283
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "B",
+        "name": "Zone B \u00b7 Low-lying Estuary (Goa)",
+        "elevation_m": 1.05,
+        "drainage_capacity": 0.58,
+        "historical_flood_freq": 0.61,
+        "imperviousness": 0.71,
+        "slope": 0.9,
+        "population": 21800,
+        "vulnerability": 0.78
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              73.93,
+              15.251
+            ],
+            [
+              73.966,
+              15.251
+            ],
+            [
+              73.966,
+              15.283
+            ],
+            [
+              73.93,
+              15.283
+            ],
+            [
+              73.93,
+              15.251
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "C",
+        "name": "Zone C \u00b7 South Harbour (Goa)",
+        "elevation_m": 1.7,
+        "drainage_capacity": 0.66,
+        "historical_flood_freq": 0.41,
+        "imperviousness": 0.55,
+        "slope": 1.9,
+        "population": 9600,
+        "vulnerability": 0.51
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              73.966,
+              15.315
+            ],
+            [
+              74.002,
+              15.315
+            ],
+            [
+              74.002,
+              15.345
+            ],
+            [
+              73.966,
+              15.345
+            ],
+            [
+              73.966,
+              15.315
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "D",
+        "name": "Zone D \u00b7 Upland North (Goa)",
+        "elevation_m": 4.6,
+        "drainage_capacity": 0.88,
+        "historical_flood_freq": 0.08,
+        "imperviousness": 0.44,
+        "slope": 4.7,
+        "population": 11300,
+        "vulnerability": 0.22
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              73.966,
+              15.283
+            ],
+            [
+              74.002,
+              15.283
+            ],
+            [
+              74.002,
+              15.315
+            ],
+            [
+              73.966,
+              15.315
+            ],
+            [
+              73.966,
+              15.283
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "E",
+        "name": "Zone E \u00b7 Inland East (Goa)",
+        "elevation_m": 3.3,
+        "drainage_capacity": 0.81,
+        "historical_flood_freq": 0.15,
+        "imperviousness": 0.5,
+        "slope": 3.4,
+        "population": 16700,
+        "vulnerability": 0.3
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              72.8,
+              18.9
+            ],
+            [
+              72.85,
+              18.9
+            ],
+            [
+              72.85,
+              19.1
+            ],
+            [
+              72.8,
+              19.1
+            ],
+            [
+              72.8,
+              18.9
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "MUM",
+        "name": "Zone Mumbai \u00b7 Marine Drive",
+        "elevation_m": 2.5,
+        "drainage_capacity": 0.45,
+        "historical_flood_freq": 0.85,
+        "imperviousness": 0.95,
+        "slope": 0.5,
+        "population": 120000,
+        "vulnerability": 0.65
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              80.25,
+              13.0
+            ],
+            [
+              80.3,
+              13.0
+            ],
+            [
+              80.3,
+              13.1
+            ],
+            [
+              80.25,
+              13.1
+            ],
+            [
+              80.25,
+              13.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "CHN",
+        "name": "Zone Chennai \u00b7 Marina Beach",
+        "elevation_m": 2.0,
+        "drainage_capacity": 0.55,
+        "historical_flood_freq": 0.7,
+        "imperviousness": 0.85,
+        "slope": 0.8,
+        "population": 85000,
+        "vulnerability": 0.72
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              76.2,
+              9.9
+            ],
+            [
+              76.3,
+              9.9
+            ],
+            [
+              76.3,
+              10.0
+            ],
+            [
+              76.2,
+              10.0
+            ],
+            [
+              76.2,
+              9.9
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "KOC",
+        "name": "Zone Kochi \u00b7 Fort Kochi",
+        "elevation_m": 1.2,
+        "drainage_capacity": 0.6,
+        "historical_flood_freq": 0.75,
+        "imperviousness": 0.65,
+        "slope": 0.4,
+        "population": 45000,
+        "vulnerability": 0.68
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              83.25,
+              17.65
+            ],
+            [
+              83.35,
+              17.65
+            ],
+            [
+              83.35,
+              17.75
+            ],
+            [
+              83.25,
+              17.75
+            ],
+            [
+              83.25,
+              17.65
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "VIZ",
+        "name": "Zone Vizag \u00b7 RK Beach",
+        "elevation_m": 3.5,
+        "drainage_capacity": 0.7,
+        "historical_flood_freq": 0.3,
+        "imperviousness": 0.7,
+        "slope": 2.5,
+        "population": 55000,
+        "vulnerability": 0.4
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              88.0,
+              22.0
+            ],
+            [
+              88.15,
+              22.0
+            ],
+            [
+              88.15,
+              22.1
+            ],
+            [
+              88.0,
+              22.1
+            ],
+            [
+              88.0,
+              22.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "KOL",
+        "name": "Zone Kolkata \u00b7 Haldia Port",
+        "elevation_m": 1.5,
+        "drainage_capacity": 0.4,
+        "historical_flood_freq": 0.9,
+        "imperviousness": 0.8,
+        "slope": 0.2,
+        "population": 95000,
+        "vulnerability": 0.82
+      }
+    }
+  ]
+}
