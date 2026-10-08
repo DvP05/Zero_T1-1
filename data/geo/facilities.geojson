@@ -1,0 +1,209 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.943,
+          15.306
+        ]
+      },
+      "properties": {
+        "id": "FAC-HOSP-1",
+        "name": "Goa Coastal Hospital",
+        "kind": "hospital",
+        "zone_id": "B",
+        "criticality": 0.95
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.958,
+          15.291
+        ]
+      },
+      "properties": {
+        "id": "FAC-CLIN-1",
+        "name": "B2 Health Clinic",
+        "kind": "hospital",
+        "zone_id": "B",
+        "criticality": 0.7
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.954,
+          15.323
+        ]
+      },
+      "properties": {
+        "id": "FAC-SCH-1",
+        "name": "Miramar Public School",
+        "kind": "school",
+        "zone_id": "A",
+        "criticality": 0.6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.98,
+          15.336
+        ]
+      },
+      "properties": {
+        "id": "FAC-SHEL-1",
+        "name": "Upland Relief Shelter",
+        "kind": "shelter",
+        "zone_id": "D",
+        "criticality": 0.85
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.993,
+          15.29
+        ]
+      },
+      "properties": {
+        "id": "FAC-SHEL-2",
+        "name": "Inland East Shelter",
+        "kind": "shelter",
+        "zone_id": "E",
+        "criticality": 0.75
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.95,
+          15.303
+        ]
+      },
+      "properties": {
+        "id": "FAC-SUB-1",
+        "name": "5th Street Substation",
+        "kind": "substation",
+        "zone_id": "B",
+        "criticality": 0.88
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.952,
+          15.272
+        ]
+      },
+      "properties": {
+        "id": "FAC-FIRE-1",
+        "name": "Harbour Fire Station",
+        "kind": "fire_station",
+        "zone_id": "C",
+        "criticality": 0.8
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.937,
+          15.262
+        ]
+      },
+      "properties": {
+        "id": "FAC-PORT-1",
+        "name": "South Harbour Terminal",
+        "kind": "port",
+        "zone_id": "C",
+        "criticality": 0.65
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.936,
+          15.297
+        ]
+      },
+      "properties": {
+        "id": "FAC-SCH-2",
+        "name": "Estuary Secondary School",
+        "kind": "school",
+        "zone_id": "B",
+        "criticality": 0.55
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.995,
+          15.325
+        ]
+      },
+      "properties": {
+        "id": "FAC-SUB-2",
+        "name": "Upland Grid Node",
+        "kind": "substation",
+        "zone_id": "D",
+        "criticality": 0.72
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.936,
+          15.338
+        ]
+      },
+      "properties": {
+        "id": "FAC-SHEL-3",
+        "name": "Miramar Evacuation Centre",
+        "kind": "shelter",
+        "zone_id": "A",
+        "criticality": 0.7
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.975,
+          15.307
+        ]
+      },
+      "properties": {
+        "id": "FAC-FIRE-2",
+        "name": "Inland Fire Post",
+        "kind": "fire_station",
+        "zone_id": "E",
+        "criticality": 0.68
+      }
+    }
+  ]
+}

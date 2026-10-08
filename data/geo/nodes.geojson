@@ -1,0 +1,101 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.948,
+          15.33
+        ]
+      },
+      "properties": {
+        "id": "N-A",
+        "name": "Miramar Junction",
+        "is_hub": false,
+        "elevation_m": 1.6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.948,
+          15.299
+        ]
+      },
+      "properties": {
+        "id": "N-B",
+        "name": "Estuary Crossroads",
+        "is_hub": false,
+        "elevation_m": 1.2
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.948,
+          15.267
+        ]
+      },
+      "properties": {
+        "id": "N-C",
+        "name": "Harbour Gate",
+        "is_hub": false,
+        "elevation_m": 1.9
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.984,
+          15.33
+        ]
+      },
+      "properties": {
+        "id": "N-D",
+        "name": "Upland Circle",
+        "is_hub": false,
+        "elevation_m": 4.8
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.984,
+          15.299
+        ]
+      },
+      "properties": {
+        "id": "N-E",
+        "name": "Inland Depot",
+        "is_hub": false,
+        "elevation_m": 3.5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.022,
+          15.3
+        ]
+      },
+      "properties": {
+        "id": "N-HUB",
+        "name": "NH-48 Evacuation Interchange",
+        "is_hub": true,
+        "elevation_m": 8.5
+      }
+    }
+  ]
+}
