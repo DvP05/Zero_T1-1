@@ -1,0 +1,259 @@
+{
+  "type": "FeatureCollection",
+  "meta": {
+    "zone_id": "mumbai",
+    "name": "Mumbai Harbor District Real Road Network",
+    "road_count": 7
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            72.822,
+            18.925
+          ],
+          [
+            72.821,
+            18.938
+          ],
+          [
+            72.819,
+            18.95
+          ],
+          [
+            72.812,
+            18.958
+          ],
+          [
+            72.812,
+            18.995
+          ]
+        ]
+      },
+      "properties": {
+        "id": "RD-MUM-MARINEDRIVE",
+        "name": "Marine Drive Promenade & Netaji Subhash Chandra Bose Road",
+        "ref": "Marine Drive",
+        "elevation_m": 2.2,
+        "critical": true,
+        "lanes": 6,
+        "speed_limit_kmh": 50,
+        "is_evacuation_corridor": false,
+        "classification": "coastal_arterial"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            72.822,
+            18.925
+          ],
+          [
+            72.835,
+            18.932
+          ],
+          [
+            72.842,
+            18.94
+          ]
+        ]
+      },
+      "properties": {
+        "id": "RD-MUM-CST-LINK",
+        "name": "Fort Heritage Corridor (CST \u2013 Churchgate \u2013 Nariman Point)",
+        "ref": "Arterial",
+        "elevation_m": 6.5,
+        "critical": false,
+        "lanes": 4,
+        "speed_limit_kmh": 40,
+        "is_evacuation_corridor": false,
+        "classification": "coastal_arterial"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            72.812,
+            18.995
+          ],
+          [
+            72.816,
+            19.018
+          ],
+          [
+            72.824,
+            19.038
+          ],
+          [
+            72.835,
+            19.052
+          ]
+        ]
+      },
+      "properties": {
+        "id": "RD-MUM-BWSL",
+        "name": "Bandra-Worli Sea Link & Coastal Road Over Arabian Sea",
+        "ref": "BWSL",
+        "elevation_m": 16.5,
+        "critical": true,
+        "lanes": 8,
+        "speed_limit_kmh": 80,
+        "is_evacuation_corridor": true,
+        "classification": "bridge_causeway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            72.842,
+            18.94
+          ],
+          [
+            72.852,
+            18.968
+          ],
+          [
+            72.862,
+            19.005
+          ],
+          [
+            72.885,
+            19.05
+          ]
+        ]
+      },
+      "properties": {
+        "id": "RD-MUM-EASTERN-FWY",
+        "name": "Eastern Freeway (Elevated Coastal Arterial Corridor)",
+        "ref": "Eastern Fwy",
+        "elevation_m": 9.5,
+        "critical": true,
+        "lanes": 4,
+        "speed_limit_kmh": 70,
+        "is_evacuation_corridor": false,
+        "classification": "expressway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            72.835,
+            19.052
+          ],
+          [
+            72.855,
+            19.056
+          ],
+          [
+            72.87,
+            19.054
+          ],
+          [
+            72.885,
+            19.05
+          ]
+        ]
+      },
+      "properties": {
+        "id": "RD-MUM-BKC-LINK",
+        "name": "Bandra-Kurla Complex (BKC) Connector (Bandra \u2013 Sion)",
+        "ref": "BKC Connector",
+        "elevation_m": 8.0,
+        "critical": true,
+        "lanes": 6,
+        "speed_limit_kmh": 60,
+        "is_evacuation_corridor": true,
+        "classification": "expressway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            72.835,
+            19.052
+          ],
+          [
+            72.848,
+            19.072
+          ],
+          [
+            72.854,
+            19.102
+          ],
+          [
+            72.858,
+            19.135
+          ],
+          [
+            72.862,
+            19.175
+          ]
+        ]
+      },
+      "properties": {
+        "id": "RD-MUM-WEH",
+        "name": "Western Express Highway (WEH North-South Arterial)",
+        "ref": "NH-48 / WEH",
+        "elevation_m": 11.0,
+        "critical": true,
+        "lanes": 8,
+        "speed_limit_kmh": 80,
+        "is_evacuation_corridor": false,
+        "classification": "national_highway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            72.885,
+            19.05
+          ],
+          [
+            72.905,
+            19.052
+          ],
+          [
+            72.93,
+            19.055
+          ],
+          [
+            72.965,
+            19.062
+          ]
+        ]
+      },
+      "properties": {
+        "id": "RD-MUM-SION-PANVEL",
+        "name": "Sion-Panvel High-Ground Evacuation Expressway (Thane Creek)",
+        "ref": "Sion-Panvel",
+        "elevation_m": 15.0,
+        "critical": true,
+        "lanes": 8,
+        "speed_limit_kmh": 90,
+        "is_evacuation_corridor": true,
+        "classification": "evacuation_arterial"
+      }
+    }
+  ]
+}

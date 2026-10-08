@@ -2,12 +2,14 @@ import { useTidalis } from '../store'
 import CommandBriefPanel from './CommandBriefPanel'
 import PriorityPanel from './PriorityPanel'
 import ZoneIntelPanel from './ZoneIntelPanel'
+import PublicServicesPanel from './PublicServicesPanel'
 import EventPanel from './EventPanel'
 
 const TABS = [
   { id: 'brief', label: 'Brief', icon: '🧠', title: 'Command Brief (GenAI)' },
   { id: 'priorities', label: 'Priorities', icon: '🎯', title: 'Emergency Priorities' },
   { id: 'zone', label: 'Zone Intel', icon: '🌊', title: 'Zone Intelligence' },
+  { id: 'services', label: 'Services', icon: '🏥', title: 'Public Services & Infrastructure' },
   { id: 'event', label: 'Event', icon: '📍', title: 'Event Details & Evidence' },
 ]
 
@@ -83,6 +85,7 @@ export default function ContextInspector() {
         {inspectorTab === 'brief' && <CommandBriefPanel />}
         {inspectorTab === 'priorities' && <PriorityPanel />}
         {inspectorTab === 'zone' && <ZoneIntelPanel />}
+        {inspectorTab === 'services' && <PublicServicesPanel />}
         {inspectorTab === 'event' && <EventPanel />}
       </div>
     </aside>

@@ -145,6 +145,18 @@ app.add_middleware(
 )
 
 
+@app.exception_handler(Exception)
+async def global_exception_handler(request, exc):
+    logger.exception("Unhandled error processing %s: %s", request.url, exc)
+    from fastapi.responses import JSONResponse
+    return JSONResponse(
+        status_code=500,
+        content={"status": "error", "message": str(exc)},
+        headers={"Access-Control-Allow-Origin": "*", "Access-Control-Allow-Headers": "*"},
+    )
+
+
+
 # ---------------------------------------------------------------------------
 # Health
 # ---------------------------------------------------------------------------
@@ -184,14 +196,31 @@ async def location_detail(zone_id: str):
 
 
 @app.post("/api/locations/{zone_id}/activate")
-async def activate_location(zone_id: str):
-    """Set the active operational zone."""
+async def activate_location(
+    zone_id: str,
+    lat: Optional[float] = Query(None),
+    lon: Optional[float] = Query(None),
+):
+    """Set the active operational zone and initialize real overlay receptors."""
     global ACTIVE_ZONE
-    z = get_zone(zone_id)
-    if not z:
+    zid = zone_id.lower().strip()
+    z = get_zone(zid)
+    if not z and zid != "custom":
         raise HTTPException(404, f"Zone '{zone_id}' not found")
-    ACTIVE_ZONE = zone_id.lower().strip()
-    return {"status": "ok", "active_zone": ACTIVE_ZONE}
+    ACTIVE_ZONE = zid
+    target_lat = lat if lat is not None else (z.lat if z else 12.9187)
+    target_lon = lon if lon is not None else (z.lon if z else 74.8598)
+    z_name = z.name if z else (f"Coordinates ({target_lat:.2f}, {target_lon:.2f})" if zid == "custom" else zid.title())
+
+    if zid != "goa" or lat is not None:
+        from backend.app.services.real_overlay_service import (
+            generate_digital_twin_for_location,
+            sync_live_sensors_and_events,
+        )
+        generate_digital_twin_for_location(target_lat, target_lon, z_name, zid)
+        sync_live_sensors_and_events(target_lat, target_lon, z_name, zid)
+
+    return {"status": "ok", "active_zone": ACTIVE_ZONE, "lat": target_lat, "lon": target_lon}
 
 
 @app.get("/api/locations/{zone_id}/status")
@@ -259,17 +288,23 @@ async def coastal_state(
 # ---------------------------------------------------------------------------
 
 @app.get("/api/sensors")
-async def list_sensors(zone_id: Optional[str] = Query(None)):
+async def list_sensors(
+    zone_id: Optional[str] = Query(None),
+    lat: Optional[float] = Query(None),
+    lon: Optional[float] = Query(None),
+):
     store = get_store()
-    all_sensors = store.get_sensors()
-    if zone_id:
-        zid = zone_id.lower().strip()
-        if zid == "goa":
-            return all_sensors[:5]
-        zid_prefix = zid[:3].upper()
-        matching = [s for s in all_sensors if zid_prefix in s.get("name", "").upper() or zid in s.get("name", "").lower()]
-        return matching if matching else []
-    return all_sensors
+    zid = (zone_id or ACTIVE_ZONE or "goa").lower().strip()
+    from data_collection.config import COASTAL_ZONES
+    cz = COASTAL_ZONES.get(zid)
+    base_lat = lat if lat is not None else (cz.lat if cz else 15.2993)
+    base_lon = lon if lon is not None else (cz.lon if cz else 73.9700)
+    z_name = cz.name if cz else (f"Coordinates ({base_lat:.2f}, {base_lon:.2f})" if zid == "custom" else zid.title())
+
+    from backend.app.services.real_overlay_service import sync_live_sensors_and_events
+    sync_live_sensors_and_events(base_lat, base_lon, z_name, zid)
+
+    return store.get_sensors()
 
 
 @app.get("/api/sensors/{sensor_id}")
@@ -336,7 +371,14 @@ async def get_forecast(event_id: str = Query(..., description="Event ID")):
     store = get_store()
     forecast = store.get_forecast(event_id)
     if not forecast:
-        raise HTTPException(404, f"No forecast for event {event_id}")
+        from backend.app.ml.forecast_engine import generate_forecast
+        evt = store.get_event(event_id)
+        primary_id = getattr(evt, "primary_sensor_id", None) if evt else None
+        readings = store.get_sensor_observations(primary_id) if primary_id else []
+        if not readings:
+            readings = store.sensor_readings
+        forecast = generate_forecast(readings, variable="turbidity", hours_ahead=24, event_id=event_id)
+        store.forecasts.append(forecast)
     return forecast
 
 
@@ -347,7 +389,7 @@ async def get_forecast(event_id: str = Query(..., description="Event ID")):
 @app.get("/api/exposure", response_model=list[ExposureResult])
 async def get_exposure(event_id: str = Query(..., description="Event ID")):
     store = get_store()
-    event = store.get_event(event_id)
+    event = store.get_event(event_id) or (store.events[0] if store.events else None)
     if not event:
         raise HTTPException(404, f"Event {event_id} not found")
     return compute_exposure(event, store.assets, max_range_km=30.0)
@@ -475,14 +517,49 @@ async def patch_sos(ticket_id: str, status: str = Query(..., description="New st
 # ---------------------------------------------------------------------------
 
 @app.get("/api/mitigation", response_model=MitigationPlan)
-async def get_mitigation(event_id: str = Query(..., description="Event ID")):
+async def get_mitigation(
+    event_id: str = Query(..., description="Event ID"),
+    district_id: Optional[str] = Query(None, description="District ID"),
+):
     """Generate a mitigation plan for a given flood event."""
     store = get_store()
-    event = store.get_event(event_id)
+    event = store.get_event(event_id) or (store.events[0] if store.events else None)
     if not event:
-        raise HTTPException(404, f"Event {event_id} not found")
-    plan = generate_mitigation_plan(event, event_id)
+        from backend.app.models.schemas import Event
+        event = Event(event_id=event_id, latitude=15.2993, longitude=73.97)
+    plan = generate_mitigation_plan(event, event_id or event.event_id, district_id=district_id)
     return plan
+
+
+@app.post("/api/topological/defense/{defense_id}/authorize")
+async def toggle_topological_defense(
+    defense_id: str,
+    district_id: Optional[str] = Query(None),
+    water_level: float = Query(2.0),
+):
+    """Authorize or toggle deployment of physical dewatering pumps or flood barriers."""
+    from backend.app.services.topological_engine import authorize_defense, evaluate_district_topology
+    is_active = authorize_defense(defense_id)
+    zid = (district_id or "goa").lower()
+    updated_topo = evaluate_district_topology(zid, ref_water_m=water_level)
+    return {
+        "defense_id": defense_id,
+        "is_active": is_active,
+        "topology": updated_topo.model_dump(mode="json"),
+    }
+
+
+@app.get("/api/topological/analysis")
+async def get_topological_analysis(
+    district_id: Optional[str] = Query("goa"),
+    water_level: float = Query(2.0),
+):
+    """Returns NetworkX road graph analysis: bottlenecks, physical defenses, and evacuation paths."""
+    from backend.app.services.topological_engine import evaluate_district_topology
+    zid = (district_id or "goa").lower()
+    res = evaluate_district_topology(zid, ref_water_m=water_level)
+    return res.model_dump(mode="json")
+
 
 
 # ---------------------------------------------------------------------------
@@ -490,13 +567,18 @@ async def get_mitigation(event_id: str = Query(..., description="Event ID")):
 # ---------------------------------------------------------------------------
 
 @app.get("/api/geo")
-async def geo_layers(zone_id: Optional[str] = Query(None)):
-    """GeoJSON layers for the 3D digital-twin map."""
-    return as_geojson(zone_id)
+async def geo_layers(
+    zone_id: Optional[str] = Query(None),
+    lat: Optional[float] = Query(None),
+    lon: Optional[float] = Query(None),
+):
+    """GeoJSON layers for the 3D digital-twin map with real terrain elevation."""
+    zid = (zone_id or ACTIVE_ZONE or "goa").lower().strip()
+    return as_geojson(zid, lat, lon)
 
 
 # ---------------------------------------------------------------------------
-# Scenario timeline ("Heavy Coastal Rain Event")
+# Scenario timeline ("Heavy Coastal Rain Event" / Live Telemetry)
 # ---------------------------------------------------------------------------
 
 @app.get("/api/scenario")
@@ -508,12 +590,37 @@ async def scenario_overview(zone_id: Optional[str] = Query(None)):
 @app.get("/api/scenario/snapshot")
 async def scenario_snapshot(
     t: float = Query(0.0, ge=0.0, le=SCENARIO_HOURS, description="Hours since storm onset"),
+    zone_id: Optional[str] = Query(None),
+    lat: Optional[float] = Query(None),
+    lon: Optional[float] = Query(None),
+    live: bool = Query(True, description="Integrate live Open-Meteo telemetry into overlays"),
 ):
     """
     Full intelligence snapshot for one time step: environmental conditions,
     per-zone predictions, flood depths, isolation analysis, priority board
     and the GenAI command brief.
     """
+    zid = (zone_id or ACTIVE_ZONE or "goa").lower().strip()
+    target_lat = lat
+    target_lon = lon
+
+    if live:
+        from backend.app.services.real_overlay_service import compute_live_overlay_snapshot
+        from data_collection.config import COASTAL_ZONES
+        cz = COASTAL_ZONES.get(zid)
+        base_lat = target_lat if target_lat is not None else (cz.lat if cz else 15.2993)
+        base_lon = target_lon if target_lon is not None else (cz.lon if cz else 73.9700)
+        z_name = cz.name if cz else (f"Coordinates ({base_lat:.2f}, {base_lon:.2f})" if zid == "custom" else zid.title())
+        snapshot = await asyncio.to_thread(
+            compute_live_overlay_snapshot,
+            lat=base_lat,
+            lon=base_lon,
+            name=z_name,
+            zone_id=zid,
+            t_hours=t,
+        )
+        return snapshot.model_dump(mode="json")
+
     snapshot = await asyncio.to_thread(build_snapshot, t)
     return snapshot.model_dump(mode="json")
 

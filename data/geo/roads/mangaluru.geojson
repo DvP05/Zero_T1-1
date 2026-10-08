@@ -1,0 +1,298 @@
+{
+  "type": "FeatureCollection",
+  "meta": {
+    "zone_id": "mangaluru",
+    "name": "Mangaluru Coastal District Real Road Network",
+    "road_count": 8
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            74.792,
+            13.01
+          ],
+          [
+            74.798,
+            12.988
+          ],
+          [
+            74.805,
+            12.965
+          ],
+          [
+            74.812,
+            12.942
+          ]
+        ]
+      },
+      "properties": {
+        "id": "RD-MAN-NH66-N",
+        "name": "NH-66 Coastal Highway North (Surathkal NITK \u2013 Baikampady)",
+        "ref": "NH-66",
+        "elevation_m": 6.2,
+        "critical": true,
+        "lanes": 6,
+        "speed_limit_kmh": 80,
+        "is_evacuation_corridor": false,
+        "classification": "national_highway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            74.803,
+            12.952
+          ],
+          [
+            74.808,
+            12.946
+          ],
+          [
+            74.812,
+            12.942
+          ]
+        ]
+      },
+      "properties": {
+        "id": "RD-MAN-PORT-LINK",
+        "name": "Panambur Deepwater Port Heavy Freight Corridor",
+        "ref": "NMPT Link",
+        "elevation_m": 3.4,
+        "critical": true,
+        "lanes": 4,
+        "speed_limit_kmh": 50,
+        "is_evacuation_corridor": false,
+        "classification": "coastal_arterial"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            74.805,
+            12.912
+          ],
+          [
+            74.808,
+            12.925
+          ],
+          [
+            74.812,
+            12.942
+          ]
+        ]
+      },
+      "properties": {
+        "id": "RD-MAN-TANNIRBHAVI",
+        "name": "Tannirbhavi Coastal Estuary Barrier Spit Road",
+        "ref": "Beach Rd",
+        "elevation_m": 1.4,
+        "critical": false,
+        "lanes": 2,
+        "speed_limit_kmh": 35,
+        "is_evacuation_corridor": false,
+        "classification": "coastal_arterial"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            74.812,
+            12.942
+          ],
+          [
+            74.816,
+            12.925
+          ],
+          [
+            74.82,
+            12.915
+          ],
+          [
+            74.824,
+            12.906
+          ]
+        ]
+      },
+      "properties": {
+        "id": "RD-MAN-KULUR-BRG",
+        "name": "Kulur Bridge & Gurupura River Crossing (NH-66)",
+        "ref": "NH-66",
+        "elevation_m": 2.8,
+        "critical": true,
+        "lanes": 4,
+        "speed_limit_kmh": 50,
+        "is_evacuation_corridor": false,
+        "classification": "bridge_causeway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            74.824,
+            12.906
+          ],
+          [
+            74.832,
+            12.898
+          ],
+          [
+            74.842,
+            12.885
+          ],
+          [
+            74.852,
+            12.872
+          ],
+          [
+            74.862,
+            12.862
+          ]
+        ]
+      },
+      "properties": {
+        "id": "RD-MAN-NH66-MID",
+        "name": "NH-66 Urban Bypass (Kulur \u2013 Kottara \u2013 Kuntikan \u2013 Pumpwell)",
+        "ref": "NH-66",
+        "elevation_m": 9.5,
+        "critical": true,
+        "lanes": 6,
+        "speed_limit_kmh": 70,
+        "is_evacuation_corridor": false,
+        "classification": "national_highway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            74.824,
+            12.906
+          ],
+          [
+            74.832,
+            12.892
+          ],
+          [
+            74.838,
+            12.88
+          ],
+          [
+            74.846,
+            12.868
+          ],
+          [
+            74.862,
+            12.862
+          ]
+        ]
+      },
+      "properties": {
+        "id": "RD-MAN-CITY-SPINE",
+        "name": "Kulur \u2013 Ladyhill \u2013 MG Road \u2013 Pumpwell Urban Spine",
+        "ref": "MDR",
+        "elevation_m": 14.5,
+        "critical": false,
+        "lanes": 4,
+        "speed_limit_kmh": 40,
+        "is_evacuation_corridor": true,
+        "classification": "coastal_arterial"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            74.862,
+            12.862
+          ],
+          [
+            74.858,
+            12.848
+          ],
+          [
+            74.856,
+            12.836
+          ],
+          [
+            74.858,
+            12.822
+          ],
+          [
+            74.864,
+            12.81
+          ]
+        ]
+      },
+      "properties": {
+        "id": "RD-MAN-NETRAVATI",
+        "name": "Netravati River Bridge & Southern Marine Gateway (NH-66)",
+        "ref": "NH-66",
+        "elevation_m": 4.8,
+        "critical": true,
+        "lanes": 6,
+        "speed_limit_kmh": 60,
+        "is_evacuation_corridor": false,
+        "classification": "bridge_causeway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            74.862,
+            12.862
+          ],
+          [
+            74.882,
+            12.868
+          ],
+          [
+            74.912,
+            12.872
+          ],
+          [
+            74.945,
+            12.878
+          ],
+          [
+            74.985,
+            12.885
+          ]
+        ]
+      },
+      "properties": {
+        "id": "RD-MAN-NH73-EVAC",
+        "name": "NH-73 Mangaluru \u2013 Bantwal High-Ground Evacuation Expressway",
+        "ref": "NH-73",
+        "elevation_m": 28.0,
+        "critical": true,
+        "lanes": 4,
+        "speed_limit_kmh": 80,
+        "is_evacuation_corridor": true,
+        "classification": "evacuation_arterial"
+      }
+    }
+  ]
+}

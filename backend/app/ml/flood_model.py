@@ -38,13 +38,21 @@ from sklearn.metrics import (
 )
 from sklearn.model_selection import train_test_split
 
-try:  # pragma: no cover
-    from sklearn.ensemble import HistGradientBoostingClassifier
+_HAS_HGB = False
+HistGradientBoostingClassifier = None
+RandomForestClassifier = None
 
-    _HAS_HGB = True
-except Exception:  # pragma: no cover
-    _HAS_HGB = False
-from sklearn.ensemble import RandomForestClassifier
+if not _HAS_XGB:
+    try:  # pragma: no cover
+        from sklearn.ensemble import HistGradientBoostingClassifier
+        _HAS_HGB = True
+    except Exception:  # pragma: no cover
+        _HAS_HGB = False
+
+    try:  # pragma: no cover
+        from sklearn.ensemble import RandomForestClassifier
+    except Exception:  # pragma: no cover
+        pass
 
 
 # ---------------------------------------------------------------------------

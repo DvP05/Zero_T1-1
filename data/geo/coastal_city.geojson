@@ -2,6 +2,116 @@
   "type": "FeatureCollection",
   "features": [],
   "layers": {
+    "boundary": {
+      "type": "FeatureCollection",
+      "features": [
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  74.795,
+                  13.015
+                ],
+                [
+                  74.802,
+                  12.965
+                ],
+                [
+                  74.81,
+                  12.935
+                ],
+                [
+                  74.815,
+                  12.895
+                ],
+                [
+                  74.825,
+                  12.855
+                ],
+                [
+                  74.845,
+                  12.81
+                ],
+                [
+                  74.89,
+                  12.815
+                ],
+                [
+                  74.915,
+                  12.86
+                ],
+                [
+                  74.92,
+                  12.92
+                ],
+                [
+                  74.905,
+                  12.98
+                ],
+                [
+                  74.86,
+                  13.018
+                ],
+                [
+                  74.795,
+                  13.015
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "id": "mangaluru",
+            "name": "Mangaluru Coastal District",
+            "admin_level": "taluk",
+            "bbox": [
+              74.79,
+              12.8,
+              74.92,
+              13.02
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                74.795,
+                13.015
+              ],
+              [
+                74.802,
+                12.965
+              ],
+              [
+                74.81,
+                12.935
+              ],
+              [
+                74.815,
+                12.895
+              ],
+              [
+                74.825,
+                12.855
+              ],
+              [
+                74.845,
+                12.81
+              ]
+            ]
+          },
+          "properties": {
+            "id": "mangaluru-coastline",
+            "name": "Mangaluru Coastal District Natural Coastline"
+          }
+        }
+      ]
+    },
     "zones": {
       "type": "FeatureCollection",
       "features": [
@@ -12,38 +122,80 @@
             "coordinates": [
               [
                 [
-                  74.8418,
-                  12.9037
+                  74.8255,
+                  12.9072
                 ],
                 [
-                  74.8568,
-                  12.9037
+                  74.82461,
+                  12.91321
                 ],
                 [
-                  74.8568,
-                  12.9187
+                  74.82144,
+                  12.91769
                 ],
                 [
-                  74.8418,
-                  12.9187
+                  74.81715,
+                  12.91945
                 ],
                 [
-                  74.8418,
-                  12.9037
+                  74.81305,
+                  12.91831
+                ],
+                [
+                  74.80843,
+                  12.91792
+                ],
+                [
+                  74.80483,
+                  12.91357
+                ],
+                [
+                  74.8055,
+                  12.9072
+                ],
+                [
+                  74.80659,
+                  12.90193
+                ],
+                [
+                  74.80897,
+                  12.89736
+                ],
+                [
+                  74.8127,
+                  12.89411
+                ],
+                [
+                  74.8175,
+                  12.89296
+                ],
+                [
+                  74.8209,
+                  12.89759
+                ],
+                [
+                  74.82285,
+                  12.90229
+                ],
+                [
+                  74.8255,
+                  12.9072
                 ]
               ]
             ]
           },
           "properties": {
             "id": "A",
-            "name": "Zone A \u00b7 Mangaluru Waterfront",
-            "elevation_m": 12.4,
-            "drainage_capacity": 0.72,
+            "code": "SEC-01",
+            "name": "SEC-01 \u00b7 Waterfront Shore",
+            "short_name": "Waterfront Shore",
+            "elevation_m": 1.2,
+            "drainage_capacity": 0.76,
             "historical_flood_freq": 0.45,
-            "imperviousness": 0.68,
-            "slope": 2.1,
-            "population": 28000,
-            "vulnerability": 0.62
+            "imperviousness": 0.55,
+            "slope": 1.2,
+            "population": 14500,
+            "vulnerability": 0.5
           }
         },
         {
@@ -53,38 +205,80 @@
             "coordinates": [
               [
                 [
-                  74.8598,
-                  12.9037
+                  74.8436,
+                  12.9052
                 ],
                 [
-                  74.8778,
-                  12.9037
+                  74.84253,
+                  12.91075
                 ],
                 [
-                  74.8778,
-                  12.9187
+                  74.83872,
+                  12.91488
                 ],
                 [
-                  74.8598,
-                  12.9187
+                  74.83358,
+                  12.91651
                 ],
                 [
-                  74.8598,
-                  12.9037
+                  74.82866,
+                  12.91546
+                ],
+                [
+                  74.82311,
+                  12.91509
+                ],
+                [
+                  74.8188,
+                  12.91108
+                ],
+                [
+                  74.8196,
+                  12.9052
+                ],
+                [
+                  74.82091,
+                  12.90034
+                ],
+                [
+                  74.82376,
+                  12.89612
+                ],
+                [
+                  74.82824,
+                  12.89311
+                ],
+                [
+                  74.834,
+                  12.89206
+                ],
+                [
+                  74.83807,
+                  12.89633
+                ],
+                [
+                  74.84042,
+                  12.90066
+                ],
+                [
+                  74.8436,
+                  12.9052
                 ]
               ]
             ]
           },
           "properties": {
             "id": "B",
-            "name": "Zone B \u00b7 Mangaluru Lowlands",
-            "elevation_m": 9.3,
-            "drainage_capacity": 0.58,
-            "historical_flood_freq": 0.45,
-            "imperviousness": 0.68,
-            "slope": 2.1,
-            "population": 28000,
-            "vulnerability": 0.62
+            "code": "SEC-02",
+            "name": "SEC-02 \u00b7 Estuary Lowlands",
+            "short_name": "Estuary Lowlands",
+            "elevation_m": 0.8,
+            "drainage_capacity": 0.52,
+            "historical_flood_freq": 0.7,
+            "imperviousness": 0.78,
+            "slope": 1.2,
+            "population": 26000,
+            "vulnerability": 0.85
           }
         },
         {
@@ -94,38 +288,80 @@
             "coordinates": [
               [
                 [
-                  74.8418,
-                  12.9207
+                  74.82555,
+                  12.9232
                 ],
                 [
-                  74.8568,
-                  12.9207
+                  74.82457,
+                  12.92875
                 ],
                 [
-                  74.8568,
-                  12.9387
+                  74.82108,
+                  12.93288
                 ],
                 [
-                  74.8418,
-                  12.9387
+                  74.81637,
+                  12.93451
                 ],
                 [
-                  74.8418,
-                  12.9207
+                  74.81185,
+                  12.93346
+                ],
+                [
+                  74.80677,
+                  12.93309
+                ],
+                [
+                  74.80281,
+                  12.92908
+                ],
+                [
+                  74.80355,
+                  12.9232
+                ],
+                [
+                  74.80475,
+                  12.91834
+                ],
+                [
+                  74.80736,
+                  12.91412
+                ],
+                [
+                  74.81147,
+                  12.91111
+                ],
+                [
+                  74.81675,
+                  12.91006
+                ],
+                [
+                  74.82048,
+                  12.91433
+                ],
+                [
+                  74.82264,
+                  12.91866
+                ],
+                [
+                  74.82555,
+                  12.9232
                 ]
               ]
             ]
           },
           "properties": {
             "id": "C",
-            "name": "Zone C \u00b7 Mangaluru Port & Basin",
-            "elevation_m": 15.5,
+            "code": "SEC-03",
+            "name": "SEC-03 \u00b7 Harbour Port Basin",
+            "short_name": "Harbour Port Basin",
+            "elevation_m": 1.68,
             "drainage_capacity": 0.68,
-            "historical_flood_freq": 0.45,
-            "imperviousness": 0.68,
-            "slope": 2.1,
-            "population": 28000,
-            "vulnerability": 0.62
+            "historical_flood_freq": 0.4,
+            "imperviousness": 0.62,
+            "slope": 4.2,
+            "population": 11000,
+            "vulnerability": 0.48
           }
         },
         {
@@ -135,38 +371,80 @@
             "coordinates": [
               [
                 [
-                  74.8598,
-                  12.9207
+                  74.85465,
+                  12.9252
                 ],
                 [
-                  74.8778,
-                  12.9207
+                  74.85349,
+                  12.93121
                 ],
                 [
-                  74.8778,
-                  12.9387
+                  74.84937,
+                  12.93569
                 ],
                 [
-                  74.8598,
-                  12.9387
+                  74.8438,
+                  12.93745
                 ],
                 [
-                  74.8598,
-                  12.9207
+                  74.83846,
+                  12.93631
+                ],
+                [
+                  74.83245,
+                  12.93592
+                ],
+                [
+                  74.82778,
+                  12.93157
+                ],
+                [
+                  74.82865,
+                  12.9252
+                ],
+                [
+                  74.83006,
+                  12.91993
+                ],
+                [
+                  74.83316,
+                  12.91536
+                ],
+                [
+                  74.83801,
+                  12.91211
+                ],
+                [
+                  74.84425,
+                  12.91096
+                ],
+                [
+                  74.84866,
+                  12.91559
+                ],
+                [
+                  74.85121,
+                  12.92029
+                ],
+                [
+                  74.85465,
+                  12.9252
                 ]
               ]
             ]
           },
           "properties": {
             "id": "D",
-            "name": "Zone D \u00b7 Mangaluru Ridge / Heights",
-            "elevation_m": 55.8,
-            "drainage_capacity": 0.88,
-            "historical_flood_freq": 0.45,
-            "imperviousness": 0.68,
-            "slope": 2.1,
-            "population": 28000,
-            "vulnerability": 0.62
+            "code": "SEC-04",
+            "name": "SEC-04 \u00b7 Upland Safe Haven",
+            "short_name": "Upland Safe Haven",
+            "elevation_m": 7.2,
+            "drainage_capacity": 0.9,
+            "historical_flood_freq": 0.08,
+            "imperviousness": 0.4,
+            "slope": 4.2,
+            "population": 16000,
+            "vulnerability": 0.2
           }
         },
         {
@@ -176,38 +454,319 @@
             "coordinates": [
               [
                 [
-                  74.8798,
-                  12.9087
+                  74.8617,
+                  12.9092
                 ],
                 [
-                  74.8978,
-                  12.9087
+                  74.86045,
+                  12.91614
                 ],
                 [
-                  74.8978,
-                  12.9337
+                  74.85601,
+                  12.92131
                 ],
                 [
-                  74.8798,
-                  12.9337
+                  74.85001,
+                  12.92334
                 ],
                 [
-                  74.8798,
-                  12.9087
+                  74.84427,
+                  12.92202
+                ],
+                [
+                  74.8378,
+                  12.92157
+                ],
+                [
+                  74.83276,
+                  12.91655
+                ],
+                [
+                  74.8337,
+                  12.9092
+                ],
+                [
+                  74.83522,
+                  12.90312
+                ],
+                [
+                  74.83855,
+                  12.89785
+                ],
+                [
+                  74.84378,
+                  12.89409
+                ],
+                [
+                  74.8505,
+                  12.89277
+                ],
+                [
+                  74.85525,
+                  12.89811
+                ],
+                [
+                  74.85799,
+                  12.90353
+                ],
+                [
+                  74.8617,
+                  12.9092
                 ]
               ]
             ]
           },
           "properties": {
             "id": "E",
-            "name": "Zone E \u00b7 Mangaluru Urban Hinterland",
-            "elevation_m": 40.3,
-            "drainage_capacity": 0.81,
-            "historical_flood_freq": 0.45,
-            "imperviousness": 0.68,
-            "slope": 2.1,
-            "population": 28000,
-            "vulnerability": 0.62
+            "code": "SEC-05",
+            "name": "SEC-05 \u00b7 Urban Hinterland",
+            "short_name": "Urban Hinterland",
+            "elevation_m": 4.6,
+            "drainage_capacity": 0.82,
+            "historical_flood_freq": 0.22,
+            "imperviousness": 0.65,
+            "slope": 4.2,
+            "population": 21500,
+            "vulnerability": 0.38
+          }
+        }
+      ]
+    },
+    "inundation": {
+      "type": "FeatureCollection",
+      "features": [
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  74.82984,
+                  12.9092
+                ],
+                [
+                  74.82922,
+                  12.91511
+                ],
+                [
+                  74.82591,
+                  12.91959
+                ],
+                [
+                  74.82164,
+                  12.92228
+                ],
+                [
+                  74.817,
+                  12.92124
+                ],
+                [
+                  74.81295,
+                  12.9206
+                ],
+                [
+                  74.80725,
+                  12.92057
+                ],
+                [
+                  74.80418,
+                  12.91539
+                ],
+                [
+                  74.80584,
+                  12.9092
+                ],
+                [
+                  74.80705,
+                  12.90439
+                ],
+                [
+                  74.80893,
+                  12.89979
+                ],
+                [
+                  74.81246,
+                  12.89641
+                ],
+                [
+                  74.817,
+                  12.89324
+                ],
+                [
+                  74.82214,
+                  12.89474
+                ],
+                [
+                  74.82423,
+                  12.90077
+                ],
+                [
+                  74.82636,
+                  12.90468
+                ],
+                [
+                  74.82984,
+                  12.9092
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "id": "INUND-SURGE",
+            "name": "Coastal Tidal Surge Inundation",
+            "base_elevation_m": 1.0,
+            "depth_m": 0.45,
+            "hazard_level": "HIGH",
+            "velocity_ms": 1.4
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  74.8426,
+                  12.9052
+                ],
+                [
+                  74.84173,
+                  12.91035
+                ],
+                [
+                  74.83848,
+                  12.91413
+                ],
+                [
+                  74.83414,
+                  12.9155
+                ],
+                [
+                  74.8301,
+                  12.91434
+                ],
+                [
+                  74.82536,
+                  12.91436
+                ],
+                [
+                  74.8216,
+                  12.91071
+                ],
+                [
+                  74.8226,
+                  12.9052
+                ],
+                [
+                  74.82371,
+                  12.90081
+                ],
+                [
+                  74.82601,
+                  12.89693
+                ],
+                [
+                  74.82969,
+                  12.89405
+                ],
+                [
+                  74.83455,
+                  12.89289
+                ],
+                [
+                  74.83783,
+                  12.89716
+                ],
+                [
+                  74.83962,
+                  12.90116
+                ],
+                [
+                  74.8426,
+                  12.9052
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "id": "INUND-ESTUARY",
+            "name": "Estuary Drainage Overflow Basin",
+            "base_elevation_m": 0.72,
+            "depth_m": 0.65,
+            "hazard_level": "CRITICAL",
+            "velocity_ms": 0.8
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  74.82536,
+                  12.9242
+                ],
+                [
+                  74.82415,
+                  12.92943
+                ],
+                [
+                  74.82059,
+                  12.93303
+                ],
+                [
+                  74.816,
+                  12.9334
+                ],
+                [
+                  74.81159,
+                  12.93269
+                ],
+                [
+                  74.80731,
+                  12.92977
+                ],
+                [
+                  74.80736,
+                  12.9242
+                ],
+                [
+                  74.80856,
+                  12.91943
+                ],
+                [
+                  74.81159,
+                  12.91571
+                ],
+                [
+                  74.816,
+                  12.9134
+                ],
+                [
+                  74.82059,
+                  12.91537
+                ],
+                [
+                  74.8229,
+                  12.91977
+                ],
+                [
+                  74.82536,
+                  12.9242
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "id": "INUND-HARBOUR",
+            "name": "Harbour Quay Waterfront Pooling",
+            "base_elevation_m": 1.4,
+            "depth_m": 0.25,
+            "hazard_level": "MODERATE",
+            "velocity_ms": 0.5
           }
         }
       ]
@@ -221,20 +780,33 @@
             "type": "LineString",
             "coordinates": [
               [
-                74.8498,
-                12.9107
+                74.792,
+                13.01
               ],
               [
-                74.8688,
-                12.9107
+                74.798,
+                12.988
+              ],
+              [
+                74.805,
+                12.965
+              ],
+              [
+                74.812,
+                12.942
               ]
             ]
           },
           "properties": {
-            "id": "RD-01",
-            "name": "Mangaluru Coastal Arterial",
-            "elevation_m": 12.4,
-            "critical": true
+            "id": "RD-MAN-NH66-N",
+            "name": "NH-66 Coastal Highway North (Surathkal NITK \u2013 Baikampady)",
+            "ref": "NH-66",
+            "elevation_m": 6.2,
+            "critical": true,
+            "lanes": 6,
+            "speed_limit_kmh": 80,
+            "is_evacuation_corridor": false,
+            "classification": "national_highway"
           }
         },
         {
@@ -243,20 +815,29 @@
             "type": "LineString",
             "coordinates": [
               [
-                74.8498,
-                12.9287
+                74.803,
+                12.952
               ],
               [
-                74.8688,
-                12.9287
+                74.808,
+                12.946
+              ],
+              [
+                74.812,
+                12.942
               ]
             ]
           },
           "properties": {
-            "id": "RD-02",
-            "name": "Mangaluru North Link",
-            "elevation_m": 27.9,
-            "critical": true
+            "id": "RD-MAN-PORT-LINK",
+            "name": "Panambur Deepwater Port Heavy Freight Corridor",
+            "ref": "NMPT Link",
+            "elevation_m": 3.4,
+            "critical": true,
+            "lanes": 4,
+            "speed_limit_kmh": 50,
+            "is_evacuation_corridor": false,
+            "classification": "coastal_arterial"
           }
         },
         {
@@ -265,20 +846,29 @@
             "type": "LineString",
             "coordinates": [
               [
-                74.8498,
-                12.9107
+                74.805,
+                12.912
               ],
               [
-                74.8498,
-                12.9287
+                74.808,
+                12.925
+              ],
+              [
+                74.812,
+                12.942
               ]
             ]
           },
           "properties": {
-            "id": "RD-03",
-            "name": "Mangaluru Harbor Way",
-            "elevation_m": 15.5,
-            "critical": false
+            "id": "RD-MAN-TANNIRBHAVI",
+            "name": "Tannirbhavi Coastal Estuary Barrier Spit Road",
+            "ref": "Beach Rd",
+            "elevation_m": 1.4,
+            "critical": false,
+            "lanes": 2,
+            "speed_limit_kmh": 35,
+            "is_evacuation_corridor": false,
+            "classification": "coastal_arterial"
           }
         },
         {
@@ -287,20 +877,189 @@
             "type": "LineString",
             "coordinates": [
               [
-                74.8688,
-                12.9107
+                74.812,
+                12.942
               ],
               [
-                74.8848,
-                12.9237
+                74.816,
+                12.925
+              ],
+              [
+                74.82,
+                12.915
+              ],
+              [
+                74.824,
+                12.906
               ]
             ]
           },
           "properties": {
-            "id": "RD-04",
-            "name": "Mangaluru Inland Highway Egress",
-            "elevation_m": 49.6,
-            "critical": true
+            "id": "RD-MAN-KULUR-BRG",
+            "name": "Kulur Bridge & Gurupura River Crossing (NH-66)",
+            "ref": "NH-66",
+            "elevation_m": 2.8,
+            "critical": true,
+            "lanes": 4,
+            "speed_limit_kmh": 50,
+            "is_evacuation_corridor": false,
+            "classification": "bridge_causeway"
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                74.824,
+                12.906
+              ],
+              [
+                74.832,
+                12.898
+              ],
+              [
+                74.842,
+                12.885
+              ],
+              [
+                74.852,
+                12.872
+              ],
+              [
+                74.862,
+                12.862
+              ]
+            ]
+          },
+          "properties": {
+            "id": "RD-MAN-NH66-MID",
+            "name": "NH-66 Urban Bypass (Kulur \u2013 Kottara \u2013 Kuntikan \u2013 Pumpwell)",
+            "ref": "NH-66",
+            "elevation_m": 9.5,
+            "critical": true,
+            "lanes": 6,
+            "speed_limit_kmh": 70,
+            "is_evacuation_corridor": false,
+            "classification": "national_highway"
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                74.824,
+                12.906
+              ],
+              [
+                74.832,
+                12.892
+              ],
+              [
+                74.838,
+                12.88
+              ],
+              [
+                74.846,
+                12.868
+              ],
+              [
+                74.862,
+                12.862
+              ]
+            ]
+          },
+          "properties": {
+            "id": "RD-MAN-CITY-SPINE",
+            "name": "Kulur \u2013 Ladyhill \u2013 MG Road \u2013 Pumpwell Urban Spine",
+            "ref": "MDR",
+            "elevation_m": 14.5,
+            "critical": false,
+            "lanes": 4,
+            "speed_limit_kmh": 40,
+            "is_evacuation_corridor": true,
+            "classification": "coastal_arterial"
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                74.862,
+                12.862
+              ],
+              [
+                74.858,
+                12.848
+              ],
+              [
+                74.856,
+                12.836
+              ],
+              [
+                74.858,
+                12.822
+              ],
+              [
+                74.864,
+                12.81
+              ]
+            ]
+          },
+          "properties": {
+            "id": "RD-MAN-NETRAVATI",
+            "name": "Netravati River Bridge & Southern Marine Gateway (NH-66)",
+            "ref": "NH-66",
+            "elevation_m": 4.8,
+            "critical": true,
+            "lanes": 6,
+            "speed_limit_kmh": 60,
+            "is_evacuation_corridor": false,
+            "classification": "bridge_causeway"
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                74.862,
+                12.862
+              ],
+              [
+                74.882,
+                12.868
+              ],
+              [
+                74.912,
+                12.872
+              ],
+              [
+                74.945,
+                12.878
+              ],
+              [
+                74.985,
+                12.885
+              ]
+            ]
+          },
+          "properties": {
+            "id": "RD-MAN-NH73-EVAC",
+            "name": "NH-73 Mangaluru \u2013 Bantwal High-Ground Evacuation Expressway",
+            "ref": "NH-73",
+            "elevation_m": 28.0,
+            "critical": true,
+            "lanes": 4,
+            "speed_limit_kmh": 80,
+            "is_evacuation_corridor": true,
+            "classification": "evacuation_arterial"
           }
         }
       ]
@@ -315,626 +1074,36 @@
             "coordinates": [
               [
                 [
-                  74.84255,
-                  12.90445
+                  74.82435,
+                  12.9076
                 ],
                 [
-                  74.84503,
-                  12.90445
+                  74.82565,
+                  12.9076
                 ],
                 [
-                  74.84503,
-                  12.90785
+                  74.82565,
+                  12.9088
                 ],
                 [
-                  74.84255,
-                  12.90785
+                  74.82435,
+                  12.9088
                 ],
                 [
-                  74.84255,
-                  12.90445
+                  74.82435,
+                  12.9076
                 ]
               ]
             ]
           },
           "properties": {
-            "id": "BLD-A-001",
-            "zone_id": "A",
-            "height_m": 18.6,
-            "floors": 5,
-            "usage": "industrial"
-          }
-        },
-        {
-          "type": "Feature",
-          "geometry": {
-            "type": "Polygon",
-            "coordinates": [
-              [
-                [
-                  74.84755,
-                  12.90445
-                ],
-                [
-                  74.85042,
-                  12.90445
-                ],
-                [
-                  74.85042,
-                  12.90782
-                ],
-                [
-                  74.84755,
-                  12.90782
-                ],
-                [
-                  74.84755,
-                  12.90445
-                ]
-              ]
-            ]
-          },
-          "properties": {
-            "id": "BLD-A-002",
-            "zone_id": "A",
-            "height_m": 10.3,
-            "floors": 3,
-            "usage": "residential"
-          }
-        },
-        {
-          "type": "Feature",
-          "geometry": {
-            "type": "Polygon",
-            "coordinates": [
-              [
-                [
-                  74.84755,
-                  12.90945
-                ],
-                [
-                  74.85032,
-                  12.90945
-                ],
-                [
-                  74.85032,
-                  12.9118
-                ],
-                [
-                  74.84755,
-                  12.9118
-                ],
-                [
-                  74.84755,
-                  12.90945
-                ]
-              ]
-            ]
-          },
-          "properties": {
-            "id": "BLD-A-003",
-            "zone_id": "A",
-            "height_m": 26.6,
-            "floors": 8,
-            "usage": "commercial"
-          }
-        },
-        {
-          "type": "Feature",
-          "geometry": {
-            "type": "Polygon",
-            "coordinates": [
-              [
-                [
-                  74.85255,
-                  12.90445
-                ],
-                [
-                  74.85483,
-                  12.90445
-                ],
-                [
-                  74.85483,
-                  12.90774
-                ],
-                [
-                  74.85255,
-                  12.90774
-                ],
-                [
-                  74.85255,
-                  12.90445
-                ]
-              ]
-            ]
-          },
-          "properties": {
-            "id": "BLD-A-004",
-            "zone_id": "A",
-            "height_m": 28.9,
-            "floors": 9,
-            "usage": "commercial"
-          }
-        },
-        {
-          "type": "Feature",
-          "geometry": {
-            "type": "Polygon",
-            "coordinates": [
-              [
-                [
-                  74.85255,
-                  12.90945
-                ],
-                [
-                  74.85577,
-                  12.90945
-                ],
-                [
-                  74.85577,
-                  12.9126
-                ],
-                [
-                  74.85255,
-                  12.9126
-                ],
-                [
-                  74.85255,
-                  12.90945
-                ]
-              ]
-            ]
-          },
-          "properties": {
-            "id": "BLD-A-005",
-            "zone_id": "A",
-            "height_m": 21.1,
-            "floors": 6,
-            "usage": "residential"
-          }
-        },
-        {
-          "type": "Feature",
-          "geometry": {
-            "type": "Polygon",
-            "coordinates": [
-              [
-                [
-                  74.85255,
-                  12.91445
-                ],
-                [
-                  74.85576,
-                  12.91445
-                ],
-                [
-                  74.85576,
-                  12.91697
-                ],
-                [
-                  74.85255,
-                  12.91697
-                ],
-                [
-                  74.85255,
-                  12.91445
-                ]
-              ]
-            ]
-          },
-          "properties": {
-            "id": "BLD-A-006",
-            "zone_id": "A",
-            "height_m": 18.9,
-            "floors": 5,
-            "usage": "residential"
-          }
-        },
-        {
-          "type": "Feature",
-          "geometry": {
-            "type": "Polygon",
-            "coordinates": [
-              [
-                [
-                  74.8607,
-                  12.90445
-                ],
-                [
-                  74.86487,
-                  12.90445
-                ],
-                [
-                  74.86487,
-                  12.90768
-                ],
-                [
-                  74.8607,
-                  12.90768
-                ],
-                [
-                  74.8607,
-                  12.90445
-                ]
-              ]
-            ]
-          },
-          "properties": {
-            "id": "BLD-B-007",
+            "id": "BLD-FAC-HOSP-01",
+            "name": "Central District Emergency Hospital",
             "zone_id": "B",
-            "height_m": 26.0,
-            "floors": 8,
-            "usage": "residential"
-          }
-        },
-        {
-          "type": "Feature",
-          "geometry": {
-            "type": "Polygon",
-            "coordinates": [
-              [
-                [
-                  74.8607,
-                  12.90945
-                ],
-                [
-                  74.86434,
-                  12.90945
-                ],
-                [
-                  74.86434,
-                  12.91258
-                ],
-                [
-                  74.8607,
-                  12.91258
-                ],
-                [
-                  74.8607,
-                  12.90945
-                ]
-              ]
-            ]
-          },
-          "properties": {
-            "id": "BLD-B-008",
-            "zone_id": "B",
-            "height_m": 7.6,
-            "floors": 2,
-            "usage": "industrial"
-          }
-        },
-        {
-          "type": "Feature",
-          "geometry": {
-            "type": "Polygon",
-            "coordinates": [
-              [
-                [
-                  74.8607,
-                  12.91445
-                ],
-                [
-                  74.86475,
-                  12.91445
-                ],
-                [
-                  74.86475,
-                  12.91682
-                ],
-                [
-                  74.8607,
-                  12.91682
-                ],
-                [
-                  74.8607,
-                  12.91445
-                ]
-              ]
-            ]
-          },
-          "properties": {
-            "id": "BLD-B-009",
-            "zone_id": "B",
-            "height_m": 26.6,
-            "floors": 8,
-            "usage": "residential"
-          }
-        },
-        {
-          "type": "Feature",
-          "geometry": {
-            "type": "Polygon",
-            "coordinates": [
-              [
-                [
-                  74.8667,
-                  12.90445
-                ],
-                [
-                  74.87009,
-                  12.90445
-                ],
-                [
-                  74.87009,
-                  12.90777
-                ],
-                [
-                  74.8667,
-                  12.90777
-                ],
-                [
-                  74.8667,
-                  12.90445
-                ]
-              ]
-            ]
-          },
-          "properties": {
-            "id": "BLD-B-010",
-            "zone_id": "B",
-            "height_m": 10.4,
-            "floors": 3,
-            "usage": "industrial"
-          }
-        },
-        {
-          "type": "Feature",
-          "geometry": {
-            "type": "Polygon",
-            "coordinates": [
-              [
-                [
-                  74.8667,
-                  12.90945
-                ],
-                [
-                  74.86958,
-                  12.90945
-                ],
-                [
-                  74.86958,
-                  12.91188
-                ],
-                [
-                  74.8667,
-                  12.91188
-                ],
-                [
-                  74.8667,
-                  12.90945
-                ]
-              ]
-            ]
-          },
-          "properties": {
-            "id": "BLD-B-011",
-            "zone_id": "B",
-            "height_m": 10.4,
-            "floors": 3,
-            "usage": "industrial"
-          }
-        },
-        {
-          "type": "Feature",
-          "geometry": {
-            "type": "Polygon",
-            "coordinates": [
-              [
-                [
-                  74.8727,
-                  12.90445
-                ],
-                [
-                  74.87585,
-                  12.90445
-                ],
-                [
-                  74.87585,
-                  12.90771
-                ],
-                [
-                  74.8727,
-                  12.90771
-                ],
-                [
-                  74.8727,
-                  12.90445
-                ]
-              ]
-            ]
-          },
-          "properties": {
-            "id": "BLD-B-012",
-            "zone_id": "B",
-            "height_m": 18.0,
-            "floors": 5,
-            "usage": "residential"
-          }
-        },
-        {
-          "type": "Feature",
-          "geometry": {
-            "type": "Polygon",
-            "coordinates": [
-              [
-                [
-                  74.8727,
-                  12.91445
-                ],
-                [
-                  74.87597,
-                  12.91445
-                ],
-                [
-                  74.87597,
-                  12.91702
-                ],
-                [
-                  74.8727,
-                  12.91702
-                ],
-                [
-                  74.8727,
-                  12.91445
-                ]
-              ]
-            ]
-          },
-          "properties": {
-            "id": "BLD-B-013",
-            "zone_id": "B",
-            "height_m": 26.3,
-            "floors": 8,
-            "usage": "residential"
-          }
-        },
-        {
-          "type": "Feature",
-          "geometry": {
-            "type": "Polygon",
-            "coordinates": [
-              [
-                [
-                  74.84255,
-                  12.9216
-                ],
-                [
-                  74.84497,
-                  12.9216
-                ],
-                [
-                  74.84497,
-                  12.92523
-                ],
-                [
-                  74.84255,
-                  12.92523
-                ],
-                [
-                  74.84255,
-                  12.9216
-                ]
-              ]
-            ]
-          },
-          "properties": {
-            "id": "BLD-C-014",
-            "zone_id": "C",
-            "height_m": 25.3,
-            "floors": 7,
-            "usage": "residential"
-          }
-        },
-        {
-          "type": "Feature",
-          "geometry": {
-            "type": "Polygon",
-            "coordinates": [
-              [
-                [
-                  74.84255,
-                  12.9276
-                ],
-                [
-                  74.84544,
-                  12.9276
-                ],
-                [
-                  74.84544,
-                  12.93124
-                ],
-                [
-                  74.84255,
-                  12.93124
-                ],
-                [
-                  74.84255,
-                  12.9276
-                ]
-              ]
-            ]
-          },
-          "properties": {
-            "id": "BLD-C-015",
-            "zone_id": "C",
-            "height_m": 15.0,
-            "floors": 4,
-            "usage": "commercial"
-          }
-        },
-        {
-          "type": "Feature",
-          "geometry": {
-            "type": "Polygon",
-            "coordinates": [
-              [
-                [
-                  74.84255,
-                  12.9336
-                ],
-                [
-                  74.84561,
-                  12.9336
-                ],
-                [
-                  74.84561,
-                  12.93651
-                ],
-                [
-                  74.84255,
-                  12.93651
-                ],
-                [
-                  74.84255,
-                  12.9336
-                ]
-              ]
-            ]
-          },
-          "properties": {
-            "id": "BLD-C-016",
-            "zone_id": "C",
-            "height_m": 23.9,
-            "floors": 7,
-            "usage": "industrial"
-          }
-        },
-        {
-          "type": "Feature",
-          "geometry": {
-            "type": "Polygon",
-            "coordinates": [
-              [
-                [
-                  74.84755,
-                  12.9276
-                ],
-                [
-                  74.8505,
-                  12.9276
-                ],
-                [
-                  74.8505,
-                  12.93033
-                ],
-                [
-                  74.84755,
-                  12.93033
-                ],
-                [
-                  74.84755,
-                  12.9276
-                ]
-              ]
-            ]
-          },
-          "properties": {
-            "id": "BLD-C-017",
-            "zone_id": "C",
             "height_m": 24.0,
-            "floors": 7,
-            "usage": "industrial"
+            "floors": 6,
+            "use": "hospital",
+            "usage": "hospital"
           }
         },
         {
@@ -944,34 +1113,36 @@
             "coordinates": [
               [
                 [
-                  74.84755,
-                  12.9336
+                  74.81735,
+                  12.9076
                 ],
                 [
-                  74.85061,
-                  12.9336
+                  74.81865,
+                  12.9076
                 ],
                 [
-                  74.85061,
-                  12.93633
+                  74.81865,
+                  12.9088
                 ],
                 [
-                  74.84755,
-                  12.93633
+                  74.81735,
+                  12.9088
                 ],
                 [
-                  74.84755,
-                  12.9336
+                  74.81735,
+                  12.9076
                 ]
               ]
             ]
           },
           "properties": {
-            "id": "BLD-C-018",
-            "zone_id": "C",
-            "height_m": 24.2,
-            "floors": 7,
-            "usage": "residential"
+            "id": "BLD-FAC-HOSP-02",
+            "name": "Waterfront Urgent Care Clinic",
+            "zone_id": "A",
+            "height_m": 24.0,
+            "floors": 6,
+            "use": "hospital",
+            "usage": "hospital"
           }
         },
         {
@@ -981,34 +1152,75 @@
             "coordinates": [
               [
                 [
-                  74.85255,
+                  74.83835,
+                  12.9266
+                ],
+                [
+                  74.83965,
+                  12.9266
+                ],
+                [
+                  74.83965,
+                  12.9278
+                ],
+                [
+                  74.83835,
+                  12.9278
+                ],
+                [
+                  74.83835,
+                  12.9266
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "id": "BLD-FAC-HOSP-03",
+            "name": "Upland Relief Specialist Hospital",
+            "zone_id": "D",
+            "height_m": 24.0,
+            "floors": 6,
+            "use": "hospital",
+            "usage": "hospital"
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  74.84235,
                   12.9276
                 ],
                 [
-                  74.85594,
+                  74.84365,
                   12.9276
                 ],
                 [
-                  74.85594,
-                  12.93089
+                  74.84365,
+                  12.9288
                 ],
                 [
-                  74.85255,
-                  12.93089
+                  74.84235,
+                  12.9288
                 ],
                 [
-                  74.85255,
+                  74.84235,
                   12.9276
                 ]
               ]
             ]
           },
           "properties": {
-            "id": "BLD-C-019",
-            "zone_id": "C",
-            "height_m": 12.4,
+            "id": "BLD-FAC-SHEL-01",
+            "name": "High-Ground Evacuation Safe Haven",
+            "zone_id": "D",
+            "height_m": 16.0,
             "floors": 3,
-            "usage": "residential"
+            "use": "shelter",
+            "usage": "shelter"
           }
         },
         {
@@ -1018,71 +1230,153 @@
             "coordinates": [
               [
                 [
-                  74.85255,
-                  12.9336
+                  74.85235,
+                  12.9116
                 ],
                 [
-                  74.85564,
-                  12.9336
+                  74.85365,
+                  12.9116
                 ],
                 [
-                  74.85564,
-                  12.9371
+                  74.85365,
+                  12.9128
                 ],
                 [
-                  74.85255,
-                  12.9371
+                  74.85235,
+                  12.9128
                 ],
                 [
-                  74.85255,
-                  12.9336
+                  74.85235,
+                  12.9116
                 ]
               ]
             ]
           },
           "properties": {
-            "id": "BLD-C-020",
+            "id": "BLD-FAC-SHEL-02",
+            "name": "Community Relief & Food Depot",
+            "zone_id": "E",
+            "height_m": 16.0,
+            "floors": 3,
+            "use": "shelter",
+            "usage": "shelter"
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  74.81535,
+                  12.9036
+                ],
+                [
+                  74.81665,
+                  12.9036
+                ],
+                [
+                  74.81665,
+                  12.9048
+                ],
+                [
+                  74.81535,
+                  12.9048
+                ],
+                [
+                  74.81535,
+                  12.9036
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "id": "BLD-FAC-SHEL-03",
+            "name": "Coastal Secondary School Shelter",
+            "zone_id": "A",
+            "height_m": 16.0,
+            "floors": 3,
+            "use": "shelter",
+            "usage": "shelter"
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  74.83135,
+                  12.9086
+                ],
+                [
+                  74.83265,
+                  12.9086
+                ],
+                [
+                  74.83265,
+                  12.9098
+                ],
+                [
+                  74.83135,
+                  12.9098
+                ],
+                [
+                  74.83135,
+                  12.9086
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "id": "BLD-FAC-FIRE-01",
+            "name": "Central Fire & Aquatic Rescue HQ",
+            "zone_id": "B",
+            "height_m": 12.0,
+            "floors": 3,
+            "use": "fire_station",
+            "usage": "fire_station"
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  74.81435,
+                  12.9226
+                ],
+                [
+                  74.81565,
+                  12.9226
+                ],
+                [
+                  74.81565,
+                  12.9238
+                ],
+                [
+                  74.81435,
+                  12.9238
+                ],
+                [
+                  74.81435,
+                  12.9226
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "id": "BLD-FAC-FIRE-02",
+            "name": "Port Marine Fire Station",
             "zone_id": "C",
-            "height_m": 16.8,
-            "floors": 5,
-            "usage": "residential"
-          }
-        },
-        {
-          "type": "Feature",
-          "geometry": {
-            "type": "Polygon",
-            "coordinates": [
-              [
-                [
-                  74.8607,
-                  12.9216
-                ],
-                [
-                  74.86378,
-                  12.9216
-                ],
-                [
-                  74.86378,
-                  12.92506
-                ],
-                [
-                  74.8607,
-                  12.92506
-                ],
-                [
-                  74.8607,
-                  12.9216
-                ]
-              ]
-            ]
-          },
-          "properties": {
-            "id": "BLD-D-021",
-            "zone_id": "D",
-            "height_m": 11.2,
+            "height_m": 12.0,
             "floors": 3,
-            "usage": "residential"
+            "use": "fire_station",
+            "usage": "fire_station"
           }
         },
         {
@@ -1092,71 +1386,36 @@
             "coordinates": [
               [
                 [
-                  74.8607,
-                  12.9336
+                  74.84935,
+                  12.9096
                 ],
                 [
-                  74.86447,
-                  12.9336
+                  74.85065,
+                  12.9096
                 ],
                 [
-                  74.86447,
-                  12.93722
+                  74.85065,
+                  12.9108
                 ],
                 [
-                  74.8607,
-                  12.93722
+                  74.84935,
+                  12.9108
                 ],
                 [
-                  74.8607,
-                  12.9336
+                  74.84935,
+                  12.9096
                 ]
               ]
             ]
           },
           "properties": {
-            "id": "BLD-D-022",
-            "zone_id": "D",
-            "height_m": 26.9,
-            "floors": 8,
-            "usage": "industrial"
-          }
-        },
-        {
-          "type": "Feature",
-          "geometry": {
-            "type": "Polygon",
-            "coordinates": [
-              [
-                [
-                  74.8667,
-                  12.9216
-                ],
-                [
-                  74.87087,
-                  12.9216
-                ],
-                [
-                  74.87087,
-                  12.92522
-                ],
-                [
-                  74.8667,
-                  12.92522
-                ],
-                [
-                  74.8667,
-                  12.9216
-                ]
-              ]
-            ]
-          },
-          "properties": {
-            "id": "BLD-D-023",
-            "zone_id": "D",
-            "height_m": 11.5,
+            "id": "BLD-FAC-POL-01",
+            "name": "Police Emergency Dispatch HQ",
+            "zone_id": "E",
+            "height_m": 12.0,
             "floors": 3,
-            "usage": "residential"
+            "use": "police",
+            "usage": "police"
           }
         },
         {
@@ -1166,71 +1425,36 @@
             "coordinates": [
               [
                 [
-                  74.8667,
-                  12.9276
+                  74.83535,
+                  12.9236
                 ],
                 [
-                  74.86993,
-                  12.9276
+                  74.83665,
+                  12.9236
                 ],
                 [
-                  74.86993,
-                  12.93157
+                  74.83665,
+                  12.9248
                 ],
                 [
-                  74.8667,
-                  12.93157
+                  74.83535,
+                  12.9248
                 ],
                 [
-                  74.8667,
-                  12.9276
+                  74.83535,
+                  12.9236
                 ]
               ]
             ]
           },
           "properties": {
-            "id": "BLD-D-024",
-            "zone_id": "D",
-            "height_m": 7.5,
-            "floors": 2,
-            "usage": "residential"
-          }
-        },
-        {
-          "type": "Feature",
-          "geometry": {
-            "type": "Polygon",
-            "coordinates": [
-              [
-                [
-                  74.8727,
-                  12.9216
-                ],
-                [
-                  74.87684,
-                  12.9216
-                ],
-                [
-                  74.87684,
-                  12.92453
-                ],
-                [
-                  74.8727,
-                  12.92453
-                ],
-                [
-                  74.8727,
-                  12.9216
-                ]
-              ]
-            ]
-          },
-          "properties": {
-            "id": "BLD-D-025",
+            "id": "BLD-FAC-SUB-01",
+            "name": "220kV Main Transmission Substation",
             "zone_id": "D",
             "height_m": 12.0,
             "floors": 3,
-            "usage": "industrial"
+            "use": "substation",
+            "usage": "substation"
           }
         },
         {
@@ -1240,145 +1464,36 @@
             "coordinates": [
               [
                 [
-                  74.8807,
-                  12.90995
+                  74.83335,
+                  12.9026
                 ],
                 [
-                  74.88445,
-                  12.90995
+                  74.83465,
+                  12.9026
                 ],
                 [
-                  74.88445,
-                  12.91538
+                  74.83465,
+                  12.9038
                 ],
                 [
-                  74.8807,
-                  12.91538
+                  74.83335,
+                  12.9038
                 ],
                 [
-                  74.8807,
-                  12.90995
+                  74.83335,
+                  12.9026
                 ]
               ]
             ]
           },
           "properties": {
-            "id": "BLD-E-026",
-            "zone_id": "E",
-            "height_m": 23.4,
-            "floors": 7,
-            "usage": "residential"
-          }
-        },
-        {
-          "type": "Feature",
-          "geometry": {
-            "type": "Polygon",
-            "coordinates": [
-              [
-                [
-                  74.8807,
-                  12.91828
-                ],
-                [
-                  74.88366,
-                  12.91828
-                ],
-                [
-                  74.88366,
-                  12.92402
-                ],
-                [
-                  74.8807,
-                  12.92402
-                ],
-                [
-                  74.8807,
-                  12.91828
-                ]
-              ]
-            ]
-          },
-          "properties": {
-            "id": "BLD-E-027",
-            "zone_id": "E",
-            "height_m": 27.1,
-            "floors": 8,
-            "usage": "commercial"
-          }
-        },
-        {
-          "type": "Feature",
-          "geometry": {
-            "type": "Polygon",
-            "coordinates": [
-              [
-                [
-                  74.8807,
-                  12.92662
-                ],
-                [
-                  74.88452,
-                  12.92662
-                ],
-                [
-                  74.88452,
-                  12.93231
-                ],
-                [
-                  74.8807,
-                  12.93231
-                ],
-                [
-                  74.8807,
-                  12.92662
-                ]
-              ]
-            ]
-          },
-          "properties": {
-            "id": "BLD-E-028",
-            "zone_id": "E",
-            "height_m": 21.9,
-            "floors": 6,
-            "usage": "industrial"
-          }
-        },
-        {
-          "type": "Feature",
-          "geometry": {
-            "type": "Polygon",
-            "coordinates": [
-              [
-                [
-                  74.8867,
-                  12.90995
-                ],
-                [
-                  74.89033,
-                  12.90995
-                ],
-                [
-                  74.89033,
-                  12.9142
-                ],
-                [
-                  74.8867,
-                  12.9142
-                ],
-                [
-                  74.8867,
-                  12.90995
-                ]
-              ]
-            ]
-          },
-          "properties": {
-            "id": "BLD-E-029",
-            "zone_id": "E",
-            "height_m": 12.3,
+            "id": "BLD-FAC-SUB-02",
+            "name": "Waterfront Distribution Substation",
+            "zone_id": "B",
+            "height_m": 12.0,
             "floors": 3,
-            "usage": "residential"
+            "use": "substation",
+            "usage": "substation"
           }
         },
         {
@@ -1388,34 +1503,36 @@
             "coordinates": [
               [
                 [
-                  74.8867,
-                  12.91828
+                  74.85335,
+                  12.9196
                 ],
                 [
-                  74.89086,
-                  12.91828
+                  74.85465,
+                  12.9196
                 ],
                 [
-                  74.89086,
-                  12.92214
+                  74.85465,
+                  12.9208
                 ],
                 [
-                  74.8867,
-                  12.92214
+                  74.85335,
+                  12.9208
                 ],
                 [
-                  74.8867,
-                  12.91828
+                  74.85335,
+                  12.9196
                 ]
               ]
             ]
           },
           "properties": {
-            "id": "BLD-E-030",
+            "id": "BLD-FAC-WATER-01",
+            "name": "Municipal Potable Water Treatment Plant",
             "zone_id": "E",
-            "height_m": 15.4,
-            "floors": 4,
-            "usage": "commercial"
+            "height_m": 12.0,
+            "floors": 3,
+            "use": "water_plant",
+            "usage": "water_plant"
           }
         },
         {
@@ -1425,34 +1542,36 @@
             "coordinates": [
               [
                 [
-                  74.8867,
-                  12.92662
+                  74.82735,
+                  12.9016
                 ],
                 [
-                  74.89062,
-                  12.92662
+                  74.82865,
+                  12.9016
                 ],
                 [
-                  74.89062,
-                  12.93125
+                  74.82865,
+                  12.9028
                 ],
                 [
-                  74.8867,
-                  12.93125
+                  74.82735,
+                  12.9028
                 ],
                 [
-                  74.8867,
-                  12.92662
+                  74.82735,
+                  12.9016
                 ]
               ]
             ]
           },
           "properties": {
-            "id": "BLD-E-031",
-            "zone_id": "E",
-            "height_m": 25.2,
-            "floors": 7,
-            "usage": "commercial"
+            "id": "BLD-FAC-PUMP-01",
+            "name": "High-Volume Stormwater Pumping Station",
+            "zone_id": "B",
+            "height_m": 12.0,
+            "floors": 3,
+            "use": "pumping_station",
+            "usage": "pumping_station"
           }
         },
         {
@@ -1462,71 +1581,36 @@
             "coordinates": [
               [
                 [
-                  74.8927,
-                  12.91828
+                  74.81335,
+                  12.9186
                 ],
                 [
-                  74.89651,
-                  12.91828
+                  74.81465,
+                  12.9186
                 ],
                 [
-                  74.89651,
-                  12.9228
+                  74.81465,
+                  12.9198
                 ],
                 [
-                  74.8927,
-                  12.9228
+                  74.81335,
+                  12.9198
                 ],
                 [
-                  74.8927,
-                  12.91828
+                  74.81335,
+                  12.9186
                 ]
               ]
             ]
           },
           "properties": {
-            "id": "BLD-E-032",
-            "zone_id": "E",
-            "height_m": 19.3,
-            "floors": 6,
-            "usage": "industrial"
-          }
-        },
-        {
-          "type": "Feature",
-          "geometry": {
-            "type": "Polygon",
-            "coordinates": [
-              [
-                [
-                  74.8927,
-                  12.92662
-                ],
-                [
-                  74.89543,
-                  12.92662
-                ],
-                [
-                  74.89543,
-                  12.93086
-                ],
-                [
-                  74.8927,
-                  12.93086
-                ],
-                [
-                  74.8927,
-                  12.92662
-                ]
-              ]
-            ]
-          },
-          "properties": {
-            "id": "BLD-E-033",
-            "zone_id": "E",
-            "height_m": 27.9,
-            "floors": 8,
-            "usage": "commercial"
+            "id": "BLD-FAC-PORT-01",
+            "name": "Maritime Coastguard Port Terminal",
+            "zone_id": "C",
+            "height_m": 12.0,
+            "floors": 3,
+            "use": "port",
+            "usage": "port"
           }
         }
       ]
@@ -1539,15 +1623,20 @@
           "geometry": {
             "type": "Point",
             "coordinates": [
-              74.8548,
-              12.9127
+              74.825,
+              12.9082
             ]
           },
           "properties": {
-            "id": "FAC-01",
-            "name": "Mangaluru District Hospital",
+            "id": "FAC-HOSP-01",
+            "name": "Central District Emergency Hospital",
             "kind": "hospital",
-            "criticality": 0.95
+            "short_label": "HOSPITAL \u00b7 ICU",
+            "zone_id": "B",
+            "criticality": 0.98,
+            "service_type": "Emergency Trauma, ICU & Surgical Care",
+            "capacity": "450 beds & emergency trauma unit",
+            "elevation_m": 1.1
           }
         },
         {
@@ -1555,15 +1644,62 @@
           "geometry": {
             "type": "Point",
             "coordinates": [
-              74.8748,
-              12.9307
+              74.818,
+              12.9082
             ]
           },
           "properties": {
-            "id": "FAC-02",
-            "name": "Mangaluru High Ground Evacuation Center",
+            "id": "FAC-HOSP-02",
+            "name": "Waterfront Urgent Care Clinic",
+            "kind": "hospital",
+            "short_label": "CLINIC \u00b7 AMBULANCE",
+            "zone_id": "A",
+            "criticality": 0.88,
+            "service_type": "First Aid & Rapid Ambulance Dispatch",
+            "capacity": "120 beds & ambulatory transport",
+            "elevation_m": 1.4
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              74.839,
+              12.9272
+            ]
+          },
+          "properties": {
+            "id": "FAC-HOSP-03",
+            "name": "Upland Relief Specialist Hospital",
+            "kind": "hospital",
+            "short_label": "HOSPITAL \u00b7 SAFE",
+            "zone_id": "D",
+            "criticality": 0.94,
+            "service_type": "Specialist Surgery & High-Ground Safe Haven",
+            "capacity": "320 beds & emergency oxygen reserve",
+            "elevation_m": 7.0
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              74.843,
+              12.9282
+            ]
+          },
+          "properties": {
+            "id": "FAC-SHEL-01",
+            "name": "High-Ground Evacuation Safe Haven",
             "kind": "shelter",
-            "criticality": 0.88
+            "short_label": "SHELTER \u00b7 2.5K",
+            "zone_id": "D",
+            "criticality": 0.96,
+            "service_type": "Disaster Relief Safe Haven & Muster Ground",
+            "capacity": "2,500 evacuees & supply depot",
+            "elevation_m": 7.4
           }
         },
         {
@@ -1571,31 +1707,238 @@
           "geometry": {
             "type": "Point",
             "coordinates": [
-              74.8478,
-              12.9207
+              74.853,
+              12.9122
             ]
           },
           "properties": {
-            "id": "FAC-03",
-            "name": "Mangaluru Maritime Coastguard / Port",
+            "id": "FAC-SHEL-02",
+            "name": "Community Relief & Food Depot",
+            "kind": "shelter",
+            "short_label": "SHELTER \u00b7 1.4K",
+            "zone_id": "E",
+            "criticality": 0.86,
+            "service_type": "Logistics & Food Distribution Safe Center",
+            "capacity": "1,400 evacuees & rations stockpile",
+            "elevation_m": 4.8
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              74.816,
+              12.9042
+            ]
+          },
+          "properties": {
+            "id": "FAC-SHEL-03",
+            "name": "Coastal Secondary School Shelter",
+            "kind": "shelter",
+            "short_label": "SHELTER \u00b7 COAST",
+            "zone_id": "A",
+            "criticality": 0.8,
+            "service_type": "Neighborhood Emergency Staging Point",
+            "capacity": "900 evacuees",
+            "elevation_m": 1.5
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              74.832,
+              12.9092
+            ]
+          },
+          "properties": {
+            "id": "FAC-FIRE-01",
+            "name": "Central Fire & Aquatic Rescue HQ",
+            "kind": "fire_station",
+            "short_label": "AQUATIC RESCUE HQ",
+            "zone_id": "B",
+            "criticality": 0.96,
+            "service_type": "Flood Search, Rescue & Boat Evacuation",
+            "capacity": "14 rescue boats & high-water tenders",
+            "elevation_m": 1.3
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              74.815,
+              12.9232
+            ]
+          },
+          "properties": {
+            "id": "FAC-FIRE-02",
+            "name": "Port Marine Fire Station",
+            "kind": "fire_station",
+            "short_label": "MARINE FIRE & HAZMAT",
+            "zone_id": "C",
+            "criticality": 0.88,
+            "service_type": "Marine Firefighting & Hazardous Material Unit",
+            "capacity": "6 marine cutters & containment foam",
+            "elevation_m": 1.8
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              74.85,
+              12.9102
+            ]
+          },
+          "properties": {
+            "id": "FAC-POL-01",
+            "name": "Police Emergency Dispatch HQ",
+            "kind": "police",
+            "short_label": "POLICE DISPATCH",
+            "zone_id": "E",
+            "criticality": 0.92,
+            "service_type": "Evacuation Route & Road Traffic Control",
+            "capacity": "Rapid Highway Patrol Division",
+            "elevation_m": 4.6
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              74.836,
+              12.9242
+            ]
+          },
+          "properties": {
+            "id": "FAC-SUB-01",
+            "name": "220kV Main Transmission Substation",
+            "kind": "substation",
+            "short_label": "POWER GRID \u00b7 220kV",
+            "zone_id": "D",
+            "criticality": 0.98,
+            "service_type": "Regional High-Voltage Power Backbone",
+            "capacity": "220 MVA Main Grid Transformer",
+            "elevation_m": 6.8
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              74.834,
+              12.9032
+            ]
+          },
+          "properties": {
+            "id": "FAC-SUB-02",
+            "name": "Waterfront Distribution Substation",
+            "kind": "substation",
+            "short_label": "POWER FEEDER \u00b7 66kV",
+            "zone_id": "B",
+            "criticality": 0.9,
+            "service_type": "Lowlands Local Power Feeder",
+            "capacity": "66 kV Feeder Unit",
+            "elevation_m": 1.0
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              74.854,
+              12.9202
+            ]
+          },
+          "properties": {
+            "id": "FAC-WATER-01",
+            "name": "Municipal Potable Water Treatment Plant",
+            "kind": "water_plant",
+            "short_label": "WATER TREATMENT",
+            "zone_id": "E",
+            "criticality": 0.94,
+            "service_type": "Drinking Water Supply & Disinfection",
+            "capacity": "180 MLD Clean Water Storage",
+            "elevation_m": 5.0
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              74.828,
+              12.9022
+            ]
+          },
+          "properties": {
+            "id": "FAC-PUMP-01",
+            "name": "High-Volume Stormwater Pumping Station",
+            "kind": "pumping_station",
+            "short_label": "INUNDATION PUMP",
+            "zone_id": "B",
+            "criticality": 0.98,
+            "service_type": "Flood Inundation Evacuation & Dewatering",
+            "capacity": "8 High-Flow Pumps (45 m\u00b3/sec)",
+            "elevation_m": 0.7
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              74.814,
+              12.9192
+            ]
+          },
+          "properties": {
+            "id": "FAC-PORT-01",
+            "name": "Maritime Coastguard Port Terminal",
             "kind": "port",
-            "criticality": 0.8
+            "short_label": "COASTGUARD PORT",
+            "zone_id": "C",
+            "criticality": 0.92,
+            "service_type": "Emergency Marine Evacuation & Cutter Berth",
+            "capacity": "Deepwater Dock & Offshore Berths",
+            "elevation_m": 1.7
           }
         }
       ]
+    },
+    "nodes": {
+      "type": "FeatureCollection",
+      "features": []
     }
   },
   "meta": {
     "name": "TIDALIS Digital Twin \u2014 Mangaluru",
+    "zone_id": "mangaluru",
     "center": [
-      74.8598,
-      12.9187
+      74.829,
+      12.9152
     ],
-    "base_elevation_m": 31.0,
-    "generated_at": "2026-10-08T15:06:35.003084+00:00",
+    "bbox": [
+      74.79,
+      12.8,
+      74.92,
+      13.02
+    ],
+    "base_elevation_m": 4.0,
+    "demo_data": false,
+    "generated_at": "2026-10-08T23:33:25.428585+00:00",
     "zone_count": 5,
-    "building_count": 33,
-    "road_count": 4,
-    "facility_count": 3
+    "inundation_count": 3,
+    "road_count": 8,
+    "facility_count": 14,
+    "building_count": 14
   }
 }

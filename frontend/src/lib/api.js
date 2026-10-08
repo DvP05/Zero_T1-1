@@ -35,12 +35,13 @@ export const api = {
   health: () => getJson('/api/health'),
   coastalState: (lat = 15.2993, lon = 73.97, refresh = false) =>
     getJson('/api/coastal-state', { lat, lon, refresh: refresh ? 'true' : undefined }),
-  sensors: () => getJson('/api/sensors'),
+  sensors: (zoneId = null, lat = null, lon = null) =>
+    getJson('/api/sensors', { zone_id: zoneId, lat, lon }),
   latestReadings: () => getJson('/api/sensors/latest/readings'),
   events: () => getJson('/api/events'),
   event: (eventId) => getJson(`/api/events/${eventId}`),
   anomalies: () => getJson('/api/anomalies'),
-  assets: () => getJson('/api/assets'),
+  assets: (zoneId = null) => getJson('/api/assets', { zone_id: zoneId }),
   forecast: (eventId) => getJson('/api/forecast', { event_id: eventId }),
   exposure: (eventId) => getJson('/api/exposure', { event_id: eventId }),
   marine: (lat = 15.2993, lon = 73.97, refresh = false) =>
@@ -52,10 +53,19 @@ export const api = {
   sosList: () => getJson('/api/sos'),
   submitSos: (body) => postJson('/api/sos', body),
   updateSos: (ticketId, status) => patchJson(`/api/sos/${ticketId}?status=${status}`),
-  mitigation: (eventId) => getJson('/api/mitigation', { event_id: eventId }),
-  geo: () => getJson('/api/geo'),
-  scenario: () => getJson('/api/scenario'),
-  scenarioSnapshot: (t) => getJson('/api/scenario/snapshot', { t }),
+  mitigation: (eventId, districtId = null) =>
+    getJson('/api/mitigation', { event_id: eventId, district_id: districtId }),
+  topologicalAnalysis: (districtId = 'goa', waterLevel = 2.0) =>
+    getJson('/api/topological/analysis', { district_id: districtId, water_level: waterLevel }),
+  authorizeDefense: (defenseId, districtId = null, waterLevel = 2.0) =>
+    postJson(`/api/topological/defense/${defenseId}/authorize?district_id=${districtId || ''}&water_level=${waterLevel}`, {}),
+  geo: (zoneId = null, lat = null, lon = null) =>
+    getJson('/api/geo', { zone_id: zoneId, lat, lon }),
+  scenario: (zoneId = null) => getJson('/api/scenario', { zone_id: zoneId }),
+  scenarioSnapshot: (t, zoneId = null, lat = null, lon = null, live = true) =>
+    getJson('/api/scenario/snapshot', { t, zone_id: zoneId, lat, lon, live: live ? 'true' : 'false' }),
+  activateLocation: (zoneId, lat = null, lon = null) =>
+    postJson(`/api/locations/${zoneId}/activate${lat && lon ? `?lat=${lat}&lon=${lon}` : ''}`, {}),
 }
 
 export function scenarioWsUrl() {

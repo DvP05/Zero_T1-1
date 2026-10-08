@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useTidalis } from '../store'
 
 const RISK_STYLE = {
@@ -19,6 +20,7 @@ function Readout({ label, value, tone }) {
 }
 
 export default function TimelineScrubber() {
+  const [isMinimized, setIsMinimized] = useState(false)
   const meta = useTidalis((s) => s.scenarioMeta)
   const snapshot = useTidalis((s) => s.snapshot)
   const t = useTidalis((s) => s.scenarioT)
@@ -39,6 +41,42 @@ export default function TimelineScrubber() {
   const tone = RISK_STYLE[risk] ?? RISK_STYLE.LOW
   const iso = snapshot.isolation.isolated_zones.length
   const clock = new Date(c.timestamp).toISOString().slice(11, 16)
+
+  if (isMinimized) {
+    return (
+      <div className="timeline-pill">
+        <button
+          type="button"
+          className={`scrub-btn mini${playing ? ' playing' : ''}`}
+          onClick={(e) => {
+            e.stopPropagation()
+            togglePlay()
+          }}
+          title={playing ? 'Pause scenario' : 'Play scenario (WebSocket stream)'}
+        >
+          {playing ? '❚❚' : '▶'}
+        </button>
+        <button
+          type="button"
+          className="pill-trigger"
+          onClick={() => setIsMinimized(false)}
+          title="Click to expand scenario timeline controls"
+        >
+          <span className="pill-t">{c.label.split(' · ')[0]}</span>
+          <span className="pill-time">{clock} UTC</span>
+          <span className="pill-risk" style={{ color: tone.color, background: tone.bg }}>
+            {risk}
+          </span>
+          {snapshot.isolation.blocked_roads.length > 0 && (
+            <span className="pill-blocked">
+              ⚠️ {snapshot.isolation.blocked_roads.length} blocked
+            </span>
+          )}
+          <span className="pill-expand-badge">▲ TIMELINE</span>
+        </button>
+      </div>
+    )
+  }
 
   return (
     <div className="timeline-scrubber">
@@ -61,6 +99,14 @@ export default function TimelineScrubber() {
         <span className={`scrub-live${live ? ' on' : ''}`}>
           {live ? 'WS STREAM' : 'REST'}
         </span>
+        <button
+          type="button"
+          className="scrub-minimize-btn"
+          onClick={() => setIsMinimized(true)}
+          title="Minimize timeline to compact floating button"
+        >
+          ▼ MINIMIZE
+        </button>
       </div>
 
       <div className="scrub-track">

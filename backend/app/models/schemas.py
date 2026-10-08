@@ -52,11 +52,16 @@ class SensorReading(BaseModel):
     timestamp: datetime
     latitude: float
     longitude: float
+    name: Optional[str] = None
+    sensor_type: Optional[str] = None
     zone_id: Optional[str] = None
     temperature: float = 0.0
     turbidity: float = 0.0
     ph: float = 0.0
     dissolved_oxygen: float = 0.0
+    water_level_m: Optional[float] = None
+    wave_height_m: Optional[float] = None
+    precipitation_mm_hr: Optional[float] = None
 
 
 class Observation(BaseModel):
@@ -101,6 +106,8 @@ class EvidenceItem(BaseModel):
 
 
 class Event(BaseModel):
+    model_config = {"extra": "allow"}
+
     event_id: str = Field(default_factory=lambda: f"evt-{uuid.uuid4().hex[:6]}")
     event_type: str = "COASTAL_ANOMALY"
     timestamp: datetime = Field(default_factory=datetime.utcnow)
@@ -110,6 +117,8 @@ class Event(BaseModel):
     confidence: float = 0.0
     status: EventStatus = EventStatus.ACTIVE
     radius_km: float = 5.0
+    primary_sensor_id: Optional[str] = None
+    affected_zones: list[str] = Field(default_factory=list)
     evidence: list[EvidenceItem] = Field(default_factory=list)
     description: str = ""
 

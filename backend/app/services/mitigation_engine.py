@@ -25,6 +25,8 @@ from pydantic import BaseModel, Field
 
 class MitigationSuggestion(BaseModel):
     """A single actionable mitigation suggestion."""
+    model_config = {"extra": "allow"}
+
     id: str
     zone: str
     action: str
@@ -35,7 +37,10 @@ class MitigationSuggestion(BaseModel):
     time_to_deploy: str  # e.g. "30 min" or "2 hours"
     resources_needed: list[str]
     effectiveness: float  # 0-1, estimated risk reduction
-    status: str = "PENDING"  # PENDING | IN_PROGRESS | COMPLETED | SKIPPED
+    status: str = "PENDING"  # PENDING | IN_PROGRESS | COMPLETED | SKIPPED | ACTIVE
+    coordinates: Optional[list[float]] = None
+    is_topological: bool = False
+    road_id: Optional[str] = None
 
 
 class MitigationPlan(BaseModel):
@@ -211,14 +216,52 @@ def _detect_threat_vectors(event) -> list[str]:
     return vectors
 
 
-def generate_mitigation_plan(event, event_id: str = "") -> MitigationPlan:
+def generate_mitigation_plan(event, event_id: str = "", district_id: Optional[str] = None, ref_water_m: float = 2.0) -> MitigationPlan:
     """
-    Generate a full mitigation plan for a given flood event.
+    Generate a full mitigation plan for a given flood event,
+    incorporating topological bottleneck defense operations.
     """
+    from backend.app.services.topological_engine import evaluate_district_topology
+
+    # Infer district from event coordinates if not explicitly supplied
+    resolved_zid = (district_id or "goa").lower()
+    if event and hasattr(event, "latitude") and event.latitude:
+        lat, lon = event.latitude, event.longitude
+        if abs(lat - 12.9) < 1.0:
+            resolved_zid = "mangaluru"
+        elif abs(lat - 18.9) < 1.5:
+            resolved_zid = "mumbai"
+        else:
+            resolved_zid = "goa"
+
     vectors = _detect_threat_vectors(event)
     suggestions: list[MitigationSuggestion] = []
     idx = 1
 
+    # 1. Topological Bottleneck Defenses (Highest Priority Physical Defenses)
+    try:
+        topo_res = evaluate_district_topology(resolved_zid, ref_water_m=ref_water_m)
+        for d in topo_res.defenses:
+            suggestions.append(MitigationSuggestion(
+                id=d.id,
+                zone=d.road_name,
+                action=d.action,
+                description=d.description,
+                priority=d.priority,
+                threat_vector="infrastructure",
+                estimated_cost=d.estimated_cost,
+                time_to_deploy=d.time_to_deploy,
+                resources_needed=d.resources_needed,
+                effectiveness=d.effectiveness,
+                status=d.status,
+                coordinates=d.coordinates,
+                is_topological=True,
+                road_id=d.road_id,
+            ))
+    except Exception as exc:
+        logger.warning("Could not evaluate topological defenses for %s: %s", resolved_zid, exc)
+
+    # 2. Vector-based rules
     for vector in vectors:
         rules = _MITIGATION_RULES.get(vector, [])
         for rule in rules:
@@ -233,6 +276,7 @@ def generate_mitigation_plan(event, event_id: str = "") -> MitigationPlan:
                 time_to_deploy=rule["time"],
                 resources_needed=rule["resources"],
                 effectiveness=rule["effectiveness"],
+                is_topological=False,
             ))
             idx += 1
 
@@ -250,3 +294,4 @@ def generate_mitigation_plan(event, event_id: str = "") -> MitigationPlan:
         estimated_risk_reduction=total_reduction,
         suggestions=suggestions,
     )
+

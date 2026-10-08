@@ -70,10 +70,14 @@ class Building(BaseModel):
 class Facility(BaseModel):
     id: str
     name: str
-    kind: str  # hospital | school | shelter | substation | port | fire_station
+    kind: str  # hospital | shelter | substation | port | fire_station | police | water_treatment | drainage_pump
     zone_id: str
     coordinates: list[float]
     criticality: float  # 0..1
+    icon: Optional[str] = "📍"
+    service_type: Optional[str] = "Emergency Support"
+    capacity: Optional[str] = None
+    elevation_m: Optional[float] = None
 
 
 # ---------------------------------------------------------------------------
@@ -291,25 +295,25 @@ def _build_buildings() -> list[Building]:
         lat_min = min(p[1] for p in zone.polygon)
         lat_max = max(p[1] for p in zone.polygon)
 
-        cells = 3
+        cells = 5
         for i in range(cells):
             for j in range(cells):
                 # Skip a couple of cells so the footprints do not form a perfect grid
-                if rng.random() < 0.18:
+                if rng.random() < 0.15:
                     continue
                 span_lon = (lon_max - lon_min) / cells
                 span_lat = (lat_max - lat_min) / cells
-                w = span_lon * rng.uniform(0.45, 0.75)
-                h = span_lat * rng.uniform(0.45, 0.75)
-                origin_lon = lon_min + i * span_lon + span_lon * 0.15
-                origin_lat = lat_min + j * span_lat + span_lat * 0.15
-                floors = rng.randint(2, 9) if zone.id in ("A", "B", "E") else rng.randint(2, 12)
+                w = span_lon * rng.uniform(0.48, 0.78)
+                h = span_lat * rng.uniform(0.48, 0.78)
+                origin_lon = lon_min + i * span_lon + span_lon * 0.12
+                origin_lat = lat_min + j * span_lat + span_lat * 0.12
+                floors = rng.randint(3, 11) if zone.id in ("A", "B", "E") else rng.randint(4, 16)
                 buildings.append(
                     Building(
-                        id=f"BLD-{zone.id}-{len(buildings) % 100:02d}",
+                        id=f"BLD-{zone.id}-{len(buildings) % 1000:03d}",
                         zone_id=zone.id,
                         polygon=_rect(origin_lon, origin_lat, origin_lon + w, origin_lat + h),
-                        height_m=round(floors * 3.2 + rng.uniform(0, 4), 1),
+                        height_m=round(floors * 3.3 + rng.uniform(1.0, 5.0), 1),
                         floors=floors,
                         usage=rng.choice(_USAGE_BY_ZONE[zone.id]),
                     )
@@ -326,29 +330,50 @@ BUILDINGS: list[Building] = _build_buildings()
 
 FACILITIES: list[Facility] = [
     Facility(id="FAC-HOSP-1", name="Coastal Central Hospital", kind="hospital",
-             zone_id="B", coordinates=[73.943, 15.306], criticality=0.95),
+             zone_id="B", coordinates=[73.943, 15.306], criticality=0.96,
+             icon="🏥", service_type="Level 1 Trauma & Emergency Care", capacity="450 Inpatient Beds", elevation_m=12.4),
     Facility(id="FAC-CLIN-1", name="B2 Health Clinic", kind="hospital",
-             zone_id="B", coordinates=[73.958, 15.291], criticality=0.70),
-    Facility(id="FAC-SCH-1", name="Miramar Public School", kind="school",
-             zone_id="A", coordinates=[73.954, 15.323], criticality=0.60),
+             zone_id="B", coordinates=[73.958, 15.291], criticality=0.74,
+             icon="🏥", service_type="Outpatient & Urgent Triage", capacity="85 Beds", elevation_m=6.2),
+    Facility(id="FAC-SCH-1", name="Miramar Public School", kind="shelter",
+             zone_id="A", coordinates=[73.954, 15.323], criticality=0.62,
+             icon="🏫", service_type="Secondary Evacuation Assembly Ground", capacity="400 Persons", elevation_m=9.0),
     Facility(id="FAC-SHEL-1", name="Upland Relief Shelter", kind="shelter",
-             zone_id="D", coordinates=[73.980, 15.336], criticality=0.85),
+             zone_id="D", coordinates=[73.980, 15.336], criticality=0.88,
+             icon="🛡️", service_type="Cyclone & Tidal Surge High Ground Haven", capacity="1,200 Persons", elevation_m=28.5),
     Facility(id="FAC-SHEL-2", name="Inland East Shelter", kind="shelter",
-             zone_id="E", coordinates=[73.993, 15.290], criticality=0.75),
-    Facility(id="FAC-SUB-1", name="5th Street Substation", kind="substation",
-             zone_id="B", coordinates=[73.950, 15.303], criticality=0.88),
+             zone_id="E", coordinates=[73.993, 15.290], criticality=0.80,
+             icon="🛡️", service_type="Long-Term Displaced Population Center", capacity="850 Persons", elevation_m=18.2),
+    Facility(id="FAC-SUB-1", name="5th Street Substation", kind="power_substation",
+             zone_id="B", coordinates=[73.950, 15.303], criticality=0.92,
+             icon="⚡", service_type="District Transmission & Microgrid Switching", capacity="250 MW Capacity", elevation_m=9.2),
     Facility(id="FAC-FIRE-1", name="Harbour Fire Station", kind="fire_station",
-             zone_id="C", coordinates=[73.952, 15.272], criticality=0.80),
-    Facility(id="FAC-PORT-1", name="South Harbour Terminal", kind="port",
-             zone_id="C", coordinates=[73.937, 15.262], criticality=0.65),
-    Facility(id="FAC-SCH-2", name="Estuary Secondary School", kind="school",
-             zone_id="B", coordinates=[73.936, 15.297], criticality=0.55),
-    Facility(id="FAC-SUB-2", name="Upland Grid Node", kind="substation",
-             zone_id="D", coordinates=[73.995, 15.325], criticality=0.72),
+             zone_id="C", coordinates=[73.952, 15.272], criticality=0.84,
+             icon="🚒", service_type="Waterborne Search & Swift Rescue Hub", capacity="8 Rescue Boats", elevation_m=5.3),
+    Facility(id="FAC-PORT-1", name="South Harbour Terminal", kind="port_terminal",
+             zone_id="C", coordinates=[73.937, 15.262], criticality=0.78,
+             icon="🚢", service_type="Coastal Logistics & Evacuation Ferries", capacity="3 Deepwater Berths", elevation_m=4.2),
+    Facility(id="FAC-SCH-2", name="Estuary Secondary School", kind="shelter",
+             zone_id="B", coordinates=[73.936, 15.297], criticality=0.58,
+             icon="🏫", service_type="Community Relief & Food Distribution Point", capacity="500 Persons", elevation_m=5.5),
+    Facility(id="FAC-SUB-2", name="Upland Grid Node", kind="power_substation",
+             zone_id="D", coordinates=[73.995, 15.325], criticality=0.89,
+             icon="⚡", service_type="Regional High-Voltage Grid Intertie", capacity="350 MW Capacity", elevation_m=31.0),
     Facility(id="FAC-SHEL-3", name="Miramar Evacuation Centre", kind="shelter",
-             zone_id="A", coordinates=[73.936, 15.338], criticality=0.70),
+             zone_id="A", coordinates=[73.936, 15.338], criticality=0.75,
+             icon="🛡️", service_type="Rapid Coastal Surge Evacuation Post", capacity="650 Persons", elevation_m=8.5),
     Facility(id="FAC-FIRE-2", name="Inland Fire Post", kind="fire_station",
-             zone_id="E", coordinates=[73.975, 15.307], criticality=0.68),
+             zone_id="E", coordinates=[73.975, 15.307], criticality=0.72,
+             icon="🚒", service_type="Rapid Land & Flood Rescue Engine Unit", capacity="6 Rescue Trucks", elevation_m=14.2),
+    Facility(id="FAC-POL-1", name="District Police Headquarters", kind="police",
+             zone_id="B", coordinates=[73.947, 15.300], criticality=0.86,
+             icon="🚨", service_type="Emergency Traffic & Evacuation Escort", capacity="Tactical Ops Hub", elevation_m=11.2),
+    Facility(id="FAC-WTR-1", name="Municipal Potable Water Treatment Plant", kind="water_treatment",
+             zone_id="E", coordinates=[73.985, 15.300], criticality=0.90,
+             icon="💧", service_type="Municipal Clean Water Supply & Pumping", capacity="45 MLD Capacity", elevation_m=16.5),
+    Facility(id="FAC-PMP-1", name="Coastal Storm Drainage Pump Station 1", kind="drainage_pump",
+             zone_id="B", coordinates=[73.940, 15.295], criticality=0.93,
+             icon="🌊", service_type="High-Volume Estuary Dewatering Pumps", capacity="18,000 m³/h Pumping", elevation_m=3.8),
 ]
 
 
@@ -370,73 +395,28 @@ def _zone_properties(zone: Zone) -> dict:
     }
 
 
-def as_geojson(zone_id: Optional[str] = None) -> dict:
+def as_geojson(
+    zone_id: Optional[str] = None,
+    lat: Optional[float] = None,
+    lon: Optional[float] = None,
+) -> dict:
     """Return all layers as a single GeoJSON FeatureCollection bundle."""
+    from backend.app.services.real_overlay_service import generate_digital_twin_for_location
+    from data_collection.config import COASTAL_ZONES
+
     zid = (zone_id or "goa").lower().strip()
+    cz = COASTAL_ZONES.get(zid)
+    base_lat = lat if lat is not None else (cz.lat if cz else 15.2993)
+    base_lon = lon if lon is not None else (cz.lon if cz else 73.9700)
+    z_name = cz.name if cz else (f"Coordinates ({base_lat:.2f}, {base_lon:.2f})" if zid == "custom" else zid.title())
 
-    if zid != "goa":
-        # Multi-location dynamic digital twin (e.g. Mumbai, Chennai, etc.)
-        from data_collection.config import COASTAL_ZONES
-        cz = COASTAL_ZONES.get(zid)
-        base_lat = cz.lat if cz else 19.076
-        base_lon = cz.lon if cz else 72.877
-        z_name = cz.name if cz else zid.title()
+    return generate_digital_twin_for_location(
+        lat=base_lat,
+        lon=base_lon,
+        name=z_name,
+        zone_id=zid,
+    )
 
-        offsets = [
-            (-0.02, -0.02, 0.015, 0.015, "A", f"Zone A · {z_name} Waterfront", 1.5, 0.65),
-            (0.00, -0.02, 0.035, 0.015, "B", f"Zone B · {z_name} Lowlands", 1.1, 0.55),
-            (-0.02, 0.00, 0.015, 0.035, "C", f"Zone C · {z_name} Port & Delta", 1.8, 0.70),
-            (0.01, 0.01, 0.045, 0.045, "D", f"Zone D · {z_name} Heights", 4.5, 0.85),
-            (0.03, -0.01, 0.065, 0.025, "E", f"Zone E · {z_name} Hinterland", 3.2, 0.80),
-        ]
-        zone_features = []
-        for dlon, dlat, w, h, id_val, name_val, elev, drain in offsets:
-            p = [
-                [round(base_lon + dlon, 4), round(base_lat + dlat, 4)],
-                [round(base_lon + dlon + w, 4), round(base_lat + dlat, 4)],
-                [round(base_lon + dlon + w, 4), round(base_lat + dlat + h, 4)],
-                [round(base_lon + dlon, 4), round(base_lat + dlat + h, 4)],
-                [round(base_lon + dlon, 4), round(base_lat + dlat, 4)],
-            ]
-            zone_features.append({
-                "type": "Feature",
-                "geometry": {"type": "Polygon", "coordinates": [p]},
-                "properties": {
-                    "id": id_val,
-                    "name": name_val,
-                    "elevation_m": elev,
-                    "drainage_capacity": drain,
-                    "historical_flood_freq": 0.4,
-                    "imperviousness": 0.6,
-                    "slope": 2.0,
-                    "population": 25000,
-                    "vulnerability": 0.5,
-                },
-            })
-
-        return {
-            "type": "FeatureCollection",
-            "features": [],
-            "layers": {
-                "zones": {"type": "FeatureCollection", "features": zone_features},
-                "roads": {"type": "FeatureCollection", "features": []},
-                "buildings": {"type": "FeatureCollection", "features": []},
-                "facilities": {"type": "FeatureCollection", "features": []},
-                "nodes": {"type": "FeatureCollection", "features": []},
-            },
-            "meta": {
-                "name": f"TIDALIS Coastal District ({z_name})",
-                "zone_id": zid,
-                "demo_data": False,
-                "zone_count": len(zone_features),
-                "road_count": 0,
-                "building_count": 0,
-                "facility_count": 0,
-            },
-        }
-
-
-    # Default Goa digital twin
     zones = {
         "type": "FeatureCollection",
         "features": [
@@ -461,8 +441,8 @@ def as_geojson(zone_id: Optional[str] = None) -> dict:
         "features": [
             {"type": "Feature",
              "geometry": {"type": "Polygon", "coordinates": [b.polygon]},
-             "properties": {"id": b.id, "zone_id": b.zone_id, "height_m": b.height_m,
-                            "floors": b.floors, "usage": b.usage}}
+             "properties": {"id": b.id, "name": f"Building {b.id}", "zone_id": b.zone_id, "height_m": b.height_m,
+                            "floors": b.floors, "use": b.usage, "usage": b.usage}}
             for b in BUILDINGS
         ],
     }
@@ -472,7 +452,11 @@ def as_geojson(zone_id: Optional[str] = None) -> dict:
             {"type": "Feature",
              "geometry": {"type": "Point", "coordinates": f.coordinates},
              "properties": {"id": f.id, "name": f.name, "kind": f.kind,
-                            "zone_id": f.zone_id, "criticality": f.criticality}}
+                            "zone_id": f.zone_id, "criticality": f.criticality,
+                            "icon": f.icon or "📍",
+                            "service_type": f.service_type or f.kind.replace("_", " ").title(),
+                            "capacity": f.capacity or "Standard Ops",
+                            "elevation_m": f.elevation_m or 8.5}}
             for f in FACILITIES
         ],
     }

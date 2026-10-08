@@ -1,0 +1,120 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              72.795,
+              19.245
+            ],
+            [
+              72.81,
+              19.165
+            ],
+            [
+              72.82,
+              19.095
+            ],
+            [
+              72.815,
+              19.03
+            ],
+            [
+              72.8,
+              18.96
+            ],
+            [
+              72.825,
+              18.895
+            ],
+            [
+              72.875,
+              18.89
+            ],
+            [
+              72.955,
+              18.965
+            ],
+            [
+              72.975,
+              19.085
+            ],
+            [
+              72.965,
+              19.185
+            ],
+            [
+              72.915,
+              19.245
+            ],
+            [
+              72.795,
+              19.245
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "mumbai",
+        "name": "Mumbai Coastal District",
+        "admin_level": "district",
+        "bbox": [
+          72.76,
+          18.88,
+          72.98,
+          19.25
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            72.795,
+            19.245
+          ],
+          [
+            72.81,
+            19.165
+          ],
+          [
+            72.82,
+            19.095
+          ],
+          [
+            72.815,
+            19.03
+          ],
+          [
+            72.8,
+            18.96
+          ],
+          [
+            72.825,
+            18.895
+          ]
+        ]
+      },
+      "properties": {
+        "id": "mumbai-coastline",
+        "name": "Mumbai Coastal District Natural Coastline"
+      }
+    }
+  ],
+  "meta": {
+    "zone_id": "mumbai",
+    "name": "Mumbai Coastal District",
+    "bbox": [
+      72.76,
+      18.88,
+      72.98,
+      19.25
+    ]
+  }
+}

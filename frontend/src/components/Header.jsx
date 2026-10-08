@@ -8,6 +8,18 @@ export default function Header() {
   const isLiveRefreshing = useTidalis((s) => s.isLiveRefreshing)
   const refreshLiveData = useTidalis((s) => s.refreshLiveData)
   const online = useTidalis((s) => s.online)
+  const activeLocation = useTidalis((s) => s.activeLocation)
+  const switchDistrict = useTidalis((s) => s.switchDistrict)
+  const geo = useTidalis((s) => s.geo)
+
+  const currentDistrictId =
+    geo?.meta?.zone_id ||
+    activeLocation?.districtId ||
+    (activeLocation?.name?.toLowerCase().includes('mangaluru')
+      ? 'mangaluru'
+      : activeLocation?.name?.toLowerCase().includes('mumbai')
+        ? 'mumbai'
+        : 'goa')
 
   const waveHeight = marineData?.hourly?.wave_height?.[0]
   const sst = marineData?.hourly?.sea_surface_temperature?.[0]
@@ -18,6 +30,21 @@ export default function Header() {
       <div className="brand">
         <h1>TIDALIS</h1>
         <span className="tagline">AI-Powered Coastal Digital Intelligence</span>
+      </div>
+
+      {/* Operational District Switcher */}
+      <div className="theater-pill" title="Operational District & Administrative Boundary">
+        <span className="theater-dot" />
+        <select
+          className="theater-select"
+          value={currentDistrictId}
+          onChange={(e) => switchDistrict(e.target.value)}
+          aria-label="Operational District"
+        >
+          <option value="goa">Goa Coastal District</option>
+          <option value="mangaluru">Mangaluru Coastal District</option>
+          <option value="mumbai">Mumbai Harbor District</option>
+        </select>
       </div>
 
       {/* Real-time Open-Meteo live ticker */}
@@ -46,7 +73,7 @@ export default function Header() {
       <button
         type="button"
         className={`refresh-live-btn${isLiveRefreshing ? ' spinning' : ''}`}
-        onClick={refreshLiveData}
+        onClick={() => refreshLiveData()}
         title={`Sync live observations from Open-Meteo API (synced ${lastLiveUpdate || 'just now'})`}
       >
         <span className="refresh-icon">🔄</span>

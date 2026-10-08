@@ -10,15 +10,23 @@ import { useTidalis } from './store'
 export default function App() {
   const init = useTidalis((s) => s.init)
   const refreshHealth = useTidalis((s) => s.refreshHealth)
+  const refreshLiveData = useTidalis((s) => s.refreshLiveData)
   const loading = useTidalis((s) => s.loading)
   const leftRailCollapsed = useTidalis((s) => s.leftRailCollapsed)
   const inspectorCollapsed = useTidalis((s) => s.inspectorCollapsed)
 
   useEffect(() => {
     init()
-    const timer = setInterval(refreshHealth, 15000)
-    return () => clearInterval(timer)
-  }, [init, refreshHealth])
+    const healthTimer = setInterval(refreshHealth, 15000)
+    // Synchronize live Open-Meteo & hydrodynamic telemetry periodically
+    const liveTimer = setInterval(() => {
+      refreshLiveData()
+    }, 25000)
+    return () => {
+      clearInterval(healthTimer)
+      clearInterval(liveTimer)
+    }
+  }, [init, refreshHealth, refreshLiveData])
 
   return (
     <div className="app">

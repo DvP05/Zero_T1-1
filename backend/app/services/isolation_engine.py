@@ -41,6 +41,8 @@ class IsolatedEnclave(BaseModel):
 
 
 class IsolationReport(BaseModel):
+    model_config = {"extra": "allow"}
+
     water_level_m: float
     blocked_roads: list[RoadStatus] = Field(default_factory=list)
     passable_roads: list[RoadStatus] = Field(default_factory=list)
@@ -48,6 +50,10 @@ class IsolationReport(BaseModel):
     enclaves: list[IsolatedEnclave] = Field(default_factory=list)
     network_integrity: float = 1.0  # 0..1 share of passable road length
     summary: str = ""
+    bottlenecks: list[dict] = Field(default_factory=list)
+    defenses: list[dict] = Field(default_factory=list)
+    evacuation_corridors: list[dict] = Field(default_factory=list)
+
 
 
 def _adjacency(passable_ids: set[str]) -> dict[str, set[str]]:

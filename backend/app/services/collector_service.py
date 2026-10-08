@@ -277,6 +277,53 @@ ZONE_ASSETS: Dict[str, List[CoastalAsset]] = {
             description="Tourist viewpoint and water sports hub",
         ),
     ],
+    "mangaluru": [
+        CoastalAsset(
+            asset_id="mng-port-01",
+            asset_type=AssetType.PORT,
+            name="New Mangalore Port (NMPT)",
+            latitude=12.9344,
+            longitude=74.8210,
+            sensitivity=0.85,
+            description="All-weather deep water maritime port on Arabian Sea",
+        ),
+        CoastalAsset(
+            asset_id="mng-beach-01",
+            asset_type=AssetType.BEACH,
+            name="Panambur Beach & Seafront",
+            latitude=12.9515,
+            longitude=74.8055,
+            sensitivity=0.70,
+            description="High-density public recreational beach prone to coastal erosion",
+        ),
+        CoastalAsset(
+            asset_id="mng-fish-01",
+            asset_type=AssetType.FISHERY,
+            name="Old Bunder Marine Fishery Wharf",
+            latitude=12.8620,
+            longitude=74.8360,
+            sensitivity=0.80,
+            description="Artisanal and commercial fishing fleet anchorage at river mouth",
+        ),
+        CoastalAsset(
+            asset_id="mng-beach-02",
+            asset_type=AssetType.BEACH,
+            name="Tannirbhavi Beach Coastal Spit",
+            latitude=12.8980,
+            longitude=74.8150,
+            sensitivity=0.75,
+            description="Low-elevation barrier beach protecting inland backwaters",
+        ),
+        CoastalAsset(
+            asset_id="mng-hab-01",
+            asset_type=AssetType.HABITAT,
+            name="Netravati-Gurupura Estuary Delta",
+            latitude=12.8450,
+            longitude=74.8410,
+            sensitivity=0.90,
+            description="Mangrove wetland receiving monsoon discharge from Western Ghats",
+        ),
+    ],
 }
 
 

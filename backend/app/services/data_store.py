@@ -106,6 +106,30 @@ class DataStore:
 
     def get_sensors(self) -> list[dict]:
         """Return unique sensor metadata from readings."""
+        if self.sensor_readings:
+            sensors = []
+            seen = set()
+            for r in self.sensor_readings:
+                if r.sensor_id not in seen:
+                    seen.add(r.sensor_id)
+                    sensors.append({
+                        "sensor_id": r.sensor_id,
+                        "name": r.name or r.sensor_id,
+                        "lat": r.latitude,
+                        "lon": r.longitude,
+                        "latitude": r.latitude,
+                        "longitude": r.longitude,
+                        "sensor_type": r.sensor_type or "marine_buoy",
+                        "temperature": r.temperature,
+                        "wave_height_m": r.wave_height_m or 0.0,
+                        "water_level_m": r.water_level_m or 0.85,
+                        "turbidity": r.turbidity,
+                        "ph": r.ph,
+                        "dissolved_oxygen": r.dissolved_oxygen,
+                        "precipitation_mm_hr": r.precipitation_mm_hr or 0.0,
+                        "zone_id": r.zone_id,
+                    })
+            return sensors
         from backend.app.services.sensor_simulator import get_sensor_metadata
         return get_sensor_metadata()
 

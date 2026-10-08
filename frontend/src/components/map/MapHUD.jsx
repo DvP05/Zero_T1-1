@@ -2,11 +2,12 @@ import { useState } from 'react'
 import { useTidalis } from '../../store'
 import { MAPBOX_STYLES } from './mapboxStyles'
 
-export default function MapHUD({ pitched, onToggle3D, onRecenter }) {
+export default function MapHUD({ pitched, onToggle3D, onRecenter, onFlyToUser }) {
   const mapStyle = useTidalis((s) => s.mapStyle)
   const setMapStyle = useTidalis((s) => s.setMapStyle)
   const mapboxToken = useTidalis((s) => s.mapboxToken)
   const setMapboxToken = useTidalis((s) => s.setMapboxToken)
+  const userLocation = useTidalis((s) => s.userLocation)
 
   const [showTokenModal, setShowTokenModal] = useState(false)
   const [tokenInput, setTokenInput] = useState(mapboxToken || '')
@@ -52,15 +53,27 @@ export default function MapHUD({ pitched, onToggle3D, onRecenter }) {
           {pitched ? '3D Active' : '2D Map'}
         </button>
 
-        {/* Recenter */}
+        {/* Recenter on Ops Theater */}
         <button
           type="button"
           className="hud-btn icon-btn"
           onClick={onRecenter}
-          title="Recenter Camera on Operations Area"
+          title="Recenter Camera on Operations Area (Overlays & Incidents)"
         >
-          ⌖ Recenter
+          ⌖ Ops Theater
         </button>
+
+        {/* Jump to User GPS Location if available */}
+        {userLocation && (
+          <button
+            type="button"
+            className="hud-btn icon-btn"
+            onClick={onFlyToUser}
+            title="Fly Camera to My Live GPS Location"
+          >
+            📍 My Location
+          </button>
+        )}
 
         {/* Token Config Button */}
         <button

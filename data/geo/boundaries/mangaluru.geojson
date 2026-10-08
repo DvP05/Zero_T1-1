@@ -1,0 +1,120 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              74.795,
+              13.015
+            ],
+            [
+              74.802,
+              12.965
+            ],
+            [
+              74.81,
+              12.935
+            ],
+            [
+              74.815,
+              12.895
+            ],
+            [
+              74.825,
+              12.855
+            ],
+            [
+              74.845,
+              12.81
+            ],
+            [
+              74.89,
+              12.815
+            ],
+            [
+              74.915,
+              12.86
+            ],
+            [
+              74.92,
+              12.92
+            ],
+            [
+              74.905,
+              12.98
+            ],
+            [
+              74.86,
+              13.018
+            ],
+            [
+              74.795,
+              13.015
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "mangaluru",
+        "name": "Mangaluru Coastal District",
+        "admin_level": "taluk",
+        "bbox": [
+          74.79,
+          12.8,
+          74.92,
+          13.02
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            74.795,
+            13.015
+          ],
+          [
+            74.802,
+            12.965
+          ],
+          [
+            74.81,
+            12.935
+          ],
+          [
+            74.815,
+            12.895
+          ],
+          [
+            74.825,
+            12.855
+          ],
+          [
+            74.845,
+            12.81
+          ]
+        ]
+      },
+      "properties": {
+        "id": "mangaluru-coastline",
+        "name": "Mangaluru Coastal District Natural Coastline"
+      }
+    }
+  ],
+  "meta": {
+    "zone_id": "mangaluru",
+    "name": "Mangaluru Coastal District",
+    "bbox": [
+      74.79,
+      12.8,
+      74.92,
+      13.02
+    ]
+  }
+}

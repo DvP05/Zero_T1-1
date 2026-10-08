@@ -1,16 +1,16 @@
 import { useTidalis } from '../store'
 
 const LAYER_META = [
-  { id: 'zones', label: 'Flood Zones', color: 'exposure' },
-  { id: 'flood', label: 'Rising Water', color: 'sensors' },
-  { id: 'roads', label: 'Road Network', color: 'events' },
-  { id: 'buildings', label: 'Buildings (3D)', color: 'simulation' },
+  { id: 'flood', label: 'Hydrodynamic Inundation', color: 'sensors' },
+  { id: 'zones', label: 'Hazard Sectors', color: 'exposure' },
+  { id: 'roads', label: 'Roads & Evacuation Routes', color: 'events' },
   { id: 'facilities', label: 'Critical Facilities', color: 'sos' },
-  { id: 'sensors', label: 'Sensor Network', color: 'sensors' },
-  { id: 'events', label: 'Detected Events', color: 'events' },
-  { id: 'exposure', label: 'Exposure Zones', color: 'exposure' },
-  { id: 'simulation', label: 'What-If Projection', color: 'simulation' },
-  { id: 'sos', label: 'Topographical SOS', color: 'sos' },
+  { id: 'buildings', label: '3D City Buildings', color: 'simulation' },
+  { id: 'sensors', label: 'Buoys & IoT Telemetry', color: 'sensors' },
+  { id: 'events', label: 'Incident Epicenters', color: 'events' },
+  { id: 'exposure', label: 'Exposure Buffer', color: 'exposure' },
+  { id: 'simulation', label: 'What-If Storm Projection', color: 'simulation' },
+  { id: 'sos', label: 'SOS Distress Signals', color: 'sos' },
 ]
 
 export default function LayersPanel() {
@@ -19,7 +19,9 @@ export default function LayersPanel() {
 
   return (
     <div className="panel">
-      <div className="panel-header"><span>Layers</span></div>
+      <div className="panel-header">
+        <span>Tactical Overlays</span>
+      </div>
       <div className="panel-body">
         {LAYER_META.map((l) => (
           <div key={l.id} className="layer-toggle">

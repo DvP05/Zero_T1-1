@@ -107,6 +107,10 @@ export const useTidalis = create((set, get) => ({
   setOperationsTab(tab) {
     set({ operationsTab: tab, operationsOpen: true })
   },
+  mapTarget: null,
+  flyToTarget(target) {
+    set({ mapTarget: { ...target, timestamp: Date.now() } })
+  },
 
   // initialise: load everything once
   async init() {
@@ -171,23 +175,46 @@ export const useTidalis = create((set, get) => ({
     get().refreshLiveData(lat, lon)
   },
 
-  async refreshLiveData(customLat, customLon) {
+  async switchDistrict(districtId) {
+    const districts = {
+      goa: { lat: 15.2993, lon: 73.9700, name: 'Goa Coastal District', id: 'goa' },
+      mangaluru: { lat: 12.9187, lon: 74.8598, name: 'Mangaluru Coastal District', id: 'mangaluru' },
+      mumbai: { lat: 18.9667, lon: 72.8333, name: 'Mumbai Harbor District', id: 'mumbai' },
+    }
+    const d = districts[districtId] || districts.goa
+    set({
+      activeLocation: { lat: d.lat, lon: d.lon, name: d.name, districtId: d.id },
+      userLocation: null,
+    })
+    await get().refreshLiveData(d.lat, d.lon, d.id)
+  },
+
+  async refreshLiveData(customLat, customLon, customZoneId) {
     const coords = get().userLocation || get().activeLocation || { lat: 15.2993, lon: 73.97 }
-    const lat = customLat ?? coords.lat
-    const lon = customLon ?? coords.lon
+    const lat = typeof customLat === 'number' ? customLat : coords.lat
+    const lon = typeof customLon === 'number' ? customLon : coords.lon
+    const zoneId = customZoneId || get().activeLocation?.districtId || null
     set({ isLiveRefreshing: true })
     try {
-      const [health, coastalState, marineData, readings] = await Promise.all([
+      const [health, coastalState, marineData, readings, geo, snapshot, sensors, events] = await Promise.all([
         withFallback(api.health(), get().health),
         withFallback(api.coastalState(lat, lon, true), get().coastalState),
         withFallback(api.marine(lat, lon, true), get().marineData),
         withFallback(api.latestReadings(), get().readings),
+        withFallback(api.geo(zoneId, lat, lon), get().geo),
+        withFallback(api.scenarioSnapshot(get().scenarioT, zoneId, lat, lon, true), get().snapshot),
+        withFallback(api.sensors(zoneId, lat, lon), get().sensors),
+        withFallback(api.events(), get().events),
       ])
       set({
         health,
         coastalState,
         marineData: marineData || coastalState.marine_data,
-        readings,
+        readings: (readings && readings.length > 0) ? readings : get().readings,
+        geo: geo || get().geo,
+        snapshot: snapshot || get().snapshot,
+        sensors: (sensors && sensors.length > 0) ? sensors : get().sensors,
+        events: (events && events.length > 0) ? events : get().events,
         lastLiveUpdate: new Date().toLocaleTimeString(),
         online: health.status === 'ok',
         isLiveRefreshing: false,
@@ -200,10 +227,13 @@ export const useTidalis = create((set, get) => ({
 
   // --- scenario timeline --------------------------------------------------
   async initScenario() {
+    const coords = get().userLocation || get().activeLocation
+    const lat = coords?.lat
+    const lon = coords?.lon
     const [scenarioMeta, geo, snapshot] = await Promise.all([
       withFallback(api.scenario(), null),
-      withFallback(api.geo(), null),
-      withFallback(api.scenarioSnapshot(0), null),
+      withFallback(api.geo(null, lat, lon), null),
+      withFallback(api.scenarioSnapshot(0, null, lat, lon, true), null),
     ])
     set({
       scenarioMeta,
@@ -220,7 +250,11 @@ export const useTidalis = create((set, get) => ({
   async seekScenario(t) {
     const value = Math.max(0, Math.min(5, Number(t)))
     set({ scenarioT: value })
-    const snapshot = await withFallback(api.scenarioSnapshot(value), null)
+    const coords = get().userLocation || get().activeLocation
+    const snapshot = await withFallback(
+      api.scenarioSnapshot(value, null, coords?.lat, coords?.lon, true),
+      null
+    )
     if (snapshot) set({ snapshot, scenarioT: snapshot.t_hours })
     return snapshot
   },
@@ -421,15 +455,33 @@ export const useTidalis = create((set, get) => ({
   },
 
   async loadMitigationPlan() {
-    const { selectedEventId } = get()
+    const { selectedEventId, activeLocation } = get()
     if (!selectedEventId) {
       set({ mitigationPlan: null })
       return
     }
+    const districtId = activeLocation?.districtId || null
     const mitigationPlan = await withFallback(
-      api.mitigation(selectedEventId),
+      api.mitigation(selectedEventId, districtId),
       null,
     )
     set({ mitigationPlan })
   },
+
+  async authorizeBottleneckDefense(defenseId) {
+    const { activeLocation, snapshot } = get()
+    const districtId = activeLocation?.districtId || 'goa'
+    const waterLevel = snapshot?.conditions?.water_level_m ?? 2.0
+    try {
+      const res = await api.authorizeDefense(defenseId, districtId, waterLevel)
+      await Promise.all([
+        get().refreshLiveData(null, null, districtId),
+        get().loadMitigationPlan(),
+      ])
+      return res
+    } catch (err) {
+      console.warn('[TIDALIS] Failed authorizing defense:', err)
+    }
+  },
 }))
+

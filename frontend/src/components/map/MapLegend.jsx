@@ -22,7 +22,7 @@ export default function MapLegend() {
         title="Toggle Map Symbology Legend"
       >
         <span className="dot-key" />
-        <span>Map Legend</span>
+        <span>Tactical Legend</span>
         <span className="chevron">{open ? '▾' : '▴'}</span>
       </button>
 
@@ -30,42 +30,69 @@ export default function MapLegend() {
         <div className="legend-card">
           <div className="legend-grid">
             <div className="legend-item">
-              <span className="sw" style={{ background: '#34d399' }} /> Zone · LOW
+              <span className="sw" style={{ background: '#10b981' }} /> Sector · LOW RISK
             </div>
             <div className="legend-item">
-              <span className="sw" style={{ background: '#fbbf24' }} /> Zone · MODERATE
+              <span className="sw" style={{ background: '#eab308' }} /> Sector · MODERATE
             </div>
             <div className="legend-item">
-              <span className="sw" style={{ background: '#fb923c' }} /> Zone · HIGH
+              <span className="sw" style={{ background: '#f97316' }} /> Sector · HIGH RISK
             </div>
             <div className="legend-item">
-              <span className="sw" style={{ background: '#fb7185' }} /> Zone · CRITICAL
+              <span className="sw" style={{ background: '#f43f5e' }} /> Sector · CRITICAL
             </div>
             <div className="legend-item">
-              <span className="sw" style={{ background: '#0ea5e9' }} /> Rising Flood Water
+              <span className="sw" style={{ background: '#0ea5e9' }} /> Hydrodynamic Inundation (0.3m-1.2m)
             </div>
             <div className="legend-item">
-              <span className="sw" style={{ background: '#fb7185' }} /> Submerged Road
+              <span className="sw" style={{ background: '#e11d48' }} /> Severe Flood Pool (&gt;1.2m)
             </div>
             <div className="legend-item">
-              <span className="sw" style={{ background: '#22d3ee' }} /> Critical Facility
+              <span className="sw" style={{ background: '#10b981' }} /> Evacuation Expressway (Passable)
             </div>
             <div className="legend-item">
-              <span className="sw" style={{ background: '#ffffff', border: '1px solid #fb7185' }} /> SOS Beacon
+              <span className="sw" style={{ background: '#f43f5e', border: '1px dashed #ffffff' }} /> Submerged Arterial (Cut Off)
+            </div>
+            <div className="legend-item">
+              <span className="sw" style={{ background: '#ec4899' }} /> Emergency Trauma Hospital / ICU
+            </div>
+            <div className="legend-item">
+              <span className="sw" style={{ background: '#10b981' }} /> High-Ground Evacuation Shelter
+            </div>
+            <div className="legend-item">
+              <span className="sw" style={{ background: '#f97316' }} /> Aquatic Rescue & Fire HQ
+            </div>
+            <div className="legend-item">
+              <span className="sw" style={{ background: '#eab308' }} /> 220kV Grid Substation
+            </div>
+            <div className="legend-item">
+              <span className="sw" style={{ background: '#06b6d4' }} /> Potable Water Treatment Plant
+            </div>
+            <div className="legend-item">
+              <span className="sw" style={{ background: '#14b8a6' }} /> Inundation Dewatering Pump
+            </div>
+            <div className="legend-item">
+              <span className="sw" style={{ background: '#a855f7' }} /> Coastguard Maritime Terminal
+            </div>
+            <div className="legend-item">
+              <span className="sw" style={{ background: '#06b6d4', borderRadius: '50%' }} /> Live Buoy & Ocean Sensor
+            </div>
+            <div className="legend-item">
+              <span className="sw" style={{ background: '#ffffff', border: '2px solid #f43f5e', borderRadius: '50%' }} /> SOS Distress Beacon
             </div>
             {isoZones.length > 0 && (
               <div className="legend-item iso-alert">
-                ⚠ Isolated: {isoZones.join(', ')}
+                ⚠ Isolated Sectors: {isoZones.join(', ')}
               </div>
             )}
             {showSim && (
               <div className="legend-item">
-                <span className="sw" style={{ background: '#a78bfa' }} /> What-If projection
+                <span className="sw" style={{ background: '#c084fc' }} /> What-If Storm Projection
               </div>
             )}
             {selectedEvent && (
               <div className="legend-item highlight">
-                EVT {selectedEvent.event_id} · {(selectedEvent.confidence * 100).toFixed(0)}% conf
+                EPICENTER {selectedEvent.event_id} · {(selectedEvent.confidence * 100).toFixed(0)}% Conf
               </div>
             )}
           </div>
