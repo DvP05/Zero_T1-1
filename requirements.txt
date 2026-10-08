@@ -1,0 +1,21 @@
+# Coastal Flood Intelligence - Data Collection Dependencies
+# Install: pip install -r requirements.txt
+
+# Core
+requests>=2.31.0
+pandas>=2.1.0
+numpy>=1.24.0
+
+# NASA Earthdata (optional but recommended)
+earthaccess>=0.9.0
+
+# Copernicus Marine (optional - for real ocean data)
+copernicusmarine>=2.0.0
+
+# Geospatial (for later processing)
+# geopandas>=0.14.0
+# xarray>=2023.1.0
+# netCDF4>=1.6.0
+
+# Data Visualization (for quick checks)
+# matplotlib>=3.7.0
