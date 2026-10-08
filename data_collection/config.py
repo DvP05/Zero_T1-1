@@ -1,4 +1,4 @@
-﻿"""
+"""
 Central Configuration for Coastal Flood Intelligence Data Collection
 ====================================================================
 All API keys, coordinates, and shared settings live here.
@@ -92,6 +92,15 @@ COASTAL_ZONES: Dict[str, CoastalZone] = {
         coast="east",
         nearest_buoy_ids=["23091"],
         elevation_range_m=(0, 20),
+    ),
+    "goa": CoastalZone(
+        name="Goa (Miramar & Mormugao)",
+        lat=15.2993,
+        lon=73.9700,
+        bbox=(73.70, 15.15, 74.05, 15.60),
+        coast="west",
+        nearest_buoy_ids=["23226"],
+        elevation_range_m=(0, 15),
     ),
 }
 

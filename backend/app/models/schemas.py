@@ -56,6 +56,11 @@ class SensorReading(BaseModel):
     turbidity: float = 0.0
     ph: float = 0.0
     dissolved_oxygen: float = 0.0
+    water_level_m: Optional[float] = None
+    precipitation_mm_hr: Optional[float] = None
+    flood_depth_m: Optional[float] = None
+    sensor_type: Optional[str] = None
+    zone_id: Optional[str] = None
 
 
 class Observation(BaseModel):
@@ -64,6 +69,7 @@ class Observation(BaseModel):
     latitude: float
     longitude: float
     source: str  # "open_meteo" | "copernicus" | "nasa" | "sensor" | "simulated"
+    zone_id: Optional[str] = None
     variables: dict[str, float] = Field(default_factory=dict)
     quality: dict[str, object] = Field(default_factory=lambda: {"valid": True, "source_confidence": 0.9})
 
@@ -205,6 +211,8 @@ class CopilotResponse(BaseModel):
 
 class CoastalState(BaseModel):
     timestamp: datetime = Field(default_factory=datetime.utcnow)
+    zone_id: Optional[str] = None
+    zone_name: Optional[str] = None
     latitude: float
     longitude: float
     status: str = "NORMAL"  # NORMAL | WATCH | WARNING | ALERT
@@ -225,3 +233,48 @@ class IncidentReport(BaseModel):
     scenario: Optional[WhatIfResult] = None
     generated_at: datetime = Field(default_factory=datetime.utcnow)
     summary: str = ""
+
+
+# ---------------------------------------------------------------------------
+# Multi-Location & Data Collection
+# ---------------------------------------------------------------------------
+
+class CoastalZoneInfo(BaseModel):
+    zone_id: str
+    name: str
+    lat: float
+    lon: float
+    bbox: list[float]  # [min_lon, min_lat, max_lon, max_lat]
+    coast: str  # "west" | "east"
+    nearest_buoy_ids: list[str] = Field(default_factory=list)
+    elevation_range_m: list[float] = Field(default_factory=lambda: [0.0, 15.0])
+    has_cached_data: bool = False
+    sensor_count: int = 0
+    status: str = "ONLINE"
+
+
+class LocationSummary(BaseModel):
+    zone_id: str
+    name: str
+    lat: float
+    lon: float
+    coast: str
+    has_cached_data: bool = False
+    sensor_count: int = 0
+    status: str = "ONLINE"
+
+
+class CollectionRequest(BaseModel):
+    sources: list[str] = Field(default_factory=lambda: ["open_meteo", "tidalis"])
+    live_only: bool = True
+    scenario: str = "heavy_coastal_rain"
+
+
+class CollectionStatus(BaseModel):
+    zone_id: str
+    status: str = "idle"  # idle | running | completed | failed
+    message: str = ""
+    records_ingested: int = 0
+    sources: list[str] = Field(default_factory=list)
+    updated_at: datetime = Field(default_factory=datetime.utcnow)
+

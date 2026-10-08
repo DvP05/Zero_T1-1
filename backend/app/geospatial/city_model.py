@@ -332,8 +332,8 @@ def _zone_properties(zone: Zone) -> dict:
     }
 
 
-def as_geojson() -> dict:
-    """Return all layers as a single GeoJSON FeatureCollection bundle."""
+def _goa_geojson() -> dict:
+    """Return all Goa layers as a single GeoJSON FeatureCollection bundle."""
     zones = {
         "type": "FeatureCollection",
         "features": [
@@ -395,6 +395,7 @@ def as_geojson() -> dict:
         },
         "meta": {
             "name": "TIDALIS Coastal District (Goa)",
+            "zone_id": "goa",
             "demo_data": True,
             "zone_count": len(ZONES),
             "road_count": len(ROADS),
@@ -404,5 +405,99 @@ def as_geojson() -> dict:
     }
 
 
+def generate_zone_twin(zone_id: str) -> dict:
+    """Dynamically generate digital twin geometry layers for any registered coastal zone."""
+    from data_collection.config import COASTAL_ZONES
+    zid = zone_id.lower().strip()
+    if zid not in COASTAL_ZONES or zid == "goa":
+        return _goa_geojson()
+
+    z = COASTAL_ZONES[zid]
+    min_lon, min_lat, max_lon, max_lat = z.bbox
+    d_lon = max_lon - min_lon
+    d_lat = max_lat - min_lat
+    mid_lon = min_lon + d_lon * 0.5
+    lat_step = d_lat / 3.0
+
+    zone_features = [
+        {"type": "Feature", "geometry": {"type": "Polygon", "coordinates": [_rect(min_lon, min_lat + 2 * lat_step, mid_lon, max_lat)]},
+         "properties": {"id": "A", "name": f"Zone A · {z.name} Coastal North", "elevation_m": round(z.elevation_range_m[0] + 1.4, 2), "drainage_capacity": 0.74, "historical_flood_freq": 0.35, "imperviousness": 0.65, "population": 25000, "vulnerability": 0.45}},
+        {"type": "Feature", "geometry": {"type": "Polygon", "coordinates": [_rect(min_lon, min_lat + lat_step, mid_lon, min_lat + 2 * lat_step)]},
+         "properties": {"id": "B", "name": f"Zone B · {z.name} Low-lying Estuary", "elevation_m": round(z.elevation_range_m[0] + 0.8, 2), "drainage_capacity": 0.55, "historical_flood_freq": 0.65, "imperviousness": 0.75, "population": 38000, "vulnerability": 0.82}},
+        {"type": "Feature", "geometry": {"type": "Polygon", "coordinates": [_rect(min_lon, min_lat, mid_lon, min_lat + lat_step)]},
+         "properties": {"id": "C", "name": f"Zone C · {z.name} South Harbour", "elevation_m": round(z.elevation_range_m[0] + 1.8, 2), "drainage_capacity": 0.65, "historical_flood_freq": 0.42, "imperviousness": 0.60, "population": 18000, "vulnerability": 0.52}},
+        {"type": "Feature", "geometry": {"type": "Polygon", "coordinates": [_rect(mid_lon, min_lat + 1.5 * lat_step, max_lon, max_lat)]},
+         "properties": {"id": "D", "name": f"Zone D · {z.name} Upland District", "elevation_m": round(z.elevation_range_m[1] * 0.6, 2), "drainage_capacity": 0.88, "historical_flood_freq": 0.10, "imperviousness": 0.45, "population": 22000, "vulnerability": 0.25}},
+        {"type": "Feature", "geometry": {"type": "Polygon", "coordinates": [_rect(mid_lon, min_lat, max_lon, min_lat + 1.5 * lat_step)]},
+         "properties": {"id": "E", "name": f"Zone E · {z.name} Inland Commercial", "elevation_m": round(z.elevation_range_m[1] * 0.4, 2), "drainage_capacity": 0.80, "historical_flood_freq": 0.18, "imperviousness": 0.55, "population": 31000, "vulnerability": 0.32}},
+    ]
+
+    node_coords = {
+        "N-A": [round(min_lon + d_lon * 0.25, 4), round(min_lat + 2.5 * lat_step, 4)],
+        "N-B": [round(min_lon + d_lon * 0.25, 4), round(min_lat + 1.5 * lat_step, 4)],
+        "N-C": [round(min_lon + d_lon * 0.25, 4), round(min_lat + 0.5 * lat_step, 4)],
+        "N-D": [round(mid_lon + d_lon * 0.25, 4), round(min_lat + 2.25 * lat_step, 4)],
+        "N-E": [round(mid_lon + d_lon * 0.25, 4), round(min_lat + 0.75 * lat_step, 4)],
+        "N-HUB": [round(max_lon + d_lon * 0.05, 4), round(min_lat + 1.5 * lat_step, 4)],
+    }
+    nodes_features = [
+        {"type": "Feature", "geometry": {"type": "Point", "coordinates": coord},
+         "properties": {"id": nid, "name": f"{z.name} {nid}", "is_hub": (nid == "N-HUB"), "elevation_m": 5.0}}
+        for nid, coord in node_coords.items()
+    ]
+
+    roads_features = [
+        {"type": "Feature", "geometry": {"type": "LineString", "coordinates": [node_coords["N-A"], node_coords["N-B"]]},
+         "properties": {"id": "R-1", "name": "Coastal North-Mid Corridor", "elevation_m": 1.5, "critical": False}},
+        {"type": "Feature", "geometry": {"type": "LineString", "coordinates": [node_coords["N-B"], node_coords["N-C"]]},
+         "properties": {"id": "R-2", "name": "Estuary-Harbour Link", "elevation_m": 1.1, "critical": False}},
+        {"type": "Feature", "geometry": {"type": "LineString", "coordinates": [node_coords["N-A"], node_coords["N-D"]]},
+         "properties": {"id": "R-3", "name": "Northern Evacuation Route", "elevation_m": 3.2, "critical": True}},
+        {"type": "Feature", "geometry": {"type": "LineString", "coordinates": [node_coords["N-B"], node_coords["N-E"]]},
+         "properties": {"id": "R-4", "name": "Central Spine Access", "elevation_m": 2.2, "critical": True}},
+        {"type": "Feature", "geometry": {"type": "LineString", "coordinates": [node_coords["N-D"], node_coords["N-HUB"]]},
+         "properties": {"id": "R-5", "name": "Highway to High-Ground Hub", "elevation_m": 6.5, "critical": True}},
+        {"type": "Feature", "geometry": {"type": "LineString", "coordinates": [node_coords["N-E"], node_coords["N-HUB"]]},
+         "properties": {"id": "R-6", "name": "Inland Evacuation Arterial", "elevation_m": 5.8, "critical": True}},
+    ]
+
+    facilities_features = [
+        {"type": "Feature", "geometry": {"type": "Point", "coordinates": [round(min_lon + d_lon * 0.22, 4), round(min_lat + 1.4 * lat_step, 4)]},
+         "properties": {"id": "F-HOSP", "name": f"{z.name} District Hospital", "kind": "hospital", "zone_id": "B", "criticality": 0.95}},
+        {"type": "Feature", "geometry": {"type": "Point", "coordinates": [round(min_lon + d_lon * 0.28, 4), round(min_lat + 0.6 * lat_step, 4)]},
+         "properties": {"id": "F-SUB", "name": f"{z.name} Coastal Substation", "kind": "substation", "zone_id": "C", "criticality": 0.90}},
+        {"type": "Feature", "geometry": {"type": "Point", "coordinates": [round(mid_lon + d_lon * 0.25, 4), round(min_lat + 2.3 * lat_step, 4)]},
+         "properties": {"id": "F-SHELTER", "name": f"{z.name} High Ground Shelter", "kind": "shelter", "zone_id": "D", "criticality": 0.85}},
+    ]
+
+    return {
+        "type": "FeatureCollection",
+        "features": [],
+        "layers": {
+            "zones": {"type": "FeatureCollection", "features": zone_features},
+            "roads": {"type": "FeatureCollection", "features": roads_features},
+            "buildings": {"type": "FeatureCollection", "features": []},
+            "facilities": {"type": "FeatureCollection", "features": facilities_features},
+            "nodes": {"type": "FeatureCollection", "features": nodes_features},
+        },
+        "meta": {
+            "name": f"TIDALIS Coastal District ({z.name})",
+            "zone_id": zid,
+            "demo_data": False,
+            "zone_count": len(zone_features),
+            "road_count": len(roads_features),
+            "building_count": 0,
+            "facility_count": len(facilities_features),
+        },
+    }
+
+
+def as_geojson(zone_id: Optional[str] = None) -> dict:
+    if zone_id and zone_id.lower().strip() != "goa":
+        return generate_zone_twin(zone_id)
+    return _goa_geojson()
+
+
 def facilities_in_zone(zone_id: str) -> list[Facility]:
     return [f for f in FACILITIES if f.zone_id == zone_id]
+
