@@ -1,3911 +1,1601 @@
 {
   "type": "FeatureCollection",
-  "features": [
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              73.93,
-              15.315
-            ],
-            [
-              73.966,
-              15.315
-            ],
-            [
-              73.966,
-              15.345
-            ],
-            [
-              73.93,
-              15.345
-            ],
-            [
-              73.93,
-              15.315
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "A",
-        "name": "Zone A \u00b7 Miramar Coast (Goa)",
-        "elevation_m": 1.4,
-        "drainage_capacity": 0.74,
-        "historical_flood_freq": 0.34,
-        "imperviousness": 0.62,
-        "slope": 1.6,
-        "population": 14200,
-        "vulnerability": 0.42
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              73.93,
-              15.283
-            ],
-            [
-              73.966,
-              15.283
-            ],
-            [
-              73.966,
-              15.315
-            ],
-            [
-              73.93,
-              15.315
-            ],
-            [
-              73.93,
-              15.283
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "B",
-        "name": "Zone B \u00b7 Low-lying Estuary (Goa)",
-        "elevation_m": 1.05,
-        "drainage_capacity": 0.58,
-        "historical_flood_freq": 0.61,
-        "imperviousness": 0.71,
-        "slope": 0.9,
-        "population": 21800,
-        "vulnerability": 0.78
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              73.93,
-              15.251
-            ],
-            [
-              73.966,
-              15.251
-            ],
-            [
-              73.966,
-              15.283
-            ],
-            [
-              73.93,
-              15.283
-            ],
-            [
-              73.93,
-              15.251
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "C",
-        "name": "Zone C \u00b7 South Harbour (Goa)",
-        "elevation_m": 1.7,
-        "drainage_capacity": 0.66,
-        "historical_flood_freq": 0.41,
-        "imperviousness": 0.55,
-        "slope": 1.9,
-        "population": 9600,
-        "vulnerability": 0.51
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              73.966,
-              15.315
-            ],
-            [
-              74.002,
-              15.315
-            ],
-            [
-              74.002,
-              15.345
-            ],
-            [
-              73.966,
-              15.345
-            ],
-            [
-              73.966,
-              15.315
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "D",
-        "name": "Zone D \u00b7 Upland North (Goa)",
-        "elevation_m": 4.6,
-        "drainage_capacity": 0.88,
-        "historical_flood_freq": 0.08,
-        "imperviousness": 0.44,
-        "slope": 4.7,
-        "population": 11300,
-        "vulnerability": 0.22
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              73.966,
-              15.283
-            ],
-            [
-              74.002,
-              15.283
-            ],
-            [
-              74.002,
-              15.315
-            ],
-            [
-              73.966,
-              15.315
-            ],
-            [
-              73.966,
-              15.283
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "E",
-        "name": "Zone E \u00b7 Inland East (Goa)",
-        "elevation_m": 3.3,
-        "drainage_capacity": 0.81,
-        "historical_flood_freq": 0.15,
-        "imperviousness": 0.5,
-        "slope": 3.4,
-        "population": 16700,
-        "vulnerability": 0.3
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              72.8,
-              18.9
-            ],
-            [
-              72.85,
-              18.9
-            ],
-            [
-              72.85,
-              19.1
-            ],
-            [
-              72.8,
-              19.1
-            ],
-            [
-              72.8,
-              18.9
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "MUM",
-        "name": "Zone Mumbai \u00b7 Marine Drive",
-        "elevation_m": 2.5,
-        "drainage_capacity": 0.45,
-        "historical_flood_freq": 0.85,
-        "imperviousness": 0.95,
-        "slope": 0.5,
-        "population": 120000,
-        "vulnerability": 0.65
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              80.25,
-              13.0
-            ],
-            [
-              80.3,
-              13.0
-            ],
-            [
-              80.3,
-              13.1
-            ],
-            [
-              80.25,
-              13.1
-            ],
-            [
-              80.25,
-              13.0
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "CHN",
-        "name": "Zone Chennai \u00b7 Marina Beach",
-        "elevation_m": 2.0,
-        "drainage_capacity": 0.55,
-        "historical_flood_freq": 0.7,
-        "imperviousness": 0.85,
-        "slope": 0.8,
-        "population": 85000,
-        "vulnerability": 0.72
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              76.2,
-              9.9
-            ],
-            [
-              76.3,
-              9.9
-            ],
-            [
-              76.3,
-              10.0
-            ],
-            [
-              76.2,
-              10.0
-            ],
-            [
-              76.2,
-              9.9
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "KOC",
-        "name": "Zone Kochi \u00b7 Fort Kochi",
-        "elevation_m": 1.2,
-        "drainage_capacity": 0.6,
-        "historical_flood_freq": 0.75,
-        "imperviousness": 0.65,
-        "slope": 0.4,
-        "population": 45000,
-        "vulnerability": 0.68
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              83.25,
-              17.65
-            ],
-            [
-              83.35,
-              17.65
-            ],
-            [
-              83.35,
-              17.75
-            ],
-            [
-              83.25,
-              17.75
-            ],
-            [
-              83.25,
-              17.65
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "VIZ",
-        "name": "Zone Vizag \u00b7 RK Beach",
-        "elevation_m": 3.5,
-        "drainage_capacity": 0.7,
-        "historical_flood_freq": 0.3,
-        "imperviousness": 0.7,
-        "slope": 2.5,
-        "population": 55000,
-        "vulnerability": 0.4
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              88.0,
-              22.0
-            ],
-            [
-              88.15,
-              22.0
-            ],
-            [
-              88.15,
-              22.1
-            ],
-            [
-              88.0,
-              22.1
-            ],
-            [
-              88.0,
-              22.0
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "KOL",
-        "name": "Zone Kolkata \u00b7 Haldia Port",
-        "elevation_m": 1.5,
-        "drainage_capacity": 0.4,
-        "historical_flood_freq": 0.9,
-        "imperviousness": 0.8,
-        "slope": 0.2,
-        "population": 95000,
-        "vulnerability": 0.82
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            73.948,
-            15.33
-          ],
-          [
-            73.94,
-            15.316
-          ],
-          [
-            73.948,
-            15.299
-          ]
-        ]
-      },
-      "properties": {
-        "id": "RD-01",
-        "name": "Coastal Road North",
-        "elevation_m": 1.15,
-        "from_node": "N-A",
-        "to_node": "N-B",
-        "lanes": 2,
-        "critical": false
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            73.948,
-            15.299
-          ],
-          [
-            73.939,
-            15.282
-          ],
-          [
-            73.948,
-            15.267
-          ]
-        ]
-      },
-      "properties": {
-        "id": "RD-02",
-        "name": "Coastal Road South",
-        "elevation_m": 1.0,
-        "from_node": "N-B",
-        "to_node": "N-C",
-        "lanes": 2,
-        "critical": false
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            73.948,
-            15.33
-          ],
-          [
-            73.968,
-            15.332
-          ],
-          [
-            73.984,
-            15.33
-          ]
-        ]
-      },
-      "properties": {
-        "id": "RD-03",
-        "name": "Miramar Uplink",
-        "elevation_m": 2.4,
-        "from_node": "N-A",
-        "to_node": "N-D",
-        "lanes": 3,
-        "critical": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            73.948,
-            15.299
-          ],
-          [
-            73.967,
-            15.301
-          ],
-          [
-            73.984,
-            15.299
-          ]
-        ]
-      },
-      "properties": {
-        "id": "RD-04",
-        "name": "Bandra Connector",
-        "elevation_m": 1.9,
-        "from_node": "N-B",
-        "to_node": "N-E",
-        "lanes": 3,
-        "critical": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            73.948,
-            15.267
-          ],
-          [
-            73.967,
-            15.269
-          ],
-          [
-            73.984,
-            15.299
-          ]
-        ]
-      },
-      "properties": {
-        "id": "RD-05",
-        "name": "Estuary Ring Road",
-        "elevation_m": 2.1,
-        "from_node": "N-C",
-        "to_node": "N-E",
-        "lanes": 2,
-        "critical": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            73.984,
-            15.33
-          ],
-          [
-            73.986,
-            15.314
-          ],
-          [
-            73.984,
-            15.299
-          ]
-        ]
-      },
-      "properties": {
-        "id": "RD-06",
-        "name": "Inland Bypass",
-        "elevation_m": 5.2,
-        "from_node": "N-D",
-        "to_node": "N-E",
-        "lanes": 4,
-        "critical": false
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            73.984,
-            15.33
-          ],
-          [
-            74.004,
-            15.316
-          ],
-          [
-            74.022,
-            15.3
-          ]
-        ]
-      },
-      "properties": {
-        "id": "RD-07",
-        "name": "NH-48 North Approach",
-        "elevation_m": 8.0,
-        "from_node": "N-D",
-        "to_node": "N-HUB",
-        "lanes": 4,
-        "critical": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            73.984,
-            15.299
-          ],
-          [
-            74.005,
-            15.3
-          ],
-          [
-            74.022,
-            15.3
-          ]
-        ]
-      },
-      "properties": {
-        "id": "RD-08",
-        "name": "NH-48 East Spur",
-        "elevation_m": 7.5,
-        "from_node": "N-E",
-        "to_node": "N-HUB",
-        "lanes": 4,
-        "critical": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            73.948,
-            15.299
-          ],
-          [
-            73.96,
-            15.312
-          ],
-          [
-            73.972,
-            15.322
-          ],
-          [
-            73.984,
-            15.33
-          ]
-        ]
-      },
-      "properties": {
-        "id": "RD-09",
-        "name": "Ridge Hill Road",
-        "elevation_m": 2.9,
-        "from_node": "N-B",
-        "to_node": "N-D",
-        "lanes": 2,
-        "critical": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              73.93180000000001,
-              15.3165
-            ],
-            [
-              73.93911975606498,
-              15.3165
-            ],
-            [
-              73.93911975606498,
-              15.322097545077748
-            ],
-            [
-              73.93180000000001,
-              15.322097545077748
-            ],
-            [
-              73.93180000000001,
-              15.3165
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-A-00",
-        "zone_id": "A",
-        "height_m": 15.9,
-        "floors": 4,
-        "usage": "commercial"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              73.93180000000001,
-              15.3265
-            ],
-            [
-              73.9400426061697,
-              15.3265
-            ],
-            [
-              73.9400426061697,
-              15.333765179529689
-            ],
-            [
-              73.93180000000001,
-              15.333765179529689
-            ],
-            [
-              73.93180000000001,
-              15.3265
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-A-01",
-        "zone_id": "A",
-        "height_m": 20.8,
-        "floors": 6,
-        "usage": "residential"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              73.93180000000001,
-              15.336500000000001
-            ],
-            [
-              73.93956259947949,
-              15.336500000000001
-            ],
-            [
-              73.93956259947949,
-              15.34373691602867
-            ],
-            [
-              73.93180000000001,
-              15.34373691602867
-            ],
-            [
-              73.93180000000001,
-              15.336500000000001
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-A-02",
-        "zone_id": "A",
-        "height_m": 11.3,
-        "floors": 3,
-        "usage": "residential"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              73.94380000000001,
-              15.3165
-            ],
-            [
-              73.94943523526952,
-              15.3165
-            ],
-            [
-              73.94943523526952,
-              15.323097624994848
-            ],
-            [
-              73.94380000000001,
-              15.323097624994848
-            ],
-            [
-              73.94380000000001,
-              15.3165
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-A-03",
-        "zone_id": "A",
-        "height_m": 26.0,
-        "floors": 7,
-        "usage": "commercial"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              73.94380000000001,
-              15.3265
-            ],
-            [
-              73.95208023447633,
-              15.3265
-            ],
-            [
-              73.95208023447633,
-              15.33299124664853
-            ],
-            [
-              73.94380000000001,
-              15.33299124664853
-            ],
-            [
-              73.94380000000001,
-              15.3265
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-A-04",
-        "zone_id": "A",
-        "height_m": 24.8,
-        "floors": 7,
-        "usage": "commercial"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              73.94380000000001,
-              15.336500000000001
-            ],
-            [
-              73.9498163827305,
-              15.336500000000001
-            ],
-            [
-              73.9498163827305,
-              15.343555538795451
-            ],
-            [
-              73.94380000000001,
-              15.343555538795451
-            ],
-            [
-              73.94380000000001,
-              15.336500000000001
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-A-05",
-        "zone_id": "A",
-        "height_m": 31.2,
-        "floors": 9,
-        "usage": "residential"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              73.9558,
-              15.3165
-            ],
-            [
-              73.9634980609081,
-              15.3165
-            ],
-            [
-              73.9634980609081,
-              15.323908457270681
-            ],
-            [
-              73.9558,
-              15.323908457270681
-            ],
-            [
-              73.9558,
-              15.3165
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-A-06",
-        "zone_id": "A",
-        "height_m": 6.7,
-        "floors": 2,
-        "usage": "residential"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              73.9558,
-              15.3265
-            ],
-            [
-              73.96139379549348,
-              15.3265
-            ],
-            [
-              73.96139379549348,
-              15.33105142155964
-            ],
-            [
-              73.9558,
-              15.33105142155964
-            ],
-            [
-              73.9558,
-              15.3265
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-A-07",
-        "zone_id": "A",
-        "height_m": 16.8,
-        "floors": 5,
-        "usage": "commercial"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              73.9558,
-              15.336500000000001
-            ],
-            [
-              73.96389680081977,
-              15.336500000000001
-            ],
-            [
-              73.96389680081977,
-              15.34399896414872
-            ],
-            [
-              73.9558,
-              15.34399896414872
-            ],
-            [
-              73.9558,
-              15.336500000000001
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-A-08",
-        "zone_id": "A",
-        "height_m": 22.4,
-        "floors": 7,
-        "usage": "residential"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              73.93180000000001,
-              15.2846
-            ],
-            [
-              73.93925959206854,
-              15.2846
-            ],
-            [
-              73.93925959206854,
-              15.290132176984539
-            ],
-            [
-              73.93180000000001,
-              15.290132176984539
-            ],
-            [
-              73.93180000000001,
-              15.2846
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-B-09",
-        "zone_id": "B",
-        "height_m": 9.5,
-        "floors": 2,
-        "usage": "commercial"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              73.93180000000001,
-              15.295266666666667
-            ],
-            [
-              73.93830627552163,
-              15.295266666666667
-            ],
-            [
-              73.93830627552163,
-              15.302919178483016
-            ],
-            [
-              73.93180000000001,
-              15.302919178483016
-            ],
-            [
-              73.93180000000001,
-              15.295266666666667
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-B-10",
-        "zone_id": "B",
-        "height_m": 14.9,
-        "floors": 4,
-        "usage": "commercial"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              73.93180000000001,
-              15.305933333333332
-            ],
-            [
-              73.93958549495476,
-              15.305933333333332
-            ],
-            [
-              73.93958549495476,
-              15.313121697612475
-            ],
-            [
-              73.93180000000001,
-              15.313121697612475
-            ],
-            [
-              73.93180000000001,
-              15.305933333333332
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-B-11",
-        "zone_id": "B",
-        "height_m": 32.7,
-        "floors": 9,
-        "usage": "residential"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              73.94380000000001,
-              15.2846
-            ],
-            [
-              73.95095531441237,
-              15.2846
-            ],
-            [
-              73.95095531441237,
-              15.291806979171136
-            ],
-            [
-              73.94380000000001,
-              15.291806979171136
-            ],
-            [
-              73.94380000000001,
-              15.2846
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-B-12",
-        "zone_id": "B",
-        "height_m": 25.3,
-        "floors": 7,
-        "usage": "commercial"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              73.94380000000001,
-              15.295266666666667
-            ],
-            [
-              73.95014240575314,
-              15.295266666666667
-            ],
-            [
-              73.95014240575314,
-              15.302334686679773
-            ],
-            [
-              73.94380000000001,
-              15.302334686679773
-            ],
-            [
-              73.94380000000001,
-              15.295266666666667
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-B-13",
-        "zone_id": "B",
-        "height_m": 10.0,
-        "floors": 2,
-        "usage": "residential"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              73.94380000000001,
-              15.305933333333332
-            ],
-            [
-              73.94989071577179,
-              15.305933333333332
-            ],
-            [
-              73.94989071577179,
-              15.313781866380541
-            ],
-            [
-              73.94380000000001,
-              15.313781866380541
-            ],
-            [
-              73.94380000000001,
-              15.305933333333332
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-B-14",
-        "zone_id": "B",
-        "height_m": 22.7,
-        "floors": 6,
-        "usage": "commercial"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              73.9558,
-              15.295266666666667
-            ],
-            [
-              73.96378108192661,
-              15.295266666666667
-            ],
-            [
-              73.96378108192661,
-              15.302968160452787
-            ],
-            [
-              73.9558,
-              15.302968160452787
-            ],
-            [
-              73.9558,
-              15.295266666666667
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-B-15",
-        "zone_id": "B",
-        "height_m": 8.1,
-        "floors": 2,
-        "usage": "commercial"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              73.9558,
-              15.305933333333332
-            ],
-            [
-              73.96140144035132,
-              15.305933333333332
-            ],
-            [
-              73.96140144035132,
-              15.312209552113547
-            ],
-            [
-              73.9558,
-              15.312209552113547
-            ],
-            [
-              73.9558,
-              15.305933333333332
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-B-16",
-        "zone_id": "B",
-        "height_m": 25.9,
-        "floors": 8,
-        "usage": "residential"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              73.93180000000001,
-              15.2526
-            ],
-            [
-              73.9395174785209,
-              15.2526
-            ],
-            [
-              73.9395174785209,
-              15.258243725269255
-            ],
-            [
-              73.93180000000001,
-              15.258243725269255
-            ],
-            [
-              73.93180000000001,
-              15.2526
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-C-17",
-        "zone_id": "C",
-        "height_m": 16.8,
-        "floors": 5,
-        "usage": "industrial"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              73.93180000000001,
-              15.263266666666667
-            ],
-            [
-              73.93874654352062,
-              15.263266666666667
-            ],
-            [
-              73.93874654352062,
-              15.26887584797922
-            ],
-            [
-              73.93180000000001,
-              15.26887584797922
-            ],
-            [
-              73.93180000000001,
-              15.263266666666667
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-C-18",
-        "zone_id": "C",
-        "height_m": 18.8,
-        "floors": 5,
-        "usage": "industrial"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              73.93180000000001,
-              15.273933333333332
-            ],
-            [
-              73.93790031591719,
-              15.273933333333332
-            ],
-            [
-              73.93790031591719,
-              15.281174068600915
-            ],
-            [
-              73.93180000000001,
-              15.281174068600915
-            ],
-            [
-              73.93180000000001,
-              15.273933333333332
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-C-19",
-        "zone_id": "C",
-        "height_m": 38.9,
-        "floors": 11,
-        "usage": "residential"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              73.94380000000001,
-              15.2526
-            ],
-            [
-              73.95143911333466,
-              15.2526
-            ],
-            [
-              73.95143911333466,
-              15.259413365395584
-            ],
-            [
-              73.94380000000001,
-              15.259413365395584
-            ],
-            [
-              73.94380000000001,
-              15.2526
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-C-20",
-        "zone_id": "C",
-        "height_m": 6.5,
-        "floors": 2,
-        "usage": "residential"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              73.94380000000001,
-              15.263266666666667
-            ],
-            [
-              73.95077493745913,
-              15.263266666666667
-            ],
-            [
-              73.95077493745913,
-              15.27050903693699
-            ],
-            [
-              73.94380000000001,
-              15.27050903693699
-            ],
-            [
-              73.94380000000001,
-              15.263266666666667
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-C-21",
-        "zone_id": "C",
-        "height_m": 33.3,
-        "floors": 10,
-        "usage": "industrial"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              73.94380000000001,
-              15.273933333333332
-            ],
-            [
-              73.95001034123378,
-              15.273933333333332
-            ],
-            [
-              73.95001034123378,
-              15.279710222511891
-            ],
-            [
-              73.94380000000001,
-              15.279710222511891
-            ],
-            [
-              73.94380000000001,
-              15.273933333333332
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-C-22",
-        "zone_id": "C",
-        "height_m": 31.1,
-        "floors": 9,
-        "usage": "residential"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              73.9558,
-              15.2526
-            ],
-            [
-              73.96344519599789,
-              15.2526
-            ],
-            [
-              73.96344519599789,
-              15.258282024926247
-            ],
-            [
-              73.9558,
-              15.258282024926247
-            ],
-            [
-              73.9558,
-              15.2526
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-C-23",
-        "zone_id": "C",
-        "height_m": 17.5,
-        "floors": 5,
-        "usage": "residential"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              73.9558,
-              15.273933333333332
-            ],
-            [
-              73.96243299383751,
-              15.273933333333332
-            ],
-            [
-              73.96243299383751,
-              15.281425368816018
-            ],
-            [
-              73.9558,
-              15.281425368816018
-            ],
-            [
-              73.9558,
-              15.273933333333332
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-C-24",
-        "zone_id": "C",
-        "height_m": 21.2,
-        "floors": 6,
-        "usage": "residential"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              73.9678,
-              15.3165
-            ],
-            [
-              73.97678733096497,
-              15.3165
-            ],
-            [
-              73.97678733096497,
-              15.321111438517097
-            ],
-            [
-              73.9678,
-              15.321111438517097
-            ],
-            [
-              73.9678,
-              15.3165
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-D-25",
-        "zone_id": "D",
-        "height_m": 34.3,
-        "floors": 10,
-        "usage": "residential"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              73.9678,
-              15.3265
-            ],
-            [
-              73.97360926211775,
-              15.3265
-            ],
-            [
-              73.97360926211775,
-              15.331729077144741
-            ],
-            [
-              73.9678,
-              15.331729077144741
-            ],
-            [
-              73.9678,
-              15.3265
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-D-26",
-        "zone_id": "D",
-        "height_m": 8.4,
-        "floors": 2,
-        "usage": "residential"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              73.9678,
-              15.336500000000001
-            ],
-            [
-              73.97512588584111,
-              15.336500000000001
-            ],
-            [
-              73.97512588584111,
-              15.3437867938491
-            ],
-            [
-              73.9678,
-              15.3437867938491
-            ],
-            [
-              73.9678,
-              15.336500000000001
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-D-27",
-        "zone_id": "D",
-        "height_m": 39.1,
-        "floors": 11,
-        "usage": "residential"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              73.9798,
-              15.3165
-            ],
-            [
-              73.98862092454544,
-              15.3165
-            ],
-            [
-              73.98862092454544,
-              15.322517465556494
-            ],
-            [
-              73.9798,
-              15.322517465556494
-            ],
-            [
-              73.9798,
-              15.3165
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-D-28",
-        "zone_id": "D",
-        "height_m": 37.9,
-        "floors": 11,
-        "usage": "residential"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              73.9798,
-              15.3265
-            ],
-            [
-              73.98698655811747,
-              15.3265
-            ],
-            [
-              73.98698655811747,
-              15.33104753163044
-            ],
-            [
-              73.9798,
-              15.33104753163044
-            ],
-            [
-              73.9798,
-              15.3265
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-D-29",
-        "zone_id": "D",
-        "height_m": 14.7,
-        "floors": 4,
-        "usage": "residential"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              73.9798,
-              15.336500000000001
-            ],
-            [
-              73.98753749306081,
-              15.336500000000001
-            ],
-            [
-              73.98753749306081,
-              15.342845805261037
-            ],
-            [
-              73.9798,
-              15.342845805261037
-            ],
-            [
-              73.9798,
-              15.336500000000001
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-D-30",
-        "zone_id": "D",
-        "height_m": 31.7,
-        "floors": 9,
-        "usage": "residential"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              73.9918,
-              15.3265
-            ],
-            [
-              73.99805337421526,
-              15.3265
-            ],
-            [
-              73.99805337421526,
-              15.331668468102391
-            ],
-            [
-              73.9918,
-              15.331668468102391
-            ],
-            [
-              73.9918,
-              15.3265
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-D-31",
-        "zone_id": "D",
-        "height_m": 9.2,
-        "floors": 2,
-        "usage": "commercial"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              73.9918,
-              15.336500000000001
-            ],
-            [
-              74.00009866906004,
-              15.336500000000001
-            ],
-            [
-              74.00009866906004,
-              15.343019687011248
-            ],
-            [
-              73.9918,
-              15.343019687011248
-            ],
-            [
-              73.9918,
-              15.336500000000001
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-D-32",
-        "zone_id": "D",
-        "height_m": 22.5,
-        "floors": 7,
-        "usage": "commercial"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              73.9678,
-              15.2846
-            ],
-            [
-              73.97546884482777,
-              15.2846
-            ],
-            [
-              73.97546884482777,
-              15.291911953524824
-            ],
-            [
-              73.9678,
-              15.291911953524824
-            ],
-            [
-              73.9678,
-              15.2846
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-E-33",
-        "zone_id": "E",
-        "height_m": 12.5,
-        "floors": 3,
-        "usage": "industrial"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              73.9678,
-              15.295266666666667
-            ],
-            [
-              73.97629198428018,
-              15.295266666666667
-            ],
-            [
-              73.97629198428018,
-              15.300568820222638
-            ],
-            [
-              73.9678,
-              15.300568820222638
-            ],
-            [
-              73.9678,
-              15.295266666666667
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-E-34",
-        "zone_id": "E",
-        "height_m": 16.4,
-        "floors": 5,
-        "usage": "residential"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              73.9678,
-              15.305933333333332
-            ],
-            [
-              73.97648330901754,
-              15.305933333333332
-            ],
-            [
-              73.97648330901754,
-              15.312581254695152
-            ],
-            [
-              73.9678,
-              15.312581254695152
-            ],
-            [
-              73.9678,
-              15.305933333333332
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-E-35",
-        "zone_id": "E",
-        "height_m": 19.7,
-        "floors": 5,
-        "usage": "residential"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              73.9798,
-              15.2846
-            ],
-            [
-              73.9876500528219,
-              15.2846
-            ],
-            [
-              73.9876500528219,
-              15.290730241735655
-            ],
-            [
-              73.9798,
-              15.290730241735655
-            ],
-            [
-              73.9798,
-              15.2846
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-E-36",
-        "zone_id": "E",
-        "height_m": 30.7,
-        "floors": 9,
-        "usage": "residential"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              73.9918,
-              15.2846
-            ],
-            [
-              73.99769016461447,
-              15.2846
-            ],
-            [
-              73.99769016461447,
-              15.290273670639522
-            ],
-            [
-              73.9918,
-              15.290273670639522
-            ],
-            [
-              73.9918,
-              15.2846
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-E-37",
-        "zone_id": "E",
-        "height_m": 25.7,
-        "floors": 8,
-        "usage": "commercial"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              73.9918,
-              15.295266666666667
-            ],
-            [
-              73.99808035322289,
-              15.295266666666667
-            ],
-            [
-              73.99808035322289,
-              15.301794280152723
-            ],
-            [
-              73.9918,
-              15.301794280152723
-            ],
-            [
-              73.9918,
-              15.295266666666667
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-E-38",
-        "zone_id": "E",
-        "height_m": 13.0,
-        "floors": 3,
-        "usage": "industrial"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              73.9918,
-              15.305933333333332
-            ],
-            [
-              73.99907941217738,
-              15.305933333333332
-            ],
-            [
-              73.99907941217738,
-              15.313666426482685
-            ],
-            [
-              73.9918,
-              15.313666426482685
-            ],
-            [
-              73.9918,
-              15.305933333333332
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-E-39",
-        "zone_id": "E",
-        "height_m": 15.6,
-        "floors": 4,
-        "usage": "residential"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              72.8025,
-              18.91
-            ],
-            [
-              72.81207160969448,
-              18.91
-            ],
-            [
-              72.81207160969448,
-              18.94972418954545
-            ],
-            [
-              72.8025,
-              18.94972418954545
-            ],
-            [
-              72.8025,
-              18.91
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-MUM-40",
-        "zone_id": "MUM",
-        "height_m": 9.5,
-        "floors": 2,
-        "usage": "residential"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              72.8025,
-              19.043333333333337
-            ],
-            [
-              72.81044600854662,
-              19.043333333333337
-            ],
-            [
-              72.81044600854662,
-              19.089167704639877
-            ],
-            [
-              72.8025,
-              19.089167704639877
-            ],
-            [
-              72.8025,
-              19.043333333333337
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-MUM-41",
-        "zone_id": "MUM",
-        "height_m": 25.6,
-        "floors": 7,
-        "usage": "tourism"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              72.81916666666666,
-              18.91
-            ],
-            [
-              72.82903240106404,
-              18.91
-            ],
-            [
-              72.82903240106404,
-              18.940240348353495
-            ],
-            [
-              72.81916666666666,
-              18.940240348353495
-            ],
-            [
-              72.81916666666666,
-              18.91
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-MUM-42",
-        "zone_id": "MUM",
-        "height_m": 41.8,
-        "floors": 12,
-        "usage": "commercial"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              72.81916666666666,
-              19.043333333333337
-            ],
-            [
-              72.8314984744123,
-              19.043333333333337
-            ],
-            [
-              72.8314984744123,
-              19.086127191164547
-            ],
-            [
-              72.81916666666666,
-              19.086127191164547
-            ],
-            [
-              72.81916666666666,
-              19.043333333333337
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-MUM-43",
-        "zone_id": "MUM",
-        "height_m": 14.5,
-        "floors": 4,
-        "usage": "tourism"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              72.83583333333333,
-              18.91
-            ],
-            [
-              72.84811669985044,
-              18.91
-            ],
-            [
-              72.84811669985044,
-              18.950029094693967
-            ],
-            [
-              72.83583333333333,
-              18.950029094693967
-            ],
-            [
-              72.83583333333333,
-              18.91
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-MUM-44",
-        "zone_id": "MUM",
-        "height_m": 25.7,
-        "floors": 8,
-        "usage": "tourism"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              72.83583333333333,
-              18.976666666666667
-            ],
-            [
-              72.84486062286189,
-              18.976666666666667
-            ],
-            [
-              72.84486062286189,
-              19.020943916677098
-            ],
-            [
-              72.83583333333333,
-              19.020943916677098
-            ],
-            [
-              72.83583333333333,
-              18.976666666666667
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-MUM-45",
-        "zone_id": "MUM",
-        "height_m": 39.7,
-        "floors": 12,
-        "usage": "commercial"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              72.83583333333333,
-              19.043333333333337
-            ],
-            [
-              72.84772007449804,
-              19.043333333333337
-            ],
-            [
-              72.84772007449804,
-              19.080669091665843
-            ],
-            [
-              72.83583333333333,
-              19.080669091665843
-            ],
-            [
-              72.83583333333333,
-              19.043333333333337
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-MUM-46",
-        "zone_id": "MUM",
-        "height_m": 22.5,
-        "floors": 7,
-        "usage": "residential"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              80.2525,
-              13.005
-            ],
-            [
-              80.2616528630597,
-              13.005
-            ],
-            [
-              80.2616528630597,
-              13.026986373977072
-            ],
-            [
-              80.2525,
-              13.026986373977072
-            ],
-            [
-              80.2525,
-              13.005
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-CHN-47",
-        "zone_id": "CHN",
-        "height_m": 13.2,
-        "floors": 3,
-        "usage": "residential"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              80.2525,
-              13.038333333333334
-            ],
-            [
-              80.26030959007898,
-              13.038333333333334
-            ],
-            [
-              80.26030959007898,
-              13.060227207332499
-            ],
-            [
-              80.2525,
-              13.060227207332499
-            ],
-            [
-              80.2525,
-              13.038333333333334
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-CHN-48",
-        "zone_id": "CHN",
-        "height_m": 29.5,
-        "floors": 8,
-        "usage": "commercial"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              80.26916666666666,
-              13.005
-            ],
-            [
-              80.28005834714625,
-              13.005
-            ],
-            [
-              80.28005834714625,
-              13.029699308681044
-            ],
-            [
-              80.26916666666666,
-              13.029699308681044
-            ],
-            [
-              80.26916666666666,
-              13.005
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-CHN-49",
-        "zone_id": "CHN",
-        "height_m": 29.1,
-        "floors": 9,
-        "usage": "commercial"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              80.26916666666666,
-              13.038333333333334
-            ],
-            [
-              80.27974021766762,
-              13.038333333333334
-            ],
-            [
-              80.27974021766762,
-              13.058948419554367
-            ],
-            [
-              80.26916666666666,
-              13.058948419554367
-            ],
-            [
-              80.26916666666666,
-              13.038333333333334
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-CHN-50",
-        "zone_id": "CHN",
-        "height_m": 16.4,
-        "floors": 5,
-        "usage": "port"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              80.26916666666666,
-              13.071666666666667
-            ],
-            [
-              80.28052570588997,
-              13.071666666666667
-            ],
-            [
-              80.28052570588997,
-              13.094121566467368
-            ],
-            [
-              80.26916666666666,
-              13.094121566467368
-            ],
-            [
-              80.26916666666666,
-              13.071666666666667
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-CHN-51",
-        "zone_id": "CHN",
-        "height_m": 7.0,
-        "floors": 2,
-        "usage": "residential"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              80.28583333333333,
-              13.005
-            ],
-            [
-              80.29643738771759,
-              13.005
-            ],
-            [
-              80.29643738771759,
-              13.021638049046386
-            ],
-            [
-              80.28583333333333,
-              13.021638049046386
-            ],
-            [
-              80.28583333333333,
-              13.005
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-CHN-52",
-        "zone_id": "CHN",
-        "height_m": 18.7,
-        "floors": 5,
-        "usage": "commercial"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              80.28583333333333,
-              13.038333333333334
-            ],
-            [
-              80.29502746058267,
-              13.038333333333334
-            ],
-            [
-              80.29502746058267,
-              13.057067071146147
-            ],
-            [
-              80.28583333333333,
-              13.057067071146147
-            ],
-            [
-              80.28583333333333,
-              13.038333333333334
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-CHN-53",
-        "zone_id": "CHN",
-        "height_m": 16.7,
-        "floors": 5,
-        "usage": "port"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              80.28583333333333,
-              13.071666666666667
-            ],
-            [
-              80.29467696246272,
-              13.071666666666667
-            ],
-            [
-              80.29467696246272,
-              13.092076572636918
-            ],
-            [
-              80.28583333333333,
-              13.092076572636918
-            ],
-            [
-              80.28583333333333,
-              13.071666666666667
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-CHN-54",
-        "zone_id": "CHN",
-        "height_m": 12.3,
-        "floors": 3,
-        "usage": "commercial"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              76.205,
-              9.905000000000001
-            ],
-            [
-              76.22151270886745,
-              9.905000000000001
-            ],
-            [
-              76.22151270886745,
-              9.921085413527761
-            ],
-            [
-              76.205,
-              9.921085413527761
-            ],
-            [
-              76.205,
-              9.905000000000001
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-KOC-55",
-        "zone_id": "KOC",
-        "height_m": 19.5,
-        "floors": 5,
-        "usage": "tourism"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              76.205,
-              9.938333333333334
-            ],
-            [
-              76.22163116269945,
-              9.938333333333334
-            ],
-            [
-              76.22163116269945,
-              9.95377055133338
-            ],
-            [
-              76.205,
-              9.95377055133338
-            ],
-            [
-              76.205,
-              9.938333333333334
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-KOC-56",
-        "zone_id": "KOC",
-        "height_m": 6.6,
-        "floors": 2,
-        "usage": "residential"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              76.23833333333333,
-              9.905000000000001
-            ],
-            [
-              76.25396283301691,
-              9.905000000000001
-            ],
-            [
-              76.25396283301691,
-              9.92515198867189
-            ],
-            [
-              76.23833333333333,
-              9.92515198867189
-            ],
-            [
-              76.23833333333333,
-              9.905000000000001
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-KOC-57",
-        "zone_id": "KOC",
-        "height_m": 37.3,
-        "floors": 11,
-        "usage": "residential"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              76.23833333333333,
-              9.938333333333334
-            ],
-            [
-              76.25737005649188,
-              9.938333333333334
-            ],
-            [
-              76.25737005649188,
-              9.955329318082235
-            ],
-            [
-              76.23833333333333,
-              9.955329318082235
-            ],
-            [
-              76.23833333333333,
-              9.938333333333334
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-KOC-58",
-        "zone_id": "KOC",
-        "height_m": 15.7,
-        "floors": 4,
-        "usage": "residential"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              76.23833333333333,
-              9.971666666666668
-            ],
-            [
-              76.26276480677485,
-              9.971666666666668
-            ],
-            [
-              76.26276480677485,
-              9.991969831312232
-            ],
-            [
-              76.23833333333333,
-              9.991969831312232
-            ],
-            [
-              76.23833333333333,
-              9.971666666666668
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-KOC-59",
-        "zone_id": "KOC",
-        "height_m": 42.0,
-        "floors": 12,
-        "usage": "industrial"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              76.27166666666666,
-              9.905000000000001
-            ],
-            [
-              76.28767099787513,
-              9.905000000000001
-            ],
-            [
-              76.28767099787513,
-              9.92555946710087
-            ],
-            [
-              76.27166666666666,
-              9.92555946710087
-            ],
-            [
-              76.27166666666666,
-              9.905000000000001
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-KOC-60",
-        "zone_id": "KOC",
-        "height_m": 20.5,
-        "floors": 6,
-        "usage": "residential"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              76.27166666666666,
-              9.938333333333334
-            ],
-            [
-              76.28921258112443,
-              9.938333333333334
-            ],
-            [
-              76.28921258112443,
-              9.956539318860099
-            ],
-            [
-              76.27166666666666,
-              9.956539318860099
-            ],
-            [
-              76.27166666666666,
-              9.938333333333334
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-KOC-61",
-        "zone_id": "KOC",
-        "height_m": 12.2,
-        "floors": 3,
-        "usage": "industrial"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              76.27166666666666,
-              9.971666666666668
-            ],
-            [
-              76.28935473076025,
-              9.971666666666668
-            ],
-            [
-              76.28935473076025,
-              9.989421573830239
-            ],
-            [
-              76.27166666666666,
-              9.989421573830239
-            ],
-            [
-              76.27166666666666,
-              9.971666666666668
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-KOC-62",
-        "zone_id": "KOC",
-        "height_m": 25.9,
-        "floors": 7,
-        "usage": "tourism"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              83.255,
-              17.654999999999998
-            ],
-            [
-              83.27428212273843,
-              17.654999999999998
-            ],
-            [
-              83.27428212273843,
-              17.67886550683518
-            ],
-            [
-              83.255,
-              17.67886550683518
-            ],
-            [
-              83.255,
-              17.654999999999998
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-VIZ-63",
-        "zone_id": "VIZ",
-        "height_m": 41.6,
-        "floors": 12,
-        "usage": "commercial"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              83.255,
-              17.721666666666664
-            ],
-            [
-              83.27517395218153,
-              17.721666666666664
-            ],
-            [
-              83.27517395218153,
-              17.736876922903452
-            ],
-            [
-              83.255,
-              17.736876922903452
-            ],
-            [
-              83.255,
-              17.721666666666664
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-VIZ-64",
-        "zone_id": "VIZ",
-        "height_m": 11.9,
-        "floors": 3,
-        "usage": "residential"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              83.28833333333333,
-              17.654999999999998
-            ],
-            [
-              83.3107018033398,
-              17.654999999999998
-            ],
-            [
-              83.3107018033398,
-              17.67207713639693
-            ],
-            [
-              83.28833333333333,
-              17.67207713639693
-            ],
-            [
-              83.28833333333333,
-              17.654999999999998
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-VIZ-65",
-        "zone_id": "VIZ",
-        "height_m": 34.0,
-        "floors": 10,
-        "usage": "residential"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              83.28833333333333,
-              17.688333333333333
-            ],
-            [
-              83.30895990722772,
-              17.688333333333333
-            ],
-            [
-              83.30895990722772,
-              17.713253084822192
-            ],
-            [
-              83.28833333333333,
-              17.713253084822192
-            ],
-            [
-              83.28833333333333,
-              17.688333333333333
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-VIZ-66",
-        "zone_id": "VIZ",
-        "height_m": 35.7,
-        "floors": 11,
-        "usage": "commercial"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              83.28833333333333,
-              17.721666666666664
-            ],
-            [
-              83.30511865397861,
-              17.721666666666664
-            ],
-            [
-              83.30511865397861,
-              17.739282345225217
-            ],
-            [
-              83.28833333333333,
-              17.739282345225217
-            ],
-            [
-              83.28833333333333,
-              17.721666666666664
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-VIZ-67",
-        "zone_id": "VIZ",
-        "height_m": 13.8,
-        "floors": 4,
-        "usage": "residential"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              83.32166666666666,
-              17.654999999999998
-            ],
-            [
-              83.34190358203529,
-              17.654999999999998
-            ],
-            [
-              83.34190358203529,
-              17.671059951119155
-            ],
-            [
-              83.32166666666666,
-              17.671059951119155
-            ],
-            [
-              83.32166666666666,
-              17.654999999999998
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-VIZ-68",
-        "zone_id": "VIZ",
-        "height_m": 35.9,
-        "floors": 11,
-        "usage": "commercial"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              83.32166666666666,
-              17.688333333333333
-            ],
-            [
-              83.33795685722268,
-              17.688333333333333
-            ],
-            [
-              83.33795685722268,
-              17.704548072391873
-            ],
-            [
-              83.32166666666666,
-              17.704548072391873
-            ],
-            [
-              83.32166666666666,
-              17.688333333333333
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-VIZ-69",
-        "zone_id": "VIZ",
-        "height_m": 14.8,
-        "floors": 4,
-        "usage": "residential"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              83.32166666666666,
-              17.721666666666664
-            ],
-            [
-              83.3401359365137,
-              17.721666666666664
-            ],
-            [
-              83.3401359365137,
-              17.741005627578822
-            ],
-            [
-              83.32166666666666,
-              17.741005627578822
-            ],
-            [
-              83.32166666666666,
-              17.721666666666664
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-VIZ-70",
-        "zone_id": "VIZ",
-        "height_m": 9.5,
-        "floors": 2,
-        "usage": "commercial"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              88.0075,
-              22.038333333333334
-            ],
-            [
-              88.03935620146022,
-              22.038333333333334
-            ],
-            [
-              88.03935620146022,
-              22.057911192956112
-            ],
-            [
-              88.0075,
-              22.057911192956112
-            ],
-            [
-              88.0075,
-              22.038333333333334
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-KOL-71",
-        "zone_id": "KOL",
-        "height_m": 6.8,
-        "floors": 2,
-        "usage": "commercial"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              88.0075,
-              22.071666666666665
-            ],
-            [
-              88.03229863214099,
-              22.071666666666665
-            ],
-            [
-              88.03229863214099,
-              22.093669885203326
-            ],
-            [
-              88.0075,
-              22.093669885203326
-            ],
-            [
-              88.0075,
-              22.071666666666665
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-KOL-72",
-        "zone_id": "KOL",
-        "height_m": 9.3,
-        "floors": 2,
-        "usage": "port"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              88.0575,
-              22.005
-            ],
-            [
-              88.09498403862632,
-              22.005
-            ],
-            [
-              88.09498403862632,
-              22.025842896920047
-            ],
-            [
-              88.0575,
-              22.025842896920047
-            ],
-            [
-              88.0575,
-              22.005
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-KOL-73",
-        "zone_id": "KOL",
-        "height_m": 34.5,
-        "floors": 10,
-        "usage": "commercial"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              88.0575,
-              22.038333333333334
-            ],
-            [
-              88.08476389163452,
-              22.038333333333334
-            ],
-            [
-              88.08476389163452,
-              22.054875809496895
-            ],
-            [
-              88.0575,
-              22.054875809496895
-            ],
-            [
-              88.0575,
-              22.038333333333334
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-KOL-74",
-        "zone_id": "KOL",
-        "height_m": 23.4,
-        "floors": 7,
-        "usage": "commercial"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              88.0575,
-              22.071666666666665
-            ],
-            [
-              88.09406558614337,
-              22.071666666666665
-            ],
-            [
-              88.09406558614337,
-              22.095840619030685
-            ],
-            [
-              88.0575,
-              22.095840619030685
-            ],
-            [
-              88.0575,
-              22.071666666666665
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-KOL-75",
-        "zone_id": "KOL",
-        "height_m": 36.8,
-        "floors": 11,
-        "usage": "industrial"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              88.10750000000002,
-              22.005
-            ],
-            [
-              88.13047539858512,
-              22.005
-            ],
-            [
-              88.13047539858512,
-              22.026142090185267
-            ],
-            [
-              88.10750000000002,
-              22.026142090185267
-            ],
-            [
-              88.10750000000002,
-              22.005
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-KOL-76",
-        "zone_id": "KOL",
-        "height_m": 29.2,
-        "floors": 8,
-        "usage": "industrial"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              88.10750000000002,
-              22.038333333333334
-            ],
-            [
-              88.13343960677616,
-              22.038333333333334
-            ],
-            [
-              88.13343960677616,
-              22.060972145892656
-            ],
-            [
-              88.10750000000002,
-              22.060972145892656
-            ],
-            [
-              88.10750000000002,
-              22.038333333333334
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-KOL-77",
-        "zone_id": "KOL",
-        "height_m": 10.5,
-        "floors": 3,
-        "usage": "commercial"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              88.10750000000002,
-              22.071666666666665
-            ],
-            [
-              88.13275366947833,
-              22.071666666666665
-            ],
-            [
-              88.13275366947833,
-              22.08933322661252
-            ],
-            [
-              88.10750000000002,
-              22.08933322661252
-            ],
-            [
-              88.10750000000002,
-              22.071666666666665
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "id": "BLD-KOL-78",
-        "zone_id": "KOL",
-        "height_m": 37.6,
-        "floors": 11,
-        "usage": "industrial"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          73.943,
-          15.306
-        ]
-      },
-      "properties": {
-        "id": "FAC-HOSP-1",
-        "name": "Goa Coastal Hospital",
-        "kind": "hospital",
-        "zone_id": "B",
-        "criticality": 0.95
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          73.958,
-          15.291
-        ]
-      },
-      "properties": {
-        "id": "FAC-CLIN-1",
-        "name": "B2 Health Clinic",
-        "kind": "hospital",
-        "zone_id": "B",
-        "criticality": 0.7
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          73.954,
-          15.323
-        ]
-      },
-      "properties": {
-        "id": "FAC-SCH-1",
-        "name": "Miramar Public School",
-        "kind": "school",
-        "zone_id": "A",
-        "criticality": 0.6
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          73.98,
-          15.336
-        ]
-      },
-      "properties": {
-        "id": "FAC-SHEL-1",
-        "name": "Upland Relief Shelter",
-        "kind": "shelter",
-        "zone_id": "D",
-        "criticality": 0.85
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          73.993,
-          15.29
-        ]
-      },
-      "properties": {
-        "id": "FAC-SHEL-2",
-        "name": "Inland East Shelter",
-        "kind": "shelter",
-        "zone_id": "E",
-        "criticality": 0.75
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          73.95,
-          15.303
-        ]
-      },
-      "properties": {
-        "id": "FAC-SUB-1",
-        "name": "5th Street Substation",
-        "kind": "substation",
-        "zone_id": "B",
-        "criticality": 0.88
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          73.952,
-          15.272
-        ]
-      },
-      "properties": {
-        "id": "FAC-FIRE-1",
-        "name": "Harbour Fire Station",
-        "kind": "fire_station",
-        "zone_id": "C",
-        "criticality": 0.8
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          73.937,
-          15.262
-        ]
-      },
-      "properties": {
-        "id": "FAC-PORT-1",
-        "name": "South Harbour Terminal",
-        "kind": "port",
-        "zone_id": "C",
-        "criticality": 0.65
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          73.936,
-          15.297
-        ]
-      },
-      "properties": {
-        "id": "FAC-SCH-2",
-        "name": "Estuary Secondary School",
-        "kind": "school",
-        "zone_id": "B",
-        "criticality": 0.55
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          73.995,
-          15.325
-        ]
-      },
-      "properties": {
-        "id": "FAC-SUB-2",
-        "name": "Upland Grid Node",
-        "kind": "substation",
-        "zone_id": "D",
-        "criticality": 0.72
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          73.936,
-          15.338
-        ]
-      },
-      "properties": {
-        "id": "FAC-SHEL-3",
-        "name": "Miramar Evacuation Centre",
-        "kind": "shelter",
-        "zone_id": "A",
-        "criticality": 0.7
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          73.975,
-          15.307
-        ]
-      },
-      "properties": {
-        "id": "FAC-FIRE-2",
-        "name": "Inland Fire Post",
-        "kind": "fire_station",
-        "zone_id": "E",
-        "criticality": 0.68
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          73.948,
-          15.33
-        ]
-      },
-      "properties": {
-        "id": "N-A",
-        "name": "Miramar Junction",
-        "is_hub": false,
-        "elevation_m": 1.6
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          73.948,
-          15.299
-        ]
-      },
-      "properties": {
-        "id": "N-B",
-        "name": "Estuary Crossroads",
-        "is_hub": false,
-        "elevation_m": 1.2
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          73.948,
-          15.267
-        ]
-      },
-      "properties": {
-        "id": "N-C",
-        "name": "Harbour Gate",
-        "is_hub": false,
-        "elevation_m": 1.9
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          73.984,
-          15.33
-        ]
-      },
-      "properties": {
-        "id": "N-D",
-        "name": "Upland Circle",
-        "is_hub": false,
-        "elevation_m": 4.8
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          73.984,
-          15.299
-        ]
-      },
-      "properties": {
-        "id": "N-E",
-        "name": "Inland Depot",
-        "is_hub": false,
-        "elevation_m": 3.5
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          74.022,
-          15.3
-        ]
-      },
-      "properties": {
-        "id": "N-HUB",
-        "name": "NH-48 Evacuation Interchange",
-        "is_hub": true,
-        "elevation_m": 8.5
-      }
+  "features": [],
+  "layers": {
+    "zones": {
+      "type": "FeatureCollection",
+      "features": [
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  74.8418,
+                  12.9037
+                ],
+                [
+                  74.8568,
+                  12.9037
+                ],
+                [
+                  74.8568,
+                  12.9187
+                ],
+                [
+                  74.8418,
+                  12.9187
+                ],
+                [
+                  74.8418,
+                  12.9037
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "id": "A",
+            "name": "Zone A \u00b7 Mangaluru Waterfront",
+            "elevation_m": 12.4,
+            "drainage_capacity": 0.72,
+            "historical_flood_freq": 0.45,
+            "imperviousness": 0.68,
+            "slope": 2.1,
+            "population": 28000,
+            "vulnerability": 0.62
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  74.8598,
+                  12.9037
+                ],
+                [
+                  74.8778,
+                  12.9037
+                ],
+                [
+                  74.8778,
+                  12.9187
+                ],
+                [
+                  74.8598,
+                  12.9187
+                ],
+                [
+                  74.8598,
+                  12.9037
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "id": "B",
+            "name": "Zone B \u00b7 Mangaluru Lowlands",
+            "elevation_m": 9.3,
+            "drainage_capacity": 0.58,
+            "historical_flood_freq": 0.45,
+            "imperviousness": 0.68,
+            "slope": 2.1,
+            "population": 28000,
+            "vulnerability": 0.62
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  74.8418,
+                  12.9207
+                ],
+                [
+                  74.8568,
+                  12.9207
+                ],
+                [
+                  74.8568,
+                  12.9387
+                ],
+                [
+                  74.8418,
+                  12.9387
+                ],
+                [
+                  74.8418,
+                  12.9207
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "id": "C",
+            "name": "Zone C \u00b7 Mangaluru Port & Basin",
+            "elevation_m": 15.5,
+            "drainage_capacity": 0.68,
+            "historical_flood_freq": 0.45,
+            "imperviousness": 0.68,
+            "slope": 2.1,
+            "population": 28000,
+            "vulnerability": 0.62
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  74.8598,
+                  12.9207
+                ],
+                [
+                  74.8778,
+                  12.9207
+                ],
+                [
+                  74.8778,
+                  12.9387
+                ],
+                [
+                  74.8598,
+                  12.9387
+                ],
+                [
+                  74.8598,
+                  12.9207
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "id": "D",
+            "name": "Zone D \u00b7 Mangaluru Ridge / Heights",
+            "elevation_m": 55.8,
+            "drainage_capacity": 0.88,
+            "historical_flood_freq": 0.45,
+            "imperviousness": 0.68,
+            "slope": 2.1,
+            "population": 28000,
+            "vulnerability": 0.62
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  74.8798,
+                  12.9087
+                ],
+                [
+                  74.8978,
+                  12.9087
+                ],
+                [
+                  74.8978,
+                  12.9337
+                ],
+                [
+                  74.8798,
+                  12.9337
+                ],
+                [
+                  74.8798,
+                  12.9087
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "id": "E",
+            "name": "Zone E \u00b7 Mangaluru Urban Hinterland",
+            "elevation_m": 40.3,
+            "drainage_capacity": 0.81,
+            "historical_flood_freq": 0.45,
+            "imperviousness": 0.68,
+            "slope": 2.1,
+            "population": 28000,
+            "vulnerability": 0.62
+          }
+        }
+      ]
+    },
+    "roads": {
+      "type": "FeatureCollection",
+      "features": [
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                74.8498,
+                12.9107
+              ],
+              [
+                74.8688,
+                12.9107
+              ]
+            ]
+          },
+          "properties": {
+            "id": "RD-01",
+            "name": "Mangaluru Coastal Arterial",
+            "elevation_m": 12.4,
+            "critical": true
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                74.8498,
+                12.9287
+              ],
+              [
+                74.8688,
+                12.9287
+              ]
+            ]
+          },
+          "properties": {
+            "id": "RD-02",
+            "name": "Mangaluru North Link",
+            "elevation_m": 27.9,
+            "critical": true
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                74.8498,
+                12.9107
+              ],
+              [
+                74.8498,
+                12.9287
+              ]
+            ]
+          },
+          "properties": {
+            "id": "RD-03",
+            "name": "Mangaluru Harbor Way",
+            "elevation_m": 15.5,
+            "critical": false
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                74.8688,
+                12.9107
+              ],
+              [
+                74.8848,
+                12.9237
+              ]
+            ]
+          },
+          "properties": {
+            "id": "RD-04",
+            "name": "Mangaluru Inland Highway Egress",
+            "elevation_m": 49.6,
+            "critical": true
+          }
+        }
+      ]
+    },
+    "buildings": {
+      "type": "FeatureCollection",
+      "features": [
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  74.84255,
+                  12.90445
+                ],
+                [
+                  74.84503,
+                  12.90445
+                ],
+                [
+                  74.84503,
+                  12.90785
+                ],
+                [
+                  74.84255,
+                  12.90785
+                ],
+                [
+                  74.84255,
+                  12.90445
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "id": "BLD-A-001",
+            "zone_id": "A",
+            "height_m": 18.6,
+            "floors": 5,
+            "usage": "industrial"
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  74.84755,
+                  12.90445
+                ],
+                [
+                  74.85042,
+                  12.90445
+                ],
+                [
+                  74.85042,
+                  12.90782
+                ],
+                [
+                  74.84755,
+                  12.90782
+                ],
+                [
+                  74.84755,
+                  12.90445
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "id": "BLD-A-002",
+            "zone_id": "A",
+            "height_m": 10.3,
+            "floors": 3,
+            "usage": "residential"
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  74.84755,
+                  12.90945
+                ],
+                [
+                  74.85032,
+                  12.90945
+                ],
+                [
+                  74.85032,
+                  12.9118
+                ],
+                [
+                  74.84755,
+                  12.9118
+                ],
+                [
+                  74.84755,
+                  12.90945
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "id": "BLD-A-003",
+            "zone_id": "A",
+            "height_m": 26.6,
+            "floors": 8,
+            "usage": "commercial"
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  74.85255,
+                  12.90445
+                ],
+                [
+                  74.85483,
+                  12.90445
+                ],
+                [
+                  74.85483,
+                  12.90774
+                ],
+                [
+                  74.85255,
+                  12.90774
+                ],
+                [
+                  74.85255,
+                  12.90445
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "id": "BLD-A-004",
+            "zone_id": "A",
+            "height_m": 28.9,
+            "floors": 9,
+            "usage": "commercial"
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  74.85255,
+                  12.90945
+                ],
+                [
+                  74.85577,
+                  12.90945
+                ],
+                [
+                  74.85577,
+                  12.9126
+                ],
+                [
+                  74.85255,
+                  12.9126
+                ],
+                [
+                  74.85255,
+                  12.90945
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "id": "BLD-A-005",
+            "zone_id": "A",
+            "height_m": 21.1,
+            "floors": 6,
+            "usage": "residential"
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  74.85255,
+                  12.91445
+                ],
+                [
+                  74.85576,
+                  12.91445
+                ],
+                [
+                  74.85576,
+                  12.91697
+                ],
+                [
+                  74.85255,
+                  12.91697
+                ],
+                [
+                  74.85255,
+                  12.91445
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "id": "BLD-A-006",
+            "zone_id": "A",
+            "height_m": 18.9,
+            "floors": 5,
+            "usage": "residential"
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  74.8607,
+                  12.90445
+                ],
+                [
+                  74.86487,
+                  12.90445
+                ],
+                [
+                  74.86487,
+                  12.90768
+                ],
+                [
+                  74.8607,
+                  12.90768
+                ],
+                [
+                  74.8607,
+                  12.90445
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "id": "BLD-B-007",
+            "zone_id": "B",
+            "height_m": 26.0,
+            "floors": 8,
+            "usage": "residential"
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  74.8607,
+                  12.90945
+                ],
+                [
+                  74.86434,
+                  12.90945
+                ],
+                [
+                  74.86434,
+                  12.91258
+                ],
+                [
+                  74.8607,
+                  12.91258
+                ],
+                [
+                  74.8607,
+                  12.90945
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "id": "BLD-B-008",
+            "zone_id": "B",
+            "height_m": 7.6,
+            "floors": 2,
+            "usage": "industrial"
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  74.8607,
+                  12.91445
+                ],
+                [
+                  74.86475,
+                  12.91445
+                ],
+                [
+                  74.86475,
+                  12.91682
+                ],
+                [
+                  74.8607,
+                  12.91682
+                ],
+                [
+                  74.8607,
+                  12.91445
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "id": "BLD-B-009",
+            "zone_id": "B",
+            "height_m": 26.6,
+            "floors": 8,
+            "usage": "residential"
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  74.8667,
+                  12.90445
+                ],
+                [
+                  74.87009,
+                  12.90445
+                ],
+                [
+                  74.87009,
+                  12.90777
+                ],
+                [
+                  74.8667,
+                  12.90777
+                ],
+                [
+                  74.8667,
+                  12.90445
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "id": "BLD-B-010",
+            "zone_id": "B",
+            "height_m": 10.4,
+            "floors": 3,
+            "usage": "industrial"
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  74.8667,
+                  12.90945
+                ],
+                [
+                  74.86958,
+                  12.90945
+                ],
+                [
+                  74.86958,
+                  12.91188
+                ],
+                [
+                  74.8667,
+                  12.91188
+                ],
+                [
+                  74.8667,
+                  12.90945
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "id": "BLD-B-011",
+            "zone_id": "B",
+            "height_m": 10.4,
+            "floors": 3,
+            "usage": "industrial"
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  74.8727,
+                  12.90445
+                ],
+                [
+                  74.87585,
+                  12.90445
+                ],
+                [
+                  74.87585,
+                  12.90771
+                ],
+                [
+                  74.8727,
+                  12.90771
+                ],
+                [
+                  74.8727,
+                  12.90445
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "id": "BLD-B-012",
+            "zone_id": "B",
+            "height_m": 18.0,
+            "floors": 5,
+            "usage": "residential"
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  74.8727,
+                  12.91445
+                ],
+                [
+                  74.87597,
+                  12.91445
+                ],
+                [
+                  74.87597,
+                  12.91702
+                ],
+                [
+                  74.8727,
+                  12.91702
+                ],
+                [
+                  74.8727,
+                  12.91445
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "id": "BLD-B-013",
+            "zone_id": "B",
+            "height_m": 26.3,
+            "floors": 8,
+            "usage": "residential"
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  74.84255,
+                  12.9216
+                ],
+                [
+                  74.84497,
+                  12.9216
+                ],
+                [
+                  74.84497,
+                  12.92523
+                ],
+                [
+                  74.84255,
+                  12.92523
+                ],
+                [
+                  74.84255,
+                  12.9216
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "id": "BLD-C-014",
+            "zone_id": "C",
+            "height_m": 25.3,
+            "floors": 7,
+            "usage": "residential"
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  74.84255,
+                  12.9276
+                ],
+                [
+                  74.84544,
+                  12.9276
+                ],
+                [
+                  74.84544,
+                  12.93124
+                ],
+                [
+                  74.84255,
+                  12.93124
+                ],
+                [
+                  74.84255,
+                  12.9276
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "id": "BLD-C-015",
+            "zone_id": "C",
+            "height_m": 15.0,
+            "floors": 4,
+            "usage": "commercial"
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  74.84255,
+                  12.9336
+                ],
+                [
+                  74.84561,
+                  12.9336
+                ],
+                [
+                  74.84561,
+                  12.93651
+                ],
+                [
+                  74.84255,
+                  12.93651
+                ],
+                [
+                  74.84255,
+                  12.9336
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "id": "BLD-C-016",
+            "zone_id": "C",
+            "height_m": 23.9,
+            "floors": 7,
+            "usage": "industrial"
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  74.84755,
+                  12.9276
+                ],
+                [
+                  74.8505,
+                  12.9276
+                ],
+                [
+                  74.8505,
+                  12.93033
+                ],
+                [
+                  74.84755,
+                  12.93033
+                ],
+                [
+                  74.84755,
+                  12.9276
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "id": "BLD-C-017",
+            "zone_id": "C",
+            "height_m": 24.0,
+            "floors": 7,
+            "usage": "industrial"
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  74.84755,
+                  12.9336
+                ],
+                [
+                  74.85061,
+                  12.9336
+                ],
+                [
+                  74.85061,
+                  12.93633
+                ],
+                [
+                  74.84755,
+                  12.93633
+                ],
+                [
+                  74.84755,
+                  12.9336
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "id": "BLD-C-018",
+            "zone_id": "C",
+            "height_m": 24.2,
+            "floors": 7,
+            "usage": "residential"
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  74.85255,
+                  12.9276
+                ],
+                [
+                  74.85594,
+                  12.9276
+                ],
+                [
+                  74.85594,
+                  12.93089
+                ],
+                [
+                  74.85255,
+                  12.93089
+                ],
+                [
+                  74.85255,
+                  12.9276
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "id": "BLD-C-019",
+            "zone_id": "C",
+            "height_m": 12.4,
+            "floors": 3,
+            "usage": "residential"
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  74.85255,
+                  12.9336
+                ],
+                [
+                  74.85564,
+                  12.9336
+                ],
+                [
+                  74.85564,
+                  12.9371
+                ],
+                [
+                  74.85255,
+                  12.9371
+                ],
+                [
+                  74.85255,
+                  12.9336
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "id": "BLD-C-020",
+            "zone_id": "C",
+            "height_m": 16.8,
+            "floors": 5,
+            "usage": "residential"
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  74.8607,
+                  12.9216
+                ],
+                [
+                  74.86378,
+                  12.9216
+                ],
+                [
+                  74.86378,
+                  12.92506
+                ],
+                [
+                  74.8607,
+                  12.92506
+                ],
+                [
+                  74.8607,
+                  12.9216
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "id": "BLD-D-021",
+            "zone_id": "D",
+            "height_m": 11.2,
+            "floors": 3,
+            "usage": "residential"
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  74.8607,
+                  12.9336
+                ],
+                [
+                  74.86447,
+                  12.9336
+                ],
+                [
+                  74.86447,
+                  12.93722
+                ],
+                [
+                  74.8607,
+                  12.93722
+                ],
+                [
+                  74.8607,
+                  12.9336
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "id": "BLD-D-022",
+            "zone_id": "D",
+            "height_m": 26.9,
+            "floors": 8,
+            "usage": "industrial"
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  74.8667,
+                  12.9216
+                ],
+                [
+                  74.87087,
+                  12.9216
+                ],
+                [
+                  74.87087,
+                  12.92522
+                ],
+                [
+                  74.8667,
+                  12.92522
+                ],
+                [
+                  74.8667,
+                  12.9216
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "id": "BLD-D-023",
+            "zone_id": "D",
+            "height_m": 11.5,
+            "floors": 3,
+            "usage": "residential"
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  74.8667,
+                  12.9276
+                ],
+                [
+                  74.86993,
+                  12.9276
+                ],
+                [
+                  74.86993,
+                  12.93157
+                ],
+                [
+                  74.8667,
+                  12.93157
+                ],
+                [
+                  74.8667,
+                  12.9276
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "id": "BLD-D-024",
+            "zone_id": "D",
+            "height_m": 7.5,
+            "floors": 2,
+            "usage": "residential"
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  74.8727,
+                  12.9216
+                ],
+                [
+                  74.87684,
+                  12.9216
+                ],
+                [
+                  74.87684,
+                  12.92453
+                ],
+                [
+                  74.8727,
+                  12.92453
+                ],
+                [
+                  74.8727,
+                  12.9216
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "id": "BLD-D-025",
+            "zone_id": "D",
+            "height_m": 12.0,
+            "floors": 3,
+            "usage": "industrial"
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  74.8807,
+                  12.90995
+                ],
+                [
+                  74.88445,
+                  12.90995
+                ],
+                [
+                  74.88445,
+                  12.91538
+                ],
+                [
+                  74.8807,
+                  12.91538
+                ],
+                [
+                  74.8807,
+                  12.90995
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "id": "BLD-E-026",
+            "zone_id": "E",
+            "height_m": 23.4,
+            "floors": 7,
+            "usage": "residential"
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  74.8807,
+                  12.91828
+                ],
+                [
+                  74.88366,
+                  12.91828
+                ],
+                [
+                  74.88366,
+                  12.92402
+                ],
+                [
+                  74.8807,
+                  12.92402
+                ],
+                [
+                  74.8807,
+                  12.91828
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "id": "BLD-E-027",
+            "zone_id": "E",
+            "height_m": 27.1,
+            "floors": 8,
+            "usage": "commercial"
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  74.8807,
+                  12.92662
+                ],
+                [
+                  74.88452,
+                  12.92662
+                ],
+                [
+                  74.88452,
+                  12.93231
+                ],
+                [
+                  74.8807,
+                  12.93231
+                ],
+                [
+                  74.8807,
+                  12.92662
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "id": "BLD-E-028",
+            "zone_id": "E",
+            "height_m": 21.9,
+            "floors": 6,
+            "usage": "industrial"
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  74.8867,
+                  12.90995
+                ],
+                [
+                  74.89033,
+                  12.90995
+                ],
+                [
+                  74.89033,
+                  12.9142
+                ],
+                [
+                  74.8867,
+                  12.9142
+                ],
+                [
+                  74.8867,
+                  12.90995
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "id": "BLD-E-029",
+            "zone_id": "E",
+            "height_m": 12.3,
+            "floors": 3,
+            "usage": "residential"
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  74.8867,
+                  12.91828
+                ],
+                [
+                  74.89086,
+                  12.91828
+                ],
+                [
+                  74.89086,
+                  12.92214
+                ],
+                [
+                  74.8867,
+                  12.92214
+                ],
+                [
+                  74.8867,
+                  12.91828
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "id": "BLD-E-030",
+            "zone_id": "E",
+            "height_m": 15.4,
+            "floors": 4,
+            "usage": "commercial"
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  74.8867,
+                  12.92662
+                ],
+                [
+                  74.89062,
+                  12.92662
+                ],
+                [
+                  74.89062,
+                  12.93125
+                ],
+                [
+                  74.8867,
+                  12.93125
+                ],
+                [
+                  74.8867,
+                  12.92662
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "id": "BLD-E-031",
+            "zone_id": "E",
+            "height_m": 25.2,
+            "floors": 7,
+            "usage": "commercial"
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  74.8927,
+                  12.91828
+                ],
+                [
+                  74.89651,
+                  12.91828
+                ],
+                [
+                  74.89651,
+                  12.9228
+                ],
+                [
+                  74.8927,
+                  12.9228
+                ],
+                [
+                  74.8927,
+                  12.91828
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "id": "BLD-E-032",
+            "zone_id": "E",
+            "height_m": 19.3,
+            "floors": 6,
+            "usage": "industrial"
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  74.8927,
+                  12.92662
+                ],
+                [
+                  74.89543,
+                  12.92662
+                ],
+                [
+                  74.89543,
+                  12.93086
+                ],
+                [
+                  74.8927,
+                  12.93086
+                ],
+                [
+                  74.8927,
+                  12.92662
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "id": "BLD-E-033",
+            "zone_id": "E",
+            "height_m": 27.9,
+            "floors": 8,
+            "usage": "commercial"
+          }
+        }
+      ]
+    },
+    "facilities": {
+      "type": "FeatureCollection",
+      "features": [
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              74.8548,
+              12.9127
+            ]
+          },
+          "properties": {
+            "id": "FAC-01",
+            "name": "Mangaluru District Hospital",
+            "kind": "hospital",
+            "criticality": 0.95
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              74.8748,
+              12.9307
+            ]
+          },
+          "properties": {
+            "id": "FAC-02",
+            "name": "Mangaluru High Ground Evacuation Center",
+            "kind": "shelter",
+            "criticality": 0.88
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              74.8478,
+              12.9207
+            ]
+          },
+          "properties": {
+            "id": "FAC-03",
+            "name": "Mangaluru Maritime Coastguard / Port",
+            "kind": "port",
+            "criticality": 0.8
+          }
+        }
+      ]
     }
-  ],
+  },
   "meta": {
-    "name": "TIDALIS Coastal District (Goa)",
-    "demo_data": true,
-    "zone_count": 10,
-    "road_count": 9,
-    "building_count": 79,
-    "facility_count": 12
+    "name": "TIDALIS Digital Twin \u2014 Mangaluru",
+    "center": [
+      74.8598,
+      12.9187
+    ],
+    "base_elevation_m": 31.0,
+    "generated_at": "2026-10-08T15:06:35.003084+00:00",
+    "zone_count": 5,
+    "building_count": 33,
+    "road_count": 4,
+    "facility_count": 3
   }
 }

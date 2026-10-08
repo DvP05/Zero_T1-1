@@ -7,27 +7,20 @@
         "type": "LineString",
         "coordinates": [
           [
-            73.948,
-            15.33
+            74.8498,
+            12.9107
           ],
           [
-            73.94,
-            15.316
-          ],
-          [
-            73.948,
-            15.299
+            74.8688,
+            12.9107
           ]
         ]
       },
       "properties": {
         "id": "RD-01",
-        "name": "Coastal Road North",
-        "elevation_m": 1.15,
-        "from_node": "N-A",
-        "to_node": "N-B",
-        "lanes": 2,
-        "critical": false
+        "name": "Mangaluru Coastal Arterial",
+        "elevation_m": 12.4,
+        "critical": true
       }
     },
     {
@@ -36,27 +29,20 @@
         "type": "LineString",
         "coordinates": [
           [
-            73.948,
-            15.299
+            74.8498,
+            12.9287
           ],
           [
-            73.939,
-            15.282
-          ],
-          [
-            73.948,
-            15.267
+            74.8688,
+            12.9287
           ]
         ]
       },
       "properties": {
         "id": "RD-02",
-        "name": "Coastal Road South",
-        "elevation_m": 1.0,
-        "from_node": "N-B",
-        "to_node": "N-C",
-        "lanes": 2,
-        "critical": false
+        "name": "Mangaluru North Link",
+        "elevation_m": 27.9,
+        "critical": true
       }
     },
     {
@@ -65,113 +51,19 @@
         "type": "LineString",
         "coordinates": [
           [
-            73.948,
-            15.33
+            74.8498,
+            12.9107
           ],
           [
-            73.968,
-            15.332
-          ],
-          [
-            73.984,
-            15.33
+            74.8498,
+            12.9287
           ]
         ]
       },
       "properties": {
         "id": "RD-03",
-        "name": "Miramar Uplink",
-        "elevation_m": 2.4,
-        "from_node": "N-A",
-        "to_node": "N-D",
-        "lanes": 3,
-        "critical": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            73.948,
-            15.299
-          ],
-          [
-            73.967,
-            15.301
-          ],
-          [
-            73.984,
-            15.299
-          ]
-        ]
-      },
-      "properties": {
-        "id": "RD-04",
-        "name": "Bandra Connector",
-        "elevation_m": 1.9,
-        "from_node": "N-B",
-        "to_node": "N-E",
-        "lanes": 3,
-        "critical": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            73.948,
-            15.267
-          ],
-          [
-            73.967,
-            15.269
-          ],
-          [
-            73.984,
-            15.299
-          ]
-        ]
-      },
-      "properties": {
-        "id": "RD-05",
-        "name": "Estuary Ring Road",
-        "elevation_m": 2.1,
-        "from_node": "N-C",
-        "to_node": "N-E",
-        "lanes": 2,
-        "critical": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            73.984,
-            15.33
-          ],
-          [
-            73.986,
-            15.314
-          ],
-          [
-            73.984,
-            15.299
-          ]
-        ]
-      },
-      "properties": {
-        "id": "RD-06",
-        "name": "Inland Bypass",
-        "elevation_m": 5.2,
-        "from_node": "N-D",
-        "to_node": "N-E",
-        "lanes": 4,
+        "name": "Mangaluru Harbor Way",
+        "elevation_m": 15.5,
         "critical": false
       }
     },
@@ -181,88 +73,19 @@
         "type": "LineString",
         "coordinates": [
           [
-            73.984,
-            15.33
+            74.8688,
+            12.9107
           ],
           [
-            74.004,
-            15.316
-          ],
-          [
-            74.022,
-            15.3
+            74.8848,
+            12.9237
           ]
         ]
       },
       "properties": {
-        "id": "RD-07",
-        "name": "NH-48 North Approach",
-        "elevation_m": 8.0,
-        "from_node": "N-D",
-        "to_node": "N-HUB",
-        "lanes": 4,
-        "critical": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            73.984,
-            15.299
-          ],
-          [
-            74.005,
-            15.3
-          ],
-          [
-            74.022,
-            15.3
-          ]
-        ]
-      },
-      "properties": {
-        "id": "RD-08",
-        "name": "NH-48 East Spur",
-        "elevation_m": 7.5,
-        "from_node": "N-E",
-        "to_node": "N-HUB",
-        "lanes": 4,
-        "critical": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            73.948,
-            15.299
-          ],
-          [
-            73.96,
-            15.312
-          ],
-          [
-            73.972,
-            15.322
-          ],
-          [
-            73.984,
-            15.33
-          ]
-        ]
-      },
-      "properties": {
-        "id": "RD-09",
-        "name": "Ridge Hill Road",
-        "elevation_m": 2.9,
-        "from_node": "N-B",
-        "to_node": "N-D",
-        "lanes": 2,
+        "id": "RD-04",
+        "name": "Mangaluru Inland Highway Egress",
+        "elevation_m": 49.6,
         "critical": true
       }
     }

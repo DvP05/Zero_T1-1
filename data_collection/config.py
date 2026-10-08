@@ -102,6 +102,15 @@ COASTAL_ZONES: Dict[str, CoastalZone] = {
         nearest_buoy_ids=["23226"],
         elevation_range_m=(0, 15),
     ),
+    "mangaluru": CoastalZone(
+        name="Mangaluru",
+        lat=12.9187,
+        lon=74.8598,
+        bbox=(74.80, 12.80, 74.92, 13.02),
+        coast="west",
+        nearest_buoy_ids=["23226"],
+        elevation_range_m=(0, 35),
+    ),
 }
 
 DEFAULT_ZONE = "mumbai"

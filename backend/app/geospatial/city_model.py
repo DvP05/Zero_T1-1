@@ -15,6 +15,7 @@ Everything is deterministic so the demo always renders identically.
 from __future__ import annotations
 
 import random
+from pathlib import Path
 from typing import Optional
 
 from pydantic import BaseModel, Field
@@ -433,6 +434,7 @@ def as_geojson(zone_id: Optional[str] = None) -> dict:
                 "facility_count": 0,
             },
         }
+
 
     # Default Goa digital twin
     zones = {

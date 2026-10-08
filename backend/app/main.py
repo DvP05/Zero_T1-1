@@ -426,6 +426,22 @@ async def ml_telemetry():
     return get_ml_telemetry()
 
 
+@app.post("/api/ml/retrain")
+async def ml_retrain(
+    lat: Optional[float] = Query(None, description="Target Latitude"),
+    lon: Optional[float] = Query(None, description="Target Longitude"),
+    name: Optional[str] = Query(None, description="Target Location Name"),
+):
+    """
+    Triggers automated real-time retraining for a specific coastal location.
+    Ingests live Open-Meteo observations and elevation, recalibrates XGBoost,
+    and prints full verification metrics to the server terminal.
+    """
+    from scripts.retrain_live import run_retraining
+    result = await asyncio.to_thread(run_retraining, lat, lon, name)
+    return result
+
+
 # ---------------------------------------------------------------------------
 # SOS Triage
 # ---------------------------------------------------------------------------
