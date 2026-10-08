@@ -418,13 +418,18 @@ def _scenario_alerts(
 # Public helpers
 # ---------------------------------------------------------------------------
 
-def scenario_meta() -> dict:
+def scenario_meta(zone_id: Optional[str] = None) -> dict:
+    zid = (zone_id or "goa").lower().strip()
+    from data_collection.config import COASTAL_ZONES
+    cz = COASTAL_ZONES.get(zid)
+    z_name = cz.name if cz else zid.title()
+
     return {
-        "id": SCENARIO_ID,
-        "name": SCENARIO_NAME,
+        "id": f"SCN-{zid.upper()}-001" if zid != "goa" else SCENARIO_ID,
+        "zone_id": zid,
+        "name": f"{z_name} Storm Scenario" if zid != "goa" else SCENARIO_NAME,
         "description": (
-            "A 5-hour coastal storm: rainfall builds from 2 mm/h to over 40 mm/h while a "
-            "spring tide and storm surge push the water table up across five low-lying zones."
+            f"A 5-hour coastal storm for {z_name}: rainfall and marine surge push the water table up."
         ),
         "duration_hours": SCENARIO_HOURS,
         "step_minutes": STEP_MINUTES,

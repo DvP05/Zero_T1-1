@@ -7,11 +7,17 @@ export default function SOSPanel() {
   const updateSosTicketStatus = useTidalis((s) => s.updateSosTicketStatus)
   const [showForm, setShowForm] = useState(false)
 
+  const userLocation = useTidalis((s) => s.userLocation)
+  const activeLocation = useTidalis((s) => s.activeLocation)
+
+  const defaultLat = userLocation?.lat ?? activeLocation?.lat ?? 15.29
+  const defaultLon = userLocation?.lon ?? activeLocation?.lon ?? 73.97
+
   // Demo form state
   const [form, setForm] = useState({
     name: '', phone: '', people_count: 1, 
     has_children: false, has_elderly: false, medical_emergency: false,
-    message: '', latitude: 15.29, longitude: 73.97
+    message: '', latitude: defaultLat, longitude: defaultLon
   })
 
   const handleSimulateSOS = async (e) => {
@@ -41,11 +47,11 @@ export default function SOSPanel() {
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
             <div>
-              <div className="label" style={{ fontSize: '9px', marginBottom: '4px' }}>Base Latitude (Goa ~15.29)</div>
+              <div className="label" style={{ fontSize: '9px', marginBottom: '4px' }}>Base Latitude</div>
               <input type="number" step="0.01" className="copilot-input" style={{ width: '100%', padding: '8px', background: 'var(--panel-2)', border: '1px solid var(--border)', color: 'var(--text-hi)', borderRadius: '6px' }} value={form.latitude} onChange={e => setForm({...form, latitude: parseFloat(e.target.value)})} />
             </div>
             <div>
-              <div className="label" style={{ fontSize: '9px', marginBottom: '4px' }}>Base Longitude (Goa ~73.97)</div>
+              <div className="label" style={{ fontSize: '9px', marginBottom: '4px' }}>Base Longitude</div>
               <input type="number" step="0.01" className="copilot-input" style={{ width: '100%', padding: '8px', background: 'var(--panel-2)', border: '1px solid var(--border)', color: 'var(--text-hi)', borderRadius: '6px' }} value={form.longitude} onChange={e => setForm({...form, longitude: parseFloat(e.target.value)})} />
             </div>
           </div>

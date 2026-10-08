@@ -202,7 +202,8 @@ class TidalisSensorNetwork:
         print(f"    -> Generated {len(readings_df)} total readings from {len(sensors)} sensors")
 
         if save:
-            out_dir = os.path.join(RAW_DATA_DIR, "tidalis", zone.name.lower())
+            zone_key = next((k for k, v in COASTAL_ZONES.items() if v.name == zone.name), zone.name.lower())
+            out_dir = os.path.join(RAW_DATA_DIR, "tidalis", zone_key)
             os.makedirs(out_dir, exist_ok=True)
             sensors_df.to_csv(os.path.join(out_dir, "sensor_registry.csv"), index=False)
             readings_df.to_csv(os.path.join(out_dir, f"scenario_{scenario}.csv"), index=False)

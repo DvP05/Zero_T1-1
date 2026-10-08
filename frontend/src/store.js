@@ -15,6 +15,11 @@ export const useTidalis = create((set, get) => ({
   // --- data ---------------------------------------------------------------
   health: FALLBACK.health,
   coastalState: FALLBACK.coastalState,
+  marineData: null,
+  lastLiveUpdate: null,
+  isLiveRefreshing: false,
+  userLocation: null,
+  activeLocation: { lat: 15.2993, lon: 73.97, name: 'Coastal Command Station' },
   sensors: [],
   readings: [],
   events: [],
@@ -58,12 +63,58 @@ export const useTidalis = create((set, get) => ({
   scenarioReady: false,
   selectedZoneId: 'B',
 
+  // --- mapbox & layout state ---------------------------------------------
+  mapboxToken:
+    (typeof import.meta !== 'undefined' && import.meta.env?.VITE_MAPBOX_TOKEN) ||
+    (typeof localStorage !== 'undefined' ? localStorage.getItem('tidalis_mapbox_token') || '' : ''),
+  mapStyle: 'dark', // 'dark' | 'satellite' | 'night'
+  leftRailCollapsed: false,
+  inspectorCollapsed: false,
+  inspectorTab: 'brief', // 'brief' | 'priorities' | 'zone' | 'event'
+  operationsOpen: false,
+  operationsTab: 'Copilot',
+
+  setMapboxToken(token) {
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem('tidalis_mapbox_token', token)
+    }
+    set({ mapboxToken: token })
+  },
+  setMapStyle(mapStyle) {
+    set({ mapStyle })
+  },
+  toggleLeftRail() {
+    set((s) => ({ leftRailCollapsed: !s.leftRailCollapsed }))
+  },
+  setLeftRailCollapsed(collapsed) {
+    set({ leftRailCollapsed: collapsed })
+  },
+  toggleInspector() {
+    set((s) => ({ inspectorCollapsed: !s.inspectorCollapsed }))
+  },
+  setInspectorCollapsed(collapsed) {
+    set({ inspectorCollapsed: collapsed })
+  },
+  setInspectorTab(tab) {
+    set({ inspectorTab: tab, inspectorCollapsed: false })
+  },
+  toggleOperations() {
+    set((s) => ({ operationsOpen: !s.operationsOpen }))
+  },
+  setOperationsOpen(open) {
+    set({ operationsOpen: open })
+  },
+  setOperationsTab(tab) {
+    set({ operationsTab: tab, operationsOpen: true })
+  },
+
   // initialise: load everything once
   async init() {
-    const [health, coastalState, sensors, readings, events, assets, telemetry, sosTickets] =
+    const [health, coastalState, marineData, sensors, readings, events, assets, telemetry, sosTickets] =
       await Promise.all([
         withFallback(api.health(), FALLBACK.health),
-        withFallback(api.coastalState(), FALLBACK.coastalState),
+        withFallback(api.coastalState(15.2993, 73.97, true), FALLBACK.coastalState),
+        withFallback(api.marine(15.2993, 73.97, true), null),
         withFallback(api.sensors(), FALLBACK.empty),
         withFallback(api.latestReadings(), FALLBACK.empty),
         withFallback(api.events(), FALLBACK.empty),
@@ -76,6 +127,8 @@ export const useTidalis = create((set, get) => ({
     set({
       health,
       coastalState,
+      marineData: marineData || coastalState.marine_data,
+      lastLiveUpdate: new Date().toLocaleTimeString(),
       sensors,
       readings,
       events,
@@ -89,6 +142,60 @@ export const useTidalis = create((set, get) => ({
 
     if (top) await get().loadEventDetails(top.event_id)
     get().initScenario()
+
+    // Automatically check for browser geolocation on launch
+    get().detectUserLocation()
+  },
+
+  detectUserLocation() {
+    if (typeof navigator !== 'undefined' && navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          const lat = Number(pos.coords.latitude.toFixed(4))
+          const lon = Number(pos.coords.longitude.toFixed(4))
+          get().setLocation(lat, lon, 'Live GPS Position')
+        },
+        (err) => {
+          console.info('[TIDALIS] Geolocation fallback used:', err?.message)
+        },
+        { timeout: 8000, enableHighAccuracy: true }
+      )
+    }
+  },
+
+  setLocation(lat, lon, name = 'Current Position') {
+    set({
+      userLocation: { lat, lon, label: name },
+      activeLocation: { lat, lon, name },
+    })
+    get().refreshLiveData(lat, lon)
+  },
+
+  async refreshLiveData(customLat, customLon) {
+    const coords = get().userLocation || get().activeLocation || { lat: 15.2993, lon: 73.97 }
+    const lat = customLat ?? coords.lat
+    const lon = customLon ?? coords.lon
+    set({ isLiveRefreshing: true })
+    try {
+      const [health, coastalState, marineData, readings] = await Promise.all([
+        withFallback(api.health(), get().health),
+        withFallback(api.coastalState(lat, lon, true), get().coastalState),
+        withFallback(api.marine(lat, lon, true), get().marineData),
+        withFallback(api.latestReadings(), get().readings),
+      ])
+      set({
+        health,
+        coastalState,
+        marineData: marineData || coastalState.marine_data,
+        readings,
+        lastLiveUpdate: new Date().toLocaleTimeString(),
+        online: health.status === 'ok',
+        isLiveRefreshing: false,
+      })
+    } catch (err) {
+      console.warn('[TIDALIS] Live data refresh failed:', err)
+      set({ isLiveRefreshing: false })
+    }
   },
 
   // --- scenario timeline --------------------------------------------------
@@ -244,7 +351,7 @@ export const useTidalis = create((set, get) => ({
   },
 
   selectZone(zoneId) {
-    set({ selectedZoneId: zoneId })
+    set({ selectedZoneId: zoneId, inspectorTab: 'zone', inspectorCollapsed: false })
   },
 
   async refreshHealth() {
@@ -264,6 +371,7 @@ export const useTidalis = create((set, get) => ({
   },
 
   selectEvent(eventId) {
+    set({ inspectorTab: 'event', inspectorCollapsed: false })
     get().loadEventDetails(eventId)
   },
 

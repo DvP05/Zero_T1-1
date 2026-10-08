@@ -33,8 +33,8 @@ async function patchJson(path) {
 
 export const api = {
   health: () => getJson('/api/health'),
-  coastalState: (lat = 15.2993, lon = 73.97) =>
-    getJson('/api/coastal-state', { lat, lon }),
+  coastalState: (lat = 15.2993, lon = 73.97, refresh = false) =>
+    getJson('/api/coastal-state', { lat, lon, refresh: refresh ? 'true' : undefined }),
   sensors: () => getJson('/api/sensors'),
   latestReadings: () => getJson('/api/sensors/latest/readings'),
   events: () => getJson('/api/events'),
@@ -43,7 +43,8 @@ export const api = {
   assets: () => getJson('/api/assets'),
   forecast: (eventId) => getJson('/api/forecast', { event_id: eventId }),
   exposure: (eventId) => getJson('/api/exposure', { event_id: eventId }),
-  marine: (lat = 15.2993, lon = 73.97) => getJson('/api/marine', { lat, lon }),
+  marine: (lat = 15.2993, lon = 73.97, refresh = false) =>
+    getJson('/api/marine', { lat, lon, refresh: refresh ? 'true' : undefined }),
   whatIf: (body) => postJson('/api/simulation/what-if', body),
   copilot: (message, eventId) =>
     postJson('/api/copilot', { message, event_id: eventId ?? null }),

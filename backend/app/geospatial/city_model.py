@@ -113,33 +113,33 @@ def _zone(
 
 
 ZONES: list[Zone] = [
-    # --- West Coast (Goa focus area) ---
+    # --- West Coast focus area ---
     _zone(
-        "A", "Zone A · Miramar Coast (Goa)",
+        "A", "Zone A · Coastal Waterfront",
         73.930, 15.315, 73.966, 15.345,
         elevation_m=1.40, drainage_capacity=0.74, historical_flood_freq=0.34,
         imperviousness=0.62, slope=1.6, population=14200, vulnerability=0.42,
     ),
     _zone(
-        "B", "Zone B · Low-lying Estuary (Goa)",
+        "B", "Zone B · Low-lying Estuary",
         73.930, 15.283, 73.966, 15.315,
         elevation_m=1.05, drainage_capacity=0.58, historical_flood_freq=0.61,
         imperviousness=0.71, slope=0.9, population=21800, vulnerability=0.78,
     ),
     _zone(
-        "C", "Zone C · South Harbour (Goa)",
+        "C", "Zone C · South Harbour",
         73.930, 15.251, 73.966, 15.283,
         elevation_m=1.70, drainage_capacity=0.66, historical_flood_freq=0.41,
         imperviousness=0.55, slope=1.9, population=9600, vulnerability=0.51,
     ),
     _zone(
-        "D", "Zone D · Upland North (Goa)",
+        "D", "Zone D · Upland North",
         73.966, 15.315, 74.002, 15.345,
         elevation_m=4.60, drainage_capacity=0.88, historical_flood_freq=0.08,
         imperviousness=0.44, slope=4.7, population=11300, vulnerability=0.22,
     ),
     _zone(
-        "E", "Zone E · Inland East (Goa)",
+        "E", "Zone E · Inland East",
         73.966, 15.283, 74.002, 15.315,
         elevation_m=3.30, drainage_capacity=0.81, historical_flood_freq=0.15,
         imperviousness=0.50, slope=3.4, population=16700, vulnerability=0.30,
@@ -324,7 +324,7 @@ BUILDINGS: list[Building] = _build_buildings()
 # ---------------------------------------------------------------------------
 
 FACILITIES: list[Facility] = [
-    Facility(id="FAC-HOSP-1", name="Goa Coastal Hospital", kind="hospital",
+    Facility(id="FAC-HOSP-1", name="Coastal Central Hospital", kind="hospital",
              zone_id="B", coordinates=[73.943, 15.306], criticality=0.95),
     Facility(id="FAC-CLIN-1", name="B2 Health Clinic", kind="hospital",
              zone_id="B", coordinates=[73.958, 15.291], criticality=0.70),
@@ -369,8 +369,72 @@ def _zone_properties(zone: Zone) -> dict:
     }
 
 
-def as_geojson() -> dict:
+def as_geojson(zone_id: Optional[str] = None) -> dict:
     """Return all layers as a single GeoJSON FeatureCollection bundle."""
+    zid = (zone_id or "goa").lower().strip()
+
+    if zid != "goa":
+        # Multi-location dynamic digital twin (e.g. Mumbai, Chennai, etc.)
+        from data_collection.config import COASTAL_ZONES
+        cz = COASTAL_ZONES.get(zid)
+        base_lat = cz.lat if cz else 19.076
+        base_lon = cz.lon if cz else 72.877
+        z_name = cz.name if cz else zid.title()
+
+        offsets = [
+            (-0.02, -0.02, 0.015, 0.015, "A", f"Zone A · {z_name} Waterfront", 1.5, 0.65),
+            (0.00, -0.02, 0.035, 0.015, "B", f"Zone B · {z_name} Lowlands", 1.1, 0.55),
+            (-0.02, 0.00, 0.015, 0.035, "C", f"Zone C · {z_name} Port & Delta", 1.8, 0.70),
+            (0.01, 0.01, 0.045, 0.045, "D", f"Zone D · {z_name} Heights", 4.5, 0.85),
+            (0.03, -0.01, 0.065, 0.025, "E", f"Zone E · {z_name} Hinterland", 3.2, 0.80),
+        ]
+        zone_features = []
+        for dlon, dlat, w, h, id_val, name_val, elev, drain in offsets:
+            p = [
+                [round(base_lon + dlon, 4), round(base_lat + dlat, 4)],
+                [round(base_lon + dlon + w, 4), round(base_lat + dlat, 4)],
+                [round(base_lon + dlon + w, 4), round(base_lat + dlat + h, 4)],
+                [round(base_lon + dlon, 4), round(base_lat + dlat + h, 4)],
+                [round(base_lon + dlon, 4), round(base_lat + dlat, 4)],
+            ]
+            zone_features.append({
+                "type": "Feature",
+                "geometry": {"type": "Polygon", "coordinates": [p]},
+                "properties": {
+                    "id": id_val,
+                    "name": name_val,
+                    "elevation_m": elev,
+                    "drainage_capacity": drain,
+                    "historical_flood_freq": 0.4,
+                    "imperviousness": 0.6,
+                    "slope": 2.0,
+                    "population": 25000,
+                    "vulnerability": 0.5,
+                },
+            })
+
+        return {
+            "type": "FeatureCollection",
+            "features": [],
+            "layers": {
+                "zones": {"type": "FeatureCollection", "features": zone_features},
+                "roads": {"type": "FeatureCollection", "features": []},
+                "buildings": {"type": "FeatureCollection", "features": []},
+                "facilities": {"type": "FeatureCollection", "features": []},
+                "nodes": {"type": "FeatureCollection", "features": []},
+            },
+            "meta": {
+                "name": f"TIDALIS Coastal District ({z_name})",
+                "zone_id": zid,
+                "demo_data": False,
+                "zone_count": len(zone_features),
+                "road_count": 0,
+                "building_count": 0,
+                "facility_count": 0,
+            },
+        }
+
+    # Default Goa digital twin
     zones = {
         "type": "FeatureCollection",
         "features": [
@@ -431,7 +495,8 @@ def as_geojson() -> dict:
             "nodes": nodes,
         },
         "meta": {
-            "name": "TIDALIS Coastal District (Goa)",
+            "name": "TIDALIS Coastal District",
+            "zone_id": "goa",
             "demo_data": True,
             "zone_count": len(ZONES),
             "road_count": len(ROADS),

@@ -32,6 +32,7 @@ from backend.app.models.schemas import (
     Forecast,
     WhatIfRequest,
     WhatIfResult,
+    CollectionRequest,
 )
 from backend.app.services.data_store import get_store
 from backend.app.services.open_meteo import fetch_marine_data, normalise_marine_data
@@ -52,6 +53,15 @@ from backend.app.services.sos_engine import (
 from backend.app.services.mitigation_engine import (
     MitigationPlan,
     generate_mitigation_plan,
+)
+from backend.app.services.collector_service import (
+    get_all_zones,
+    get_zone,
+    get_zone_info,
+    list_all_zones,
+    get_zone_assets,
+    get_collection_status,
+    run_collection_pipeline,
 )
 from backend.app.geospatial.city_model import as_geojson
 from backend.app.scenario.engine import (
@@ -79,13 +89,21 @@ async def lifespan(app: FastAPI):
     # Also fetch live marine data and cache it
     store = get_store()
     try:
+        from backend.app.services.collector_service import run_collection_pipeline
+        from backend.app.models.schemas import CollectionRequest
+        # Fetch real-time data for Goa
+        req = CollectionRequest(sources=["open_meteo", "tidalis"], scenario="heavy_coastal_rain")
+        res = run_collection_pipeline("goa", req)
+        logger.info("✓ Real data collection finished: %s", res.message)
+        
+        from backend.app.services.open_meteo import fetch_marine_data, normalise_marine_data
         raw = fetch_marine_data(15.2993, 73.9700)
         observations = normalise_marine_data(raw, 15.2993, 73.9700)
         store.observations.extend(observations)
         store.marine_cache = raw
         logger.info("✓ Marine data cached (%d observations)", len(observations))
     except Exception as exc:
-        logger.warning("Marine data fetch failed (will use demo data): %s", exc)
+        logger.warning("Real data collection failed (will use demo data): %s", exc)
 
     logger.info("✅ TIDALIS ready — %d events, %d sensors", len(store.events), len(store.get_sensors()))
 
@@ -145,16 +163,95 @@ async def health():
 
 
 # ---------------------------------------------------------------------------
+# Locations & Multi-Zone Focus
+# ---------------------------------------------------------------------------
+
+ACTIVE_ZONE = "goa"
+
+@app.get("/api/locations")
+async def list_locations():
+    """List lightweight summaries for all registered coastal focus zones."""
+    return list_all_zones()
+
+
+@app.get("/api/locations/{zone_id}")
+async def location_detail(zone_id: str):
+    """Get metadata and current data availability for a focus zone."""
+    info = get_zone_info(zone_id)
+    if not info:
+        raise HTTPException(404, f"Zone '{zone_id}' not found")
+    return info
+
+
+@app.post("/api/locations/{zone_id}/activate")
+async def activate_location(zone_id: str):
+    """Set the active operational zone."""
+    global ACTIVE_ZONE
+    z = get_zone(zone_id)
+    if not z:
+        raise HTTPException(404, f"Zone '{zone_id}' not found")
+    ACTIVE_ZONE = zone_id.lower().strip()
+    return {"status": "ok", "active_zone": ACTIVE_ZONE}
+
+
+@app.get("/api/locations/{zone_id}/status")
+async def location_collection_status(zone_id: str):
+    """Check background or cached collection status for a zone."""
+    return get_collection_status(zone_id)
+
+
+@app.post("/api/locations/{zone_id}/collect")
+async def trigger_collection(zone_id: str, request: Optional[CollectionRequest] = None):
+    """Trigger on-demand data collection for a zone."""
+    return run_collection_pipeline(zone_id, request)
+
+
+# ---------------------------------------------------------------------------
 # Coastal State
 # ---------------------------------------------------------------------------
 
 @app.get("/api/coastal-state", response_model=CoastalState)
 async def coastal_state(
-    lat: float = Query(15.2993, description="Latitude"),
-    lon: float = Query(73.9700, description="Longitude"),
+    lat: Optional[float] = Query(None, description="Latitude"),
+    lon: Optional[float] = Query(None, description="Longitude"),
+    zone_id: Optional[str] = Query(None, description="Coastal Zone ID"),
+    refresh: bool = Query(False),
 ):
     store = get_store()
-    return store.get_coastal_state(lat, lon)
+    zid = (zone_id or ACTIVE_ZONE or "goa").lower().strip()
+    target_lat = lat
+    target_lon = lon
+
+    if zone_id or (target_lat is None or target_lon is None):
+        z = get_zone(zid)
+        if z:
+            target_lat = z.lat
+            target_lon = z.lon
+        else:
+            target_lat = target_lat or 15.2993
+            target_lon = target_lon or 73.9700
+
+    if refresh or not store.marine_cache:
+        try:
+            raw = fetch_marine_data(target_lat, target_lon)
+            store.marine_cache = raw
+            # Sync real sea surface temperature to sensors
+            sst = None
+            if raw and "hourly" in raw and "sea_surface_temperature" in raw["hourly"]:
+                sst_vals = [v for v in raw["hourly"]["sea_surface_temperature"] if v is not None]
+                if sst_vals:
+                    sst = sst_vals[0]
+            if sst is not None:
+                for reading in store.sensor_readings:
+                    reading.temperature = round(sst + (hash(reading.sensor_id) % 10) * 0.1, 1)
+        except Exception as exc:
+            logger.warning("Live marine fetch failed: %s", exc)
+
+    state = store.get_coastal_state(target_lat, target_lon)
+    state.zone_id = zid
+    state.latitude = target_lat
+    state.longitude = target_lon
+    return state
 
 
 # ---------------------------------------------------------------------------
@@ -162,9 +259,17 @@ async def coastal_state(
 # ---------------------------------------------------------------------------
 
 @app.get("/api/sensors")
-async def list_sensors():
+async def list_sensors(zone_id: Optional[str] = Query(None)):
     store = get_store()
-    return store.get_sensors()
+    all_sensors = store.get_sensors()
+    if zone_id:
+        zid = zone_id.lower().strip()
+        if zid == "goa":
+            return all_sensors[:5]
+        zid_prefix = zid[:3].upper()
+        matching = [s for s in all_sensors if zid_prefix in s.get("name", "").upper() or zid in s.get("name", "").lower()]
+        return matching if matching else []
+    return all_sensors
 
 
 @app.get("/api/sensors/{sensor_id}")
@@ -249,8 +354,11 @@ async def get_exposure(event_id: str = Query(..., description="Event ID")):
 
 
 @app.get("/api/assets")
-async def list_assets():
+async def list_assets(zone_id: Optional[str] = Query(None)):
     store = get_store()
+    if zone_id:
+        assets = get_zone_assets(zone_id)
+        return [a.model_dump() for a in assets]
     return [a.model_dump() for a in store.assets]
 
 
@@ -284,13 +392,26 @@ async def copilot(request: CopilotRequest):
 
 @app.get("/api/marine")
 async def marine_data(
-    lat: float = Query(15.2993),
-    lon: float = Query(73.9700),
+    lat: Optional[float] = Query(None),
+    lon: Optional[float] = Query(None),
+    zone_id: Optional[str] = Query(None),
+    refresh: bool = Query(False),
 ):
     store = get_store()
-    if store.marine_cache:
+    target_lat = lat
+    target_lon = lon
+    if zone_id or (target_lat is None or target_lon is None):
+        z = get_zone(zone_id or "goa")
+        if z:
+            target_lat = z.lat
+            target_lon = z.lon
+        else:
+            target_lat = target_lat or 15.2993
+            target_lon = target_lon or 73.9700
+
+    if store.marine_cache and not refresh:
         return store.marine_cache
-    raw = fetch_marine_data(lat, lon)
+    raw = fetch_marine_data(target_lat, target_lon)
     store.marine_cache = raw
     return raw
 
@@ -353,9 +474,9 @@ async def get_mitigation(event_id: str = Query(..., description="Event ID")):
 # ---------------------------------------------------------------------------
 
 @app.get("/api/geo")
-async def geo_layers():
-    """GeoJSON layers for the 3D digital-twin map (mocked demo district)."""
-    return as_geojson()
+async def geo_layers(zone_id: Optional[str] = Query(None)):
+    """GeoJSON layers for the 3D digital-twin map."""
+    return as_geojson(zone_id)
 
 
 # ---------------------------------------------------------------------------
@@ -363,9 +484,9 @@ async def geo_layers():
 # ---------------------------------------------------------------------------
 
 @app.get("/api/scenario")
-async def scenario_overview():
+async def scenario_overview(zone_id: Optional[str] = Query(None)):
     """Scenario metadata + the full T=0..T+5h step index."""
-    return scenario_meta()
+    return scenario_meta(zone_id)
 
 
 @app.get("/api/scenario/snapshot")

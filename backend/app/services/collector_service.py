@@ -563,13 +563,7 @@ def generate_tidalis_sensors_live(
         raise ValueError(f"Unknown zone: {zone_id}")
 
     network = TidalisSensorNetwork()
-    data = network.generate_scenario_data(z, scenario=scenario)
-
-    if save:
-        out_dir = os.path.join(RAW_DATA_DIR, "tidalis", zone_id.lower())
-        os.makedirs(out_dir, exist_ok=True)
-        data["sensor_registry"].to_csv(os.path.join(out_dir, "sensor_registry.csv"), index=False)
-        data["scenario_data"].to_csv(os.path.join(out_dir, f"scenario_{scenario}.csv"), index=False)
+    data = network.generate_scenario_data(z, scenario=scenario, save=save)
 
     return ingest_tidalis_cache(zone_id)
 
