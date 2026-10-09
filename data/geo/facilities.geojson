@@ -6,13 +6,13 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          74.8548,
-          12.9127
+          80.2657,
+          13.0767
         ]
       },
       "properties": {
         "id": "FAC-01",
-        "name": "Mangaluru District Hospital",
+        "name": "Chennai Marina District Hospital",
         "kind": "hospital",
         "criticality": 0.95
       }
@@ -22,13 +22,13 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          74.8748,
-          12.9307
+          80.2857,
+          13.0947
         ]
       },
       "properties": {
         "id": "FAC-02",
-        "name": "Mangaluru High Ground Evacuation Center",
+        "name": "Chennai Marina High Ground Evacuation Center",
         "kind": "shelter",
         "criticality": 0.88
       }
@@ -38,13 +38,13 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          74.8478,
-          12.9207
+          80.2587,
+          13.0847
         ]
       },
       "properties": {
         "id": "FAC-03",
-        "name": "Mangaluru Maritime Coastguard / Port",
+        "name": "Chennai Marina Maritime Coastguard / Port",
         "kind": "port",
         "criticality": 0.8
       }

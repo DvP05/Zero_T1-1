@@ -18,8 +18,8 @@ export default function LiveMarineFeed() {
   const currentDirection = hourly.ocean_current_direction?.[0]
 
   const stationName = userLocation?.label || activeLocation?.name || 'Coastal Station'
-  const latVal = userLocation?.lat ?? coastalState?.latitude ?? activeLocation?.lat ?? 15.29
-  const lonVal = userLocation?.lon ?? coastalState?.longitude ?? activeLocation?.lon ?? 73.97
+  const latVal = userLocation?.lat ?? activeLocation?.lat ?? coastalState?.latitude ?? 15.29
+  const lonVal = userLocation?.lon ?? activeLocation?.lon ?? coastalState?.longitude ?? 73.97
 
   return (
     <div className="live-marine-card">

@@ -983,6 +983,64 @@ def compute_live_overlay_snapshot(
         aggregate_risk=aggregate_risk,
     )
 
+    # Zone-level alerts matching specification:
+    # "High Flood Risk, Zone B. Onset 2:40 PM, peak 4:10 PM. Drivers: high tide + 85 mm rain + low elevation"
+    real_alerts: List[Alert] = []
+    sorted_zones = sorted(zone_states, key=lambda z: z.flood_probability, reverse=True)
+    for s in sorted_zones:
+        if s.risk_level in ("CRITICAL", "HIGH", "MODERATE") or len(real_alerts) < 3:
+            onset_dt = now_utc + timedelta(hours=s.onset_hours if s.onset_hours is not None else 0.5)
+            peak_dt = now_utc + timedelta(hours=s.peak_hours if s.peak_hours is not None else 3.5)
+            onset_str = onset_dt.strftime("%I:%M %p")
+            peak_str = peak_dt.strftime("%I:%M %p")
+
+            top_drivers = [
+                d["label"].lower()
+                for d in s.drivers
+                if d.get("direction") == "pushes risk up" or d.get("contribution", 0) > 0
+            ]
+            if not top_drivers:
+                top_drivers = ["tide level", "storm surge", "terrain elevation"]
+            drivers_str = " + ".join(top_drivers[:3])
+
+            risk_title = f"{s.risk_level.title()} Flood Risk"
+            alert_msg = f"{risk_title}, {s.zone_name}. Onset {onset_str}, peak {peak_str}. Drivers: {drivers_str}"
+
+            level = "CRITICAL" if s.risk_level == "CRITICAL" else ("WARNING" if s.risk_level == "HIGH" else ("WATCH" if s.risk_level == "MODERATE" else "INFO"))
+            real_alerts.append(
+                Alert(
+                    id=f"ALT-ZONE-{s.zone_id}",
+                    t_hours=t_hours,
+                    level=level,
+                    message=alert_msg,
+                )
+            )
+
+    for road in isolation.blocked_roads:
+        if road.critical:
+            real_alerts.append(
+                Alert(
+                    id=f"ALT-RD-{road.id}",
+                    t_hours=t_hours,
+                    level="WARNING",
+                    message=f"Critical Route {road.name} impassable — water {road.submersion_m:.2f}m over road deck",
+                )
+            )
+
+    for b in isolation.bottlenecks:
+        if not b.get("defended", False):
+            real_alerts.append(
+                Alert(
+                    id=f"ALT-BOT-{b.get('road_id', 'RD')}",
+                    t_hours=t_hours,
+                    level="CRITICAL",
+                    message=f"Cut-Edge Bottleneck: {b.get('road_name', 'Artery')} threatened — high isolation risk",
+                )
+            )
+
+    order = {"CRITICAL": 0, "WARNING": 1, "WATCH": 2, "INFO": 3}
+    real_alerts.sort(key=lambda a: order.get(a.level, 9))
+
     return ScenarioSnapshot(
         scenario_id=f"SCN-LIVE-{resolved_zid.upper()}",
         scenario_name=f"Live Coastal Operational Intelligence ({resolved_name})",
@@ -993,7 +1051,7 @@ def compute_live_overlay_snapshot(
         zones=zone_states,
         priorities=priorities,
         isolation=isolation,
-        alerts=[],
+        alerts=real_alerts[:8],
         brief_headline=headline,
         brief=brief,
         aggregate_risk=aggregate_risk,
@@ -1242,13 +1300,16 @@ def sync_live_sensors_and_events(
             },
         ]
     else:
-        # Generic coastal location: calibrated offshore buoys seaward to the west
+        # Generic coastal location: calibrated offshore buoys seaward
+        is_east_coast = lon > 78.5 or getattr(COASTAL_ZONES.get(resolved_zid, None), "coast", "") == "east"
+        seaward_offset = 0.080 if is_east_coast else -0.080
+        seaward_offset_mid = 0.055 if is_east_coast else -0.055
         new_sensors = [
             {
                 "sensor_id": f"BUOY-{resolved_zid.upper()[:3]}-01",
                 "name": f"Deepwater Ocean Buoy ({meteo['wave_height_m']}m swell)",
                 "latitude": round(lat, 4),
-                "longitude": round(lon - 0.080, 4),
+                "longitude": round(lon + seaward_offset, 4),
                 "sensor_type": "marine_buoy",
                 "temperature": meteo["sst_c"],
                 "wave_height_m": meteo["wave_height_m"],
@@ -1262,7 +1323,7 @@ def sync_live_sensors_and_events(
                 "sensor_id": f"BUOY-{resolved_zid.upper()[:3]}-02",
                 "name": "Offshore Hydrodynamic Moored Buoy",
                 "latitude": round(lat - 0.035, 4),
-                "longitude": round(lon - 0.055, 4),
+                "longitude": round(lon + seaward_offset_mid, 4),
                 "sensor_type": "marine_buoy",
                 "temperature": round(meteo["sst_c"] - 0.2, 1),
                 "wave_height_m": round(meteo["wave_height_m"] * 0.9, 2),
@@ -1276,7 +1337,7 @@ def sync_live_sensors_and_events(
                 "sensor_id": f"METEO-{resolved_zid.upper()[:3]}-01",
                 "name": "Automated Coastal Weather Station",
                 "latitude": round(lat + 0.010, 4),
-                "longitude": round(lon - 0.010, 4),
+                "longitude": round(lon - 0.010 if is_east_coast else lon + 0.010, 4),
                 "sensor_type": "weather_station",
                 "temperature": meteo["temp_c"],
                 "wave_height_m": 0.0,

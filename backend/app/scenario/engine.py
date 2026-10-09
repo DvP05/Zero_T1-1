@@ -374,21 +374,32 @@ def _scenario_alerts(
 ) -> list[Alert]:
     alerts: list[Alert] = []
 
+    now_utc = datetime.now(timezone.utc)
     for state in zones:
-        if state.risk_level == "CRITICAL" and state.flood_depth_m > 0.5:
+        if state.risk_level in ("CRITICAL", "HIGH", "MODERATE"):
+            onset_dt = now_utc + timedelta(hours=state.onset_hours if state.onset_hours is not None else 0.5)
+            peak_dt = now_utc + timedelta(hours=state.peak_hours if state.peak_hours is not None else 3.5)
+            onset_str = onset_dt.strftime("%I:%M %p")
+            peak_str = peak_dt.strftime("%I:%M %p")
+
+            top_drivers = [
+                d.label.lower() if hasattr(d, "label") else d.get("label", "").lower()
+                for d in state.drivers
+                if (getattr(d, "direction", "") == "pushes risk up" or (isinstance(d, dict) and d.get("direction") == "pushes risk up"))
+            ]
+            if not top_drivers:
+                top_drivers = ["high tide", "heavy rainfall", "low elevation"]
+            drivers_str = " + ".join(top_drivers[:3])
+
+            risk_title = f"{state.risk_level.title()} Flood Risk"
+            alert_msg = f"{risk_title}, {state.zone_name}. Onset {onset_str}, peak {peak_str}. Drivers: {drivers_str}"
+            level = "CRITICAL" if state.risk_level == "CRITICAL" else ("WARNING" if state.risk_level == "HIGH" else "WATCH")
+
             alerts.append(Alert(
-                id=f"ALT-{state.zone_id}-CRIT",
+                id=f"ALT-{state.zone_id}",
                 t_hours=t,
-                level="CRITICAL",
-                message=f"{state.zone_name} — {state.flood_probability:.0%} flood probability, "
-                        f"{state.flood_depth_m:.2f} m standing water",
-            ))
-        elif state.risk_level == "HIGH":
-            alerts.append(Alert(
-                id=f"ALT-{state.zone_id}-HIGH",
-                t_hours=t,
-                level="WARNING",
-                message=f"{state.zone_name} escalated to HIGH risk ({state.flood_probability:.0%})",
+                level=level,
+                message=alert_msg,
             ))
 
     for road in isolation.blocked_roads:

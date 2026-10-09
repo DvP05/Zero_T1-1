@@ -7,19 +7,19 @@
         "type": "LineString",
         "coordinates": [
           [
-            74.8498,
-            12.9107
+            80.2607,
+            13.0747
           ],
           [
-            74.8688,
-            12.9107
+            80.2797,
+            13.0747
           ]
         ]
       },
       "properties": {
         "id": "RD-01",
-        "name": "Mangaluru Coastal Arterial",
-        "elevation_m": 12.4,
+        "name": "Chennai Marina Coastal Arterial",
+        "elevation_m": 1.8,
         "critical": true
       }
     },
@@ -29,19 +29,19 @@
         "type": "LineString",
         "coordinates": [
           [
-            74.8498,
-            12.9287
+            80.2607,
+            13.0927
           ],
           [
-            74.8688,
-            12.9287
+            80.2797,
+            13.0927
           ]
         ]
       },
       "properties": {
         "id": "RD-02",
-        "name": "Mangaluru North Link",
-        "elevation_m": 27.9,
+        "name": "Chennai Marina North Link",
+        "elevation_m": 4.0,
         "critical": true
       }
     },
@@ -51,19 +51,19 @@
         "type": "LineString",
         "coordinates": [
           [
-            74.8498,
-            12.9107
+            80.2607,
+            13.0747
           ],
           [
-            74.8498,
-            12.9287
+            80.2607,
+            13.0927
           ]
         ]
       },
       "properties": {
         "id": "RD-03",
-        "name": "Mangaluru Harbor Way",
-        "elevation_m": 15.5,
+        "name": "Chennai Marina Harbor Way",
+        "elevation_m": 2.2,
         "critical": false
       }
     },
@@ -73,19 +73,19 @@
         "type": "LineString",
         "coordinates": [
           [
-            74.8688,
-            12.9107
+            80.2797,
+            13.0747
           ],
           [
-            74.8848,
-            12.9237
+            80.2957,
+            13.0877
           ]
         ]
       },
       "properties": {
         "id": "RD-04",
-        "name": "Mangaluru Inland Highway Egress",
-        "elevation_m": 49.6,
+        "name": "Chennai Marina Inland Highway Egress",
+        "elevation_m": 7.2,
         "critical": true
       }
     }

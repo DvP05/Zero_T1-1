@@ -9,7 +9,18 @@ const STEP_H = 0.25
 // module-scoped live stream handles (not part of reactive state)
 let scenarioSocket = null
 let scenarioSocketPromise = null
-let localTimer = null
+export const COASTAL_DISTRICTS = {
+  // Western Arabian Sea Coast
+  goa: { lat: 15.2993, lon: 73.9700, name: 'Goa Coastal District', id: 'goa', coast: 'west', state: 'Goa' },
+  mangaluru: { lat: 12.9187, lon: 74.8598, name: 'Mangaluru Coastal District', id: 'mangaluru', coast: 'west', state: 'Karnataka' },
+  mumbai: { lat: 18.9667, lon: 72.8333, name: 'Mumbai Harbor District', id: 'mumbai', coast: 'west', state: 'Maharashtra' },
+  kochi: { lat: 9.9312, lon: 76.2673, name: 'Kochi Port District', id: 'kochi', coast: 'west', state: 'Kerala' },
+
+  // Eastern Bay of Bengal Coast
+  chennai: { lat: 13.0827, lon: 80.2707, name: 'Chennai Coastal District', id: 'chennai', coast: 'east', state: 'Tamil Nadu' },
+  kolkata: { lat: 21.7580, lon: 88.3430, name: 'Kolkata Sundarbans Estuary', id: 'kolkata', coast: 'east', state: 'West Bengal' },
+  visakhapatnam: { lat: 17.6868, lon: 83.2185, name: 'Visakhapatnam Harbor District', id: 'visakhapatnam', coast: 'east', state: 'Andhra Pradesh' },
+}
 
 export const useTidalis = create((set, get) => ({
   // --- data ---------------------------------------------------------------
@@ -19,7 +30,8 @@ export const useTidalis = create((set, get) => ({
   lastLiveUpdate: null,
   isLiveRefreshing: false,
   userLocation: null,
-  activeLocation: { lat: 15.2993, lon: 73.97, name: 'Coastal Command Station' },
+  activeLocation: { lat: 15.2993, lon: 73.97, name: 'Coastal Command Station', districtId: 'goa' },
+  customCoastline: null,
   sensors: [],
   readings: [],
   events: [],
@@ -175,18 +187,50 @@ export const useTidalis = create((set, get) => ({
     get().refreshLiveData(lat, lon)
   },
 
-  async switchDistrict(districtId) {
-    const districts = {
-      goa: { lat: 15.2993, lon: 73.9700, name: 'Goa Coastal District', id: 'goa' },
-      mangaluru: { lat: 12.9187, lon: 74.8598, name: 'Mangaluru Coastal District', id: 'mangaluru' },
-      mumbai: { lat: 18.9667, lon: 72.8333, name: 'Mumbai Harbor District', id: 'mumbai' },
+  async switchDistrict(districtId, customPayload = null) {
+    let d
+    if (districtId === 'custom') {
+      const customData = customPayload || get().customCoastline || {
+        lat: 19.8135,
+        lon: 85.8312,
+        name: 'Puri Coastal Sector, Odisha',
+        id: 'custom',
+        coast: 'east',
+      }
+      d = {
+        lat: Number(customData.lat),
+        lon: Number(customData.lon),
+        name: customData.name || `Custom Coastline (${Number(customData.lat).toFixed(2)}, ${Number(customData.lon).toFixed(2)})`,
+        id: 'custom',
+        coast: Number(customData.lon) > 78.5 ? 'east' : 'west',
+      }
+    } else {
+      d = COASTAL_DISTRICTS[districtId] || COASTAL_DISTRICTS.goa
     }
-    const d = districts[districtId] || districts.goa
+
+    const isEast = d.lon > 78.5 || d.coast === 'east'
+
     set({
       activeLocation: { lat: d.lat, lon: d.lon, name: d.name, districtId: d.id },
+      customCoastline: d.id === 'custom' ? d : get().customCoastline,
       userLocation: null,
     })
+
+    try {
+      await api.activateLocation(d.id, d.lat, d.lon)
+    } catch (e) {
+      console.warn('[TIDALIS] Location activation fallback:', e)
+    }
+
     await get().refreshLiveData(d.lat, d.lon, d.id)
+
+    get().flyToTarget({
+      lat: d.lat,
+      lon: d.lon,
+      zoom: 12,
+      pitch: 45,
+      bearing: isEast ? -25 : 25,
+    })
   },
 
   async refreshLiveData(customLat, customLon, customZoneId) {
