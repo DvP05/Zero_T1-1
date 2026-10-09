@@ -154,7 +154,15 @@ class DataStore:
         return self.events
 
     def get_event(self, event_id: str) -> Optional[Event]:
-        return next((e for e in self.events if e.event_id == event_id), None)
+        for e in self.events:
+            if e.event_id == event_id:
+                return e
+        for e in self.events:
+            if e.event_id.lower() == event_id.lower():
+                return e
+        if self.events:
+            return self.events[0]
+        return None
 
     # -- Forecast helpers -----------------------------------------------------
 

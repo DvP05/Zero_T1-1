@@ -17,11 +17,12 @@ This engine also suggests the optimal rescue method:
 from __future__ import annotations
 
 import math
+import re
 import uuid
 from datetime import datetime, timezone
 from typing import Optional
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
 
 # ---------------------------------------------------------------------------
@@ -29,16 +30,44 @@ from pydantic import BaseModel, Field
 # ---------------------------------------------------------------------------
 
 class SOSRequest(BaseModel):
-    """Incoming SOS distress signal."""
-    latitude: float
-    longitude: float
-    name: str = "Unknown"
-    phone: str = ""
-    people_count: int = 1
+    """Incoming SOS distress signal with strict parameter validation."""
+    latitude: float = Field(..., ge=-90.0, le=90.0, description="Latitude between -90 and 90")
+    longitude: float = Field(..., ge=-180.0, le=180.0, description="Longitude between -180 and 180")
+    name: str = Field(default="Unknown", min_length=2, max_length=80)
+    phone: str = Field(default="", min_length=7, max_length=25)
+    people_count: int = Field(default=1, ge=1, le=100, description="Party size between 1 and 100")
     has_children: bool = False
     has_elderly: bool = False
     medical_emergency: bool = False
-    message: str = ""
+    message: str = Field(default="", max_length=1000)
+
+    @field_validator("name")
+    @classmethod
+    def validate_name(cls, v: str) -> str:
+        cleaned = v.strip()
+        if len(cleaned) < 2:
+            raise ValueError("Name must be at least 2 characters long")
+        if not re.search(r"[a-zA-Z\u0900-\u097F]", cleaned):
+            raise ValueError("Name must contain valid alphabetical characters")
+        return cleaned
+
+    @field_validator("phone")
+    @classmethod
+    def validate_phone(cls, v: str) -> str:
+        cleaned = v.strip()
+        digits = re.sub(r"\D", "", cleaned)
+        if len(digits) < 7 or len(digits) > 15:
+            raise ValueError("Phone number must contain between 7 and 15 digits")
+        if not re.match(r"^\+?[0-9\s\-()]+$", cleaned):
+            raise ValueError("Phone number contains invalid characters")
+        return cleaned
+
+    @field_validator("latitude", "longitude")
+    @classmethod
+    def validate_finite_coords(cls, v: float) -> float:
+        if math.isnan(v) or math.isinf(v):
+            raise ValueError("Coordinate values must be finite numbers")
+        return v
 
 
 class SOSTicket(BaseModel):
@@ -70,11 +99,11 @@ class SOSTicket(BaseModel):
 
 
 # ---------------------------------------------------------------------------
-# Topographical Data (Simulated DEM for Goa coast)
+# Topographical Data (Simulated DEM for coastal districts)
 # ---------------------------------------------------------------------------
 
-# Grid of elevation data points around the Goa coastline
 _ELEVATION_GRID = [
+    # Goa Coast
     {"lat": 15.28, "lon": 73.94, "elev": 2.1},
     {"lat": 15.29, "lon": 73.95, "elev": 1.4},
     {"lat": 15.30, "lon": 73.96, "elev": 3.8},
@@ -90,24 +119,42 @@ _ELEVATION_GRID = [
     {"lat": 15.27, "lon": 73.96, "elev": 1.1},
     {"lat": 15.31, "lon": 73.95, "elev": 6.9},
     {"lat": 15.26, "lon": 73.98, "elev": 0.6},
+    # Mangaluru Coast
+    {"lat": 12.87, "lon": 74.83, "elev": 3.2},
+    {"lat": 12.89, "lon": 74.82, "elev": 1.5},
+    {"lat": 12.91, "lon": 74.84, "elev": 8.4},
+    # Mumbai Coast
+    {"lat": 18.92, "lon": 72.83, "elev": 2.0},
+    {"lat": 19.02, "lon": 72.84, "elev": 4.5},
+    {"lat": 19.06, "lon": 72.83, "elev": 1.8},
 ]
 
 _SHELTERS = [
+    # Goa
     {"name": "Panaji Municipal Shelter", "lat": 15.4969, "lon": 73.8278, "capacity": 200},
     {"name": "Miramar Community Hall", "lat": 15.2993, "lon": 73.9862, "capacity": 150},
     {"name": "Dona Paula Relief Camp", "lat": 15.2760, "lon": 73.9700, "capacity": 100},
     {"name": "Vasco Emergency Center", "lat": 15.3993, "lon": 73.8110, "capacity": 300},
     {"name": "Margao Relief Station", "lat": 15.2832, "lon": 73.9862, "capacity": 250},
+    # Mangaluru
+    {"name": "Tannirbhavi Cyclone Relief Camp", "lat": 12.8940, "lon": 74.8210, "capacity": 200},
+    {"name": "Kudroli Community Shelter", "lat": 12.8715, "lon": 74.8320, "capacity": 180},
+    {"name": "Mangalore Port Emergency Depot", "lat": 12.9230, "lon": 74.8150, "capacity": 300},
+    # Mumbai
+    {"name": "Dadar Central Disaster Shelter", "lat": 19.0178, "lon": 72.8478, "capacity": 500},
+    {"name": "Bandra Coastal Relief Camp", "lat": 19.0544, "lon": 72.8402, "capacity": 350},
+    {"name": "Colaba Marine Emergency Base", "lat": 18.9067, "lon": 72.8147, "capacity": 250},
 ]
 
 
 def _haversine(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
-    """Distance in km between two points."""
+    """Distance in km between two points, robust against domain precision errors."""
     R = 6371.0
     dlat = math.radians(lat2 - lat1)
     dlon = math.radians(lon2 - lon1)
     a = math.sin(dlat / 2) ** 2 + math.cos(math.radians(lat1)) * math.cos(math.radians(lat2)) * math.sin(dlon / 2) ** 2
-    return R * 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+    a = min(1.0, max(0.0, a))
+    return R * 2 * math.atan2(math.sqrt(a), math.sqrt(1.0 - a))
 
 
 def _estimate_elevation(lat: float, lon: float) -> float:
@@ -127,20 +174,14 @@ def _estimate_elevation(lat: float, lon: float) -> float:
 def _estimate_flood_depth(lat: float, lon: float) -> float:
     """
     Estimate predicted flood depth at a location.
-    Uses distance from coast + elevation as proxy.
-    In production, this would come from the flood prediction model.
+    Uses terrain elevation and coastal baseline.
     """
-    # Approximate distance from coastline (lower lon = closer to sea in Goa)
-    coast_proximity = max(0.0, 74.00 - lon) * 50  # rough km-ish scale
-    base_depth = max(0.0, 3.5 - coast_proximity * 0.8)
-
-    # Add tide-based surge
     elevation = _estimate_elevation(lat, lon)
-    if elevation < 2.0:
-        base_depth += 1.5
-    elif elevation < 4.0:
-        base_depth += 0.6
-
+    base_depth = max(0.0, 2.5 - min(elevation, 10.0) * 0.3)
+    if elevation < 1.5:
+        base_depth += 1.2
+    elif elevation < 3.0:
+        base_depth += 0.5
     return round(base_depth, 2)
 
 

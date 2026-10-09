@@ -1,15 +1,24 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useTidalis } from '../store'
 
 export default function MitigationPanel() {
   const mitigationPlan = useTidalis((s) => s.mitigationPlan)
   const selectedEventId = useTidalis((s) => s.selectedEventId)
+  const events = useTidalis((s) => s.events)
+  const loadMitigationPlan = useTidalis((s) => s.loadMitigationPlan)
   const snapshot = useTidalis((s) => s.snapshot)
   const flyToTarget = useTidalis((s) => s.flyToTarget)
   const authorizeBottleneckDefense = useTidalis((s) => s.authorizeBottleneckDefense)
   const [loadingAction, setLoadingAction] = useState(null)
 
-  if (!selectedEventId) {
+  useEffect(() => {
+    if (!mitigationPlan) {
+      loadMitigationPlan()
+    }
+  }, [mitigationPlan, loadMitigationPlan])
+
+  const activeEventId = selectedEventId || events[0]?.event_id
+  if (!activeEventId) {
     return <div className="empty-state">SELECT AN EVENT TO VIEW MITIGATION PLAN</div>
   }
 

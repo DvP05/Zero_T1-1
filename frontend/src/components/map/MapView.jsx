@@ -812,7 +812,7 @@ export default function MapView() {
             'concat',
             ['get', 'ref'],
             ' · ',
-            ['case', ['get', 'defended'], '🛡️ DEFENDED', ['==', ['get', 'status'], 'SEVERED'], 'SEVERED CUT-EDGE', 'BOTTLENECK'],
+            ['case', ['get', 'defended'], 'DEFENDED', ['==', ['get', 'status'], 'SEVERED'], 'SEVERED CUT-EDGE', 'BOTTLENECK'],
           ],
           'text-size': 9.5,
           'text-font': ['DIN Pro Bold', 'Arial Unicode MS Regular'],
@@ -1050,7 +1050,7 @@ export default function MapView() {
           'text-field': [
             'concat',
             ['get', 'name'],
-            '\n🌊 ',
+            '\n~ ',
             ['coalesce', ['to-string', ['get', 'wave_height_m']], '1.2'],
             'm swell · ',
             ['coalesce', ['to-string', ['get', 'temperature']], '--'],
@@ -1500,19 +1500,28 @@ export default function MapView() {
       const bboxKey = bbox.map((v) => Number(v).toFixed(3)).join(',')
       if (prevGeoBboxRef.current !== bboxKey) {
         prevGeoBboxRef.current = bboxKey
-        map.fitBounds(
-          [
-            [bbox[0], bbox[1]],
-            [bbox[2], bbox[3]],
-          ],
-          {
-            padding: { top: 80, bottom: 80, left: 100, right: 100 },
-            pitch: 48,
-            bearing: -12,
-            duration: 1400,
-            essential: true,
-          },
-        )
+        try {
+          const container = map.getContainer()
+          if (container && container.clientWidth > 100 && container.clientHeight > 100) {
+            map.fitBounds(
+              [
+                [bbox[0], bbox[1]],
+                [bbox[2], bbox[3]],
+              ],
+              {
+                padding: { top: 20, bottom: 20, left: 20, right: 20 },
+                duration: 1200,
+                essential: true,
+              },
+            )
+          } else {
+            const p = geo?.meta?.center || [(bbox[0] + bbox[2]) / 2, (bbox[1] + bbox[3]) / 2]
+            map.flyTo({ center: p, zoom: DEFAULT_ZOOM, duration: 1100, essential: true })
+          }
+        } catch {
+          const p = geo?.meta?.center || [(bbox[0] + bbox[2]) / 2, (bbox[1] + bbox[3]) / 2]
+          map.flyTo({ center: p, zoom: DEFAULT_ZOOM, duration: 1100, essential: true })
+        }
       }
       return
     }
@@ -1546,19 +1555,28 @@ export default function MapView() {
 
     const bbox = geo?.meta?.bbox
     if (bbox && Array.isArray(bbox) && bbox.length === 4) {
-      map.fitBounds(
-        [
-          [bbox[0], bbox[1]],
-          [bbox[2], bbox[3]],
-        ],
-        {
-          padding: { top: 80, bottom: 80, left: 100, right: 100 },
-          pitch: pitched ? 48 : 0,
-          bearing: -12,
-          duration: 1000,
-          essential: true,
-        },
-      )
+      try {
+        const container = map.getContainer()
+        if (container && container.clientWidth > 100 && container.clientHeight > 100) {
+          map.fitBounds(
+            [
+              [bbox[0], bbox[1]],
+              [bbox[2], bbox[3]],
+            ],
+            {
+              padding: { top: 20, bottom: 20, left: 20, right: 20 },
+              duration: 1000,
+              essential: true,
+            },
+          )
+        } else {
+          const targetCenter = geo?.meta?.center || centerCoords
+          map.flyTo({ center: targetCenter, zoom: DEFAULT_ZOOM, duration: 900, essential: true })
+        }
+      } catch {
+        const targetCenter = geo?.meta?.center || centerCoords
+        map.flyTo({ center: targetCenter, zoom: DEFAULT_ZOOM, duration: 900, essential: true })
+      }
       return
     }
 

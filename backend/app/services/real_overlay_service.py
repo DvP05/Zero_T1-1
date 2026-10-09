@@ -1326,17 +1326,18 @@ def sync_live_sensors_and_events(
     store.sensor_readings = readings
 
     # Active Event epicenter
-    store.events = [
-        Event(
-            event_id=f"EVT-{resolved_zid.upper()[:3]}-001",
-            timestamp=now,
-            latitude=round(lat - 0.008, 4),
-            longitude=round(lon - 0.005, 4),
-            severity=Severity.CRITICAL if meteo["rain_mm_h"] > 15 else (Severity.HIGH if meteo["wave_height_m"] > 1.5 else Severity.MEDIUM),
-            confidence=0.88,
-            primary_sensor_id=new_sensors[1]["sensor_id"],
-            description=f"Live Coastal Hydrodynamic Monitoring: Swell {meteo['wave_height_m']:.2f}m, SST {meteo['sst_c']}°C at {resolved_name}",
-            radius_km=14.0,
-            affected_zones=[f"{resolved_zid}-A", f"{resolved_zid}-B"],
-        )
-    ]
+    primary_sensor = new_sensors[1]["sensor_id"] if len(new_sensors) > 1 else new_sensors[0]["sensor_id"]
+    new_event = Event(
+        event_id=f"EVT-{resolved_zid.upper()[:3]}-001",
+        timestamp=now,
+        latitude=round(lat - 0.008, 4),
+        longitude=round(lon - 0.005, 4),
+        severity=Severity.CRITICAL if meteo["rain_mm_h"] > 15 else (Severity.HIGH if meteo["wave_height_m"] > 1.5 else Severity.MEDIUM),
+        confidence=0.88,
+        primary_sensor_id=primary_sensor,
+        description=f"Live Coastal Hydrodynamic Monitoring: Swell {meteo['wave_height_m']:.2f}m, SST {meteo['sst_c']}°C at {resolved_name}",
+        radius_km=14.0,
+        affected_zones=[f"{resolved_zid}-A", f"{resolved_zid}-B"],
+    )
+    existing = [e for e in store.events if e.event_id != new_event.event_id]
+    store.events = [new_event] + existing
